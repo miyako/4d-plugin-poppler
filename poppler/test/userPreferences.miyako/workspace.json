@@ -1,0 +1,30 @@
+﻿{
+	"editors": [
+		{
+			"type": "method",
+			"id": 2147483632,
+			"previousTabType": "method",
+			"previousTabID": 2147483637,
+			"codeDescriptor": {
+				"type": 2,
+				"formName": "Form1",
+				"objectName": "Button",
+				"methodPath": "/SOURCES/Forms/Form1/ObjectMethods/Button.4dm"
+			}
+		},
+		{
+			"type": "method",
+			"id": 2147483637,
+			"codeDescriptor": {
+				"type": 1,
+				"methodName": "PDF2SVG_TEST"
+			}
+		},
+		{
+			"type": "explorer"
+		},
+		{
+			"type": "toolbox"
+		}
+	]
+}

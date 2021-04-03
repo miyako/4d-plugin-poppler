@@ -1,0 +1,21 @@
+{
+    "name": "Poppler",
+    "id": 20000,
+    "commands": [
+        {
+            "theme": "SVG",
+            "syntax": "PDF Convert(&O;&Y;&L;&L;&T;&T;&T):L",
+            "threadSafe": true
+        },
+        {
+            "theme": "PDF",
+            "syntax": "PDF Get page count(&O;&T;&T):L",
+            "threadSafe": true
+        },
+        {
+            "theme": "Text",
+            "syntax": "PDF Get text(&O;&Y;&L;&L;&T;&T;&T):L",
+            "threadSafe": true
+        }
+    ]
+}
