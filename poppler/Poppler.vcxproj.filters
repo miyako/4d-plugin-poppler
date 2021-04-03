@@ -5,6 +5,10 @@
       <Filter>4D Plugin API</Filter>
     </ClCompile>
     <ClCompile Include="4DPlugin-Poppler.cpp" />
+    <ClCompile Include="4D Plugin API\Classes\ARRAY_TEXT.cpp" />
+    <ClCompile Include="4D Plugin API\Classes\C_BLOB.cpp" />
+    <ClCompile Include="4D Plugin API\Classes\C_LONGINT.cpp" />
+    <ClCompile Include="4D Plugin API\Classes\C_TEXT.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="4D Plugin API\4DPluginAPI.h">
@@ -23,6 +27,11 @@
       <Filter>4D Plugin API</Filter>
     </ClInclude>
     <ClInclude Include="4DPlugin-Poppler.h" />
+    <ClInclude Include="4D Plugin API\Classes\ARRAY_TEXT.h" />
+    <ClInclude Include="4D Plugin API\Classes\C_BLOB.h" />
+    <ClInclude Include="4D Plugin API\Classes\C_LONGINT.h" />
+    <ClInclude Include="4D Plugin API\Classes\C_TEXT.h" />
+    <ClInclude Include="4D Plugin API\Classes\C_TYPES.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="4D Plugin API">

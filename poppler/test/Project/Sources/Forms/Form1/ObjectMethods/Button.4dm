@@ -11,4 +11,4 @@ CLEAR VARIABLE:C89(PAGE)
 
 CLEAR VARIABLE:C89(CODE)
 
-$p:=New process:C317("Method1";0;"$PDF2SVG")
+$p:=New process:C317("PDF2SVG_TEST";0;"$PDF2SVG")
