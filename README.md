@@ -39,7 +39,7 @@ count|LONGINT|Page count
 
 ### Examples
 
-```
+```4d
 $path:=Get 4D folder(Current resources folder)+"sample.pdf"
 DOCUMENT TO BLOB($path;$PDF)
 
@@ -64,7 +64,7 @@ The method is executed in the same process as the calling method.
 
 Parameters:
 
-```
+```4d
 C_LONGINT($1;$pos)//1-based
 C_LONGINT($2;$total)
 C_LONGINT($3;$pageNumber)//1-based
@@ -74,19 +74,19 @@ C_BOOLEAN($0;$stop)
 
 To display a progress bar:
 
-```
+```4d
 Progress SET PROGRESS (<>P;$pos/$total)
 ```
 
 To abort:
 
-```
+```4d
 $0:=Progress Stopped (<>P)
 ```
 
 ### Error codes
 
-```
+```c
 #define PDF2SVG_ERROR_InvalidSourceData (-1)
 #define PDF2SVG_ERROR_InvalidReturnType (-2)
 #define PDF2SVG_ERROR_AbortedByUser (-3)
