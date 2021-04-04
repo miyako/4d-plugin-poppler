@@ -25,6 +25,20 @@ method|TEXT|Callback method [optional]
 error|LONGINT|Error code
 
 ```
+error:=PDF Get text (pdf;svg;from;to;password;method)
+```
+
+Parameter|Type|Description
+------------|------|----
+pdf|BLOB|The PDF document BLOB
+svg|ARRAY TEXT|Array to receive the pages 
+from|LONGINT|Starting page (1 based) [optional]
+to|LONGINT|Ending page (1 based) [optional]
+password|TEXT|Password [optional]
+method|TEXT|Callback method [optional]
+error|LONGINT|Error code
+
+```
 count:=PDF Get page count (pdf;password)
 ```
 
@@ -51,6 +65,25 @@ Progress SET PROGRESS (<>P;0)
 Progress SET BUTTON ENABLED (<>P;True)
 
 $error:=PDF Convert ($PDF;$pages;$startPage;$endPage;$password;$callback)
+
+Progress QUIT (<>P)
+```
+
+```4d
+$path:=Get 4D folder(Current resources folder)+"sample.pdf"
+DOCUMENT TO BLOB($path;$PDF)
+
+ARRAY TEXT($pages;0)
+$startPage:=0
+$endPage:=0
+$password:=""
+$callback:="PDF2TEXT_CB"
+
+<>p:=Progress New 
+Progress SET PROGRESS (<>P;0)
+Progress SET BUTTON ENABLED (<>P;True)
+
+$error:=PDF Get text ($PDF;$pages;$startPage;$endPage;$password;$callback)
 
 Progress QUIT (<>P)
 ```
