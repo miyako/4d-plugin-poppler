@@ -2,8 +2,6 @@
 ![platform](https://img.shields.io/static/v1?label=platform&message=mac-intel%20|%20mac-arm%20|%20win-64&color=blue)
 [![license](https://img.shields.io/github/license/miyako/4d-plugin-poppler)](LICENSE)
 ![downloads](https://img.shields.io/github/downloads/miyako/4d-plugin-poppler/total)
-![language-top](https://img.shields.io/github/languages/top/miyako/4d-plugin-poppler)
-![code-size](https://img.shields.io/github/languages/code-size/miyako/4d-plugin-poppler)
 
 **Note**: for v17 and earlier, move `manifest.json` to `Contents`
 
@@ -11,7 +9,6 @@
 Extract text from PDF, convert PDF to SVG.
 
 ### Syntax
-
 
 ```
 error:=PDF Convert (pdf;svg;from;to;password;method)
