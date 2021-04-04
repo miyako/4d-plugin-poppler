@@ -6,9 +6,10 @@
 
 [![language][code-shield]][code-url]
 [![language-top][code-top]][code-url]
-![code-size][code-size]
-[![release][release-shield]][release-url]
-[![license][license-shield]][license-url]
+![code-size](https://img.shields.io/github/languages/code-size/miyako/4d-plugin-poppler)
+
+
+
 [![discord][discord-shield]][discord-url]
 
 **Note**: for v17 and earlier, move `manifest.json` to `Contents`
