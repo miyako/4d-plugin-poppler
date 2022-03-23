@@ -104,7 +104,7 @@ void PluginMain(PA_long32 selector, PA_PluginParameters params) {
 
 #pragma mark -
 
-void PDF_Convert(PA_PluginParameters params)
+static void PDF_Convert(PA_PluginParameters params)
 {
     sLONG_PTR *pResult = (sLONG_PTR *)params->fResult;
     PackagePtr pParams = (PackagePtr)params->fParameters;
@@ -349,7 +349,7 @@ void PDF_Convert(PA_PluginParameters params)
     returnValue.setReturn(pResult);
 }
 
-void PDF_Get_page_count(PA_PluginParameters params)
+static void PDF_Get_page_count(PA_PluginParameters params)
 {
     sLONG_PTR *pResult = (sLONG_PTR *)params->fResult;
     PackagePtr pParams = (PackagePtr)params->fParameters;
@@ -383,7 +383,7 @@ void PDF_Get_page_count(PA_PluginParameters params)
     returnValue.setReturn(pResult);
 }
 
-void PDF_Get_text(PA_PluginParameters params)
+static void PDF_Get_text(PA_PluginParameters params)
 {
     sLONG_PTR *pResult = (sLONG_PTR *)params->fResult;
     PackagePtr pParams = (PackagePtr)params->fParameters;

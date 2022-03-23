@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,11 +15,69 @@
 		18B684FF06944F8800CC6A1E /* 4DPlugin-Poppler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18B684FE06944F8800CC6A1E /* 4DPlugin-Poppler.cpp */; };
 		8D01CCCA0486CAD60068D4B7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		D120937F13534DCC00A72CAA /* 4DPlugin-Poppler.h in Headers */ = {isa = PBXBuildFile; fileRef = D120937E13534DCC00A72CAA /* 4DPlugin-Poppler.h */; };
-		D12AC7FB27EB3DEE00EE0636 /* libcairo.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D18D65EE2618610A00A4C428 /* libcairo.2.dylib */; };
-		D12AC7FE27EB3DF300EE0636 /* libgmodule-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D18D65F12618610A00A4C428 /* libgmodule-2.0.0.dylib */; };
-		D12AC80027EB3DFC00EE0636 /* libgobject-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D18D65F22618610A00A4C428 /* libgobject-2.0.0.dylib */; };
-		D12AC80227EB3E0500EE0636 /* libpoppler-glib.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D18D65EF2618610A00A4C428 /* libpoppler-glib.8.dylib */; };
-		D12AC80427EB3E0E00EE0636 /* libpoppler.64.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D18D65F02618610A00A4C428 /* libpoppler.64.dylib */; };
+		D12AC84027EB687C00EE0636 /* libcairo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC81927EB686C00EE0636 /* libcairo.a */; };
+		D12AC84127EB687C00EE0636 /* libcertdb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC80627EB686C00EE0636 /* libcertdb.a */; };
+		D12AC84227EB687C00EE0636 /* libcerthi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC82C27EB686D00EE0636 /* libcerthi.a */; };
+		D12AC84327EB687C00EE0636 /* libcpputil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC80927EB686C00EE0636 /* libcpputil.a */; };
+		D12AC84427EB687C00EE0636 /* libcrmf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC81427EB686C00EE0636 /* libcrmf.a */; };
+		D12AC84527EB687C00EE0636 /* libcroco-0.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC82F27EB686D00EE0636 /* libcroco-0.6.a */; };
+		D12AC84627EB687C00EE0636 /* libcryptohi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC81127EB686C00EE0636 /* libcryptohi.a */; };
+		D12AC84727EB687C00EE0636 /* libdbm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC82027EB686C00EE0636 /* libdbm.a */; };
+		D12AC84827EB687C00EE0636 /* libffi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC81327EB686C00EE0636 /* libffi.a */; };
+		D12AC84927EB687C00EE0636 /* libfontconfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC82727EB686D00EE0636 /* libfontconfig.a */; };
+		D12AC84A27EB687C00EE0636 /* libfreebl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC81C27EB686C00EE0636 /* libfreebl.a */; };
+		D12AC84B27EB687C00EE0636 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC83A27EB686D00EE0636 /* libfreetype.a */; };
+		D12AC84C27EB687C00EE0636 /* libgio-2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC83C27EB686D00EE0636 /* libgio-2.0.a */; };
+		D12AC84D27EB687C00EE0636 /* libglib-2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC81527EB686C00EE0636 /* libglib-2.0.a */; };
+		D12AC84E27EB687C00EE0636 /* libgmodule-2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC82227EB686C00EE0636 /* libgmodule-2.0.a */; };
+		D12AC84F27EB687C00EE0636 /* libgobject-2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC82427EB686C00EE0636 /* libgobject-2.0.a */; };
+		D12AC85027EB687C00EE0636 /* libgthread-2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC81827EB686C00EE0636 /* libgthread-2.0.a */; };
+		D12AC85127EB687C00EE0636 /* libiconv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC81A27EB686C00EE0636 /* libiconv.a */; };
+		D12AC85227EB687C00EE0636 /* libintl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC80E27EB686C00EE0636 /* libintl.a */; };
+		D12AC85327EB687C00EE0636 /* libjar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC82B27EB686D00EE0636 /* libjar.a */; };
+		D12AC85427EB687C00EE0636 /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC83D27EB686D00EE0636 /* libjpeg.a */; };
+		D12AC85527EB687C00EE0636 /* libjsoncpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC83827EB686D00EE0636 /* libjsoncpp.a */; };
+		D12AC85627EB687C00EE0636 /* liblcms2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC80B27EB686C00EE0636 /* liblcms2.a */; };
+		D12AC85727EB687C00EE0636 /* libnspr4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC82627EB686C00EE0636 /* libnspr4.a */; };
+		D12AC85827EB687C00EE0636 /* libnss.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC83127EB686D00EE0636 /* libnss.a */; };
+		D12AC85927EB687C00EE0636 /* libnssb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC81727EB686C00EE0636 /* libnssb.a */; };
+		D12AC85A27EB687C00EE0636 /* libnssckfw.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC82927EB686D00EE0636 /* libnssckfw.a */; };
+		D12AC85B27EB687C00EE0636 /* libnssdbm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC81027EB686C00EE0636 /* libnssdbm.a */; };
+		D12AC85C27EB687C00EE0636 /* libnssdev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC83027EB686D00EE0636 /* libnssdev.a */; };
+		D12AC85D27EB687C00EE0636 /* libnsspki.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC82A27EB686D00EE0636 /* libnsspki.a */; };
+		D12AC85E27EB687C00EE0636 /* libnssutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC83427EB686D00EE0636 /* libnssutil.a */; };
+		D12AC85F27EB687C00EE0636 /* libopenjp2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC82127EB686C00EE0636 /* libopenjp2.a */; };
+		D12AC86027EB687C00EE0636 /* libpixman-1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC83F27EB686D00EE0636 /* libpixman-1.a */; };
+		D12AC86127EB687C00EE0636 /* libpk11wrap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC81E27EB686C00EE0636 /* libpk11wrap.a */; };
+		D12AC86227EB687C00EE0636 /* libpkcs7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC82E27EB686D00EE0636 /* libpkcs7.a */; };
+		D12AC86327EB687D00EE0636 /* libpkcs12.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC83627EB686D00EE0636 /* libpkcs12.a */; };
+		D12AC86427EB687D00EE0636 /* libpkixcertsel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC82327EB686C00EE0636 /* libpkixcertsel.a */; };
+		D12AC86527EB687D00EE0636 /* libpkixchecker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC82527EB686C00EE0636 /* libpkixchecker.a */; };
+		D12AC86627EB687D00EE0636 /* libpkixcrlsel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC80F27EB686C00EE0636 /* libpkixcrlsel.a */; };
+		D12AC86727EB687D00EE0636 /* libpkixmodule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC80D27EB686C00EE0636 /* libpkixmodule.a */; };
+		D12AC86827EB687D00EE0636 /* libpkixparams.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC83727EB686D00EE0636 /* libpkixparams.a */; };
+		D12AC86927EB687D00EE0636 /* libpkixpki.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC83527EB686D00EE0636 /* libpkixpki.a */; };
+		D12AC86A27EB687D00EE0636 /* libpkixresults.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC80827EB686C00EE0636 /* libpkixresults.a */; };
+		D12AC86B27EB687D00EE0636 /* libpkixstore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC81F27EB686C00EE0636 /* libpkixstore.a */; };
+		D12AC86C27EB687D00EE0636 /* libpkixsystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC83927EB686D00EE0636 /* libpkixsystem.a */; };
+		D12AC86D27EB687D00EE0636 /* libpkixtop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC83B27EB686D00EE0636 /* libpkixtop.a */; };
+		D12AC86E27EB687D00EE0636 /* libpkixutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC80A27EB686C00EE0636 /* libpkixutil.a */; };
+		D12AC86F27EB687D00EE0636 /* libplc4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC81B27EB686C00EE0636 /* libplc4.a */; };
+		D12AC87027EB687D00EE0636 /* libplds4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC82D27EB686D00EE0636 /* libplds4.a */; };
+		D12AC87127EB687D00EE0636 /* libpng16.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC83327EB686D00EE0636 /* libpng16.a */; };
+		D12AC87227EB687D00EE0636 /* libpoppler-cpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC82827EB686D00EE0636 /* libpoppler-cpp.a */; };
+		D12AC87327EB687D00EE0636 /* libpoppler-glib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC80727EB686C00EE0636 /* libpoppler-glib.a */; };
+		D12AC87427EB687D00EE0636 /* libpoppler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC81D27EB686C00EE0636 /* libpoppler.a */; };
+		D12AC87527EB687D00EE0636 /* libsectool.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC80C27EB686C00EE0636 /* libsectool.a */; };
+		D12AC87627EB687D00EE0636 /* libsmime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC83227EB686D00EE0636 /* libsmime.a */; };
+		D12AC87727EB687D00EE0636 /* libsoftokn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC83E27EB686D00EE0636 /* libsoftokn.a */; };
+		D12AC87827EB687D00EE0636 /* libtiff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC81627EB686C00EE0636 /* libtiff.a */; };
+		D12AC87927EB687D00EE0636 /* libz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC81227EB686C00EE0636 /* libz.a */; };
+		D12AC87F27EB68DC00EE0636 /* libcurl.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC87B27EB68A900EE0636 /* libcurl.tbd */; platformFilter = maccatalyst; };
+		D12AC88127EB68F600EE0636 /* libpcre.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC88027EB68F000EE0636 /* libpcre.tbd */; };
+		D12AC88327EB694B00EE0636 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC88227EB694B00EE0636 /* libresolv.tbd */; };
+		D12AC88427EB69F600EE0636 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC87A27EB68A000EE0636 /* libbz2.tbd */; };
+		D12AC88527EB6A1B00EE0636 /* libexpat.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D12AC87C27EB68B300EE0636 /* libexpat.tbd */; };
 		D130064F12F02D9700702C0E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D130064E12F02D9700702C0E /* Cocoa.framework */; };
 		D13116A91A03ACB700DE1322 /* 4DPluginAPI.c in Sources */ = {isa = PBXBuildFile; fileRef = D13116A81A03ACB700DE1322 /* 4DPluginAPI.c */; settings = {COMPILER_FLAGS = "-Wno-multichar"; }; };
 		D134D4AC1A030BA0008D14EF /* manifest.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = D134D4A91A030B06008D14EF /* manifest.json */; };
@@ -38,7 +96,7 @@
 		D134D4AB1A030B7A008D14EF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = ..;
+			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
 				D134D4AC1A030BA0008D14EF /* manifest.json in CopyFiles */,
@@ -58,6 +116,69 @@
 		18B684FE06944F8800CC6A1E /* 4DPlugin-Poppler.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 30; path = "4DPlugin-Poppler.cpp"; sourceTree = "<group>"; };
 		8D01CCD10486CAD60068D4B7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D120937E13534DCC00A72CAA /* 4DPlugin-Poppler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "4DPlugin-Poppler.h"; sourceTree = "<group>"; };
+		D12AC80627EB686C00EE0636 /* libcertdb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcertdb.a; path = a/libcertdb.a; sourceTree = "<group>"; };
+		D12AC80727EB686C00EE0636 /* libpoppler-glib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpoppler-glib.a"; path = "a/libpoppler-glib.a"; sourceTree = "<group>"; };
+		D12AC80827EB686C00EE0636 /* libpkixresults.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpkixresults.a; path = a/libpkixresults.a; sourceTree = "<group>"; };
+		D12AC80927EB686C00EE0636 /* libcpputil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcpputil.a; path = a/libcpputil.a; sourceTree = "<group>"; };
+		D12AC80A27EB686C00EE0636 /* libpkixutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpkixutil.a; path = a/libpkixutil.a; sourceTree = "<group>"; };
+		D12AC80B27EB686C00EE0636 /* liblcms2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblcms2.a; path = a/liblcms2.a; sourceTree = "<group>"; };
+		D12AC80C27EB686C00EE0636 /* libsectool.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsectool.a; path = a/libsectool.a; sourceTree = "<group>"; };
+		D12AC80D27EB686C00EE0636 /* libpkixmodule.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpkixmodule.a; path = a/libpkixmodule.a; sourceTree = "<group>"; };
+		D12AC80E27EB686C00EE0636 /* libintl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libintl.a; path = a/libintl.a; sourceTree = "<group>"; };
+		D12AC80F27EB686C00EE0636 /* libpkixcrlsel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpkixcrlsel.a; path = a/libpkixcrlsel.a; sourceTree = "<group>"; };
+		D12AC81027EB686C00EE0636 /* libnssdbm.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnssdbm.a; path = a/libnssdbm.a; sourceTree = "<group>"; };
+		D12AC81127EB686C00EE0636 /* libcryptohi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcryptohi.a; path = a/libcryptohi.a; sourceTree = "<group>"; };
+		D12AC81227EB686C00EE0636 /* libz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libz.a; path = a/libz.a; sourceTree = "<group>"; };
+		D12AC81327EB686C00EE0636 /* libffi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libffi.a; path = a/libffi.a; sourceTree = "<group>"; };
+		D12AC81427EB686C00EE0636 /* libcrmf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrmf.a; path = a/libcrmf.a; sourceTree = "<group>"; };
+		D12AC81527EB686C00EE0636 /* libglib-2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libglib-2.0.a"; path = "a/libglib-2.0.a"; sourceTree = "<group>"; };
+		D12AC81627EB686C00EE0636 /* libtiff.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtiff.a; path = a/libtiff.a; sourceTree = "<group>"; };
+		D12AC81727EB686C00EE0636 /* libnssb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnssb.a; path = a/libnssb.a; sourceTree = "<group>"; };
+		D12AC81827EB686C00EE0636 /* libgthread-2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgthread-2.0.a"; path = "a/libgthread-2.0.a"; sourceTree = "<group>"; };
+		D12AC81927EB686C00EE0636 /* libcairo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcairo.a; path = a/libcairo.a; sourceTree = "<group>"; };
+		D12AC81A27EB686C00EE0636 /* libiconv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libiconv.a; path = a/libiconv.a; sourceTree = "<group>"; };
+		D12AC81B27EB686C00EE0636 /* libplc4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libplc4.a; path = a/libplc4.a; sourceTree = "<group>"; };
+		D12AC81C27EB686C00EE0636 /* libfreebl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreebl.a; path = a/libfreebl.a; sourceTree = "<group>"; };
+		D12AC81D27EB686C00EE0636 /* libpoppler.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpoppler.a; path = a/libpoppler.a; sourceTree = "<group>"; };
+		D12AC81E27EB686C00EE0636 /* libpk11wrap.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpk11wrap.a; path = a/libpk11wrap.a; sourceTree = "<group>"; };
+		D12AC81F27EB686C00EE0636 /* libpkixstore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpkixstore.a; path = a/libpkixstore.a; sourceTree = "<group>"; };
+		D12AC82027EB686C00EE0636 /* libdbm.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libdbm.a; path = a/libdbm.a; sourceTree = "<group>"; };
+		D12AC82127EB686C00EE0636 /* libopenjp2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopenjp2.a; path = a/libopenjp2.a; sourceTree = "<group>"; };
+		D12AC82227EB686C00EE0636 /* libgmodule-2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgmodule-2.0.a"; path = "a/libgmodule-2.0.a"; sourceTree = "<group>"; };
+		D12AC82327EB686C00EE0636 /* libpkixcertsel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpkixcertsel.a; path = a/libpkixcertsel.a; sourceTree = "<group>"; };
+		D12AC82427EB686C00EE0636 /* libgobject-2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgobject-2.0.a"; path = "a/libgobject-2.0.a"; sourceTree = "<group>"; };
+		D12AC82527EB686C00EE0636 /* libpkixchecker.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpkixchecker.a; path = a/libpkixchecker.a; sourceTree = "<group>"; };
+		D12AC82627EB686C00EE0636 /* libnspr4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnspr4.a; path = a/libnspr4.a; sourceTree = "<group>"; };
+		D12AC82727EB686D00EE0636 /* libfontconfig.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfontconfig.a; path = a/libfontconfig.a; sourceTree = "<group>"; };
+		D12AC82827EB686D00EE0636 /* libpoppler-cpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpoppler-cpp.a"; path = "a/libpoppler-cpp.a"; sourceTree = "<group>"; };
+		D12AC82927EB686D00EE0636 /* libnssckfw.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnssckfw.a; path = a/libnssckfw.a; sourceTree = "<group>"; };
+		D12AC82A27EB686D00EE0636 /* libnsspki.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnsspki.a; path = a/libnsspki.a; sourceTree = "<group>"; };
+		D12AC82B27EB686D00EE0636 /* libjar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjar.a; path = a/libjar.a; sourceTree = "<group>"; };
+		D12AC82C27EB686D00EE0636 /* libcerthi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcerthi.a; path = a/libcerthi.a; sourceTree = "<group>"; };
+		D12AC82D27EB686D00EE0636 /* libplds4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libplds4.a; path = a/libplds4.a; sourceTree = "<group>"; };
+		D12AC82E27EB686D00EE0636 /* libpkcs7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpkcs7.a; path = a/libpkcs7.a; sourceTree = "<group>"; };
+		D12AC82F27EB686D00EE0636 /* libcroco-0.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcroco-0.6.a"; path = "a/libcroco-0.6.a"; sourceTree = "<group>"; };
+		D12AC83027EB686D00EE0636 /* libnssdev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnssdev.a; path = a/libnssdev.a; sourceTree = "<group>"; };
+		D12AC83127EB686D00EE0636 /* libnss.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnss.a; path = a/libnss.a; sourceTree = "<group>"; };
+		D12AC83227EB686D00EE0636 /* libsmime.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsmime.a; path = a/libsmime.a; sourceTree = "<group>"; };
+		D12AC83327EB686D00EE0636 /* libpng16.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng16.a; path = a/libpng16.a; sourceTree = "<group>"; };
+		D12AC83427EB686D00EE0636 /* libnssutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnssutil.a; path = a/libnssutil.a; sourceTree = "<group>"; };
+		D12AC83527EB686D00EE0636 /* libpkixpki.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpkixpki.a; path = a/libpkixpki.a; sourceTree = "<group>"; };
+		D12AC83627EB686D00EE0636 /* libpkcs12.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpkcs12.a; path = a/libpkcs12.a; sourceTree = "<group>"; };
+		D12AC83727EB686D00EE0636 /* libpkixparams.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpkixparams.a; path = a/libpkixparams.a; sourceTree = "<group>"; };
+		D12AC83827EB686D00EE0636 /* libjsoncpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjsoncpp.a; path = a/libjsoncpp.a; sourceTree = "<group>"; };
+		D12AC83927EB686D00EE0636 /* libpkixsystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpkixsystem.a; path = a/libpkixsystem.a; sourceTree = "<group>"; };
+		D12AC83A27EB686D00EE0636 /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = a/libfreetype.a; sourceTree = "<group>"; };
+		D12AC83B27EB686D00EE0636 /* libpkixtop.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpkixtop.a; path = a/libpkixtop.a; sourceTree = "<group>"; };
+		D12AC83C27EB686D00EE0636 /* libgio-2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgio-2.0.a"; path = "a/libgio-2.0.a"; sourceTree = "<group>"; };
+		D12AC83D27EB686D00EE0636 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjpeg.a; path = a/libjpeg.a; sourceTree = "<group>"; };
+		D12AC83E27EB686D00EE0636 /* libsoftokn.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsoftokn.a; path = a/libsoftokn.a; sourceTree = "<group>"; };
+		D12AC83F27EB686D00EE0636 /* libpixman-1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpixman-1.a"; path = "a/libpixman-1.a"; sourceTree = "<group>"; };
+		D12AC87A27EB68A000EE0636 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		D12AC87B27EB68A900EE0636 /* libcurl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.tbd; path = usr/lib/libcurl.tbd; sourceTree = SDKROOT; };
+		D12AC87C27EB68B300EE0636 /* libexpat.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libexpat.tbd; path = usr/lib/libexpat.tbd; sourceTree = SDKROOT; };
+		D12AC88027EB68F000EE0636 /* libpcre.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libpcre.tbd; path = usr/lib/libpcre.tbd; sourceTree = SDKROOT; };
+		D12AC88227EB694B00EE0636 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		D130064E12F02D9700702C0E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		D13116A81A03ACB700DE1322 /* 4DPluginAPI.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = 4DPluginAPI.c; sourceTree = "<group>"; };
 		D134D4A91A030B06008D14EF /* manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
@@ -83,12 +204,70 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D12AC88527EB6A1B00EE0636 /* libexpat.tbd in Frameworks */,
+				D12AC88427EB69F600EE0636 /* libbz2.tbd in Frameworks */,
+				D12AC88327EB694B00EE0636 /* libresolv.tbd in Frameworks */,
+				D12AC87F27EB68DC00EE0636 /* libcurl.tbd in Frameworks */,
+				D12AC88127EB68F600EE0636 /* libpcre.tbd in Frameworks */,
+				D12AC87227EB687D00EE0636 /* libpoppler-cpp.a in Frameworks */,
+				D12AC86C27EB687D00EE0636 /* libpkixsystem.a in Frameworks */,
+				D12AC84E27EB687C00EE0636 /* libgmodule-2.0.a in Frameworks */,
+				D12AC85627EB687C00EE0636 /* liblcms2.a in Frameworks */,
+				D12AC84227EB687C00EE0636 /* libcerthi.a in Frameworks */,
+				D12AC85227EB687C00EE0636 /* libintl.a in Frameworks */,
+				D12AC87327EB687D00EE0636 /* libpoppler-glib.a in Frameworks */,
+				D12AC86127EB687C00EE0636 /* libpk11wrap.a in Frameworks */,
+				D12AC86827EB687D00EE0636 /* libpkixparams.a in Frameworks */,
+				D12AC87927EB687D00EE0636 /* libz.a in Frameworks */,
+				D12AC86527EB687D00EE0636 /* libpkixchecker.a in Frameworks */,
+				D12AC86727EB687D00EE0636 /* libpkixmodule.a in Frameworks */,
+				D12AC85E27EB687C00EE0636 /* libnssutil.a in Frameworks */,
+				D12AC84527EB687C00EE0636 /* libcroco-0.6.a in Frameworks */,
+				D12AC84127EB687C00EE0636 /* libcertdb.a in Frameworks */,
+				D12AC86227EB687C00EE0636 /* libpkcs7.a in Frameworks */,
+				D12AC87527EB687D00EE0636 /* libsectool.a in Frameworks */,
+				D12AC86E27EB687D00EE0636 /* libpkixutil.a in Frameworks */,
+				D12AC84827EB687C00EE0636 /* libffi.a in Frameworks */,
+				D12AC86027EB687C00EE0636 /* libpixman-1.a in Frameworks */,
+				D12AC84327EB687C00EE0636 /* libcpputil.a in Frameworks */,
+				D12AC84A27EB687C00EE0636 /* libfreebl.a in Frameworks */,
+				D12AC86627EB687D00EE0636 /* libpkixcrlsel.a in Frameworks */,
+				D12AC85F27EB687C00EE0636 /* libopenjp2.a in Frameworks */,
+				D12AC85327EB687C00EE0636 /* libjar.a in Frameworks */,
+				D12AC84B27EB687C00EE0636 /* libfreetype.a in Frameworks */,
+				D12AC85927EB687C00EE0636 /* libnssb.a in Frameworks */,
+				D12AC86D27EB687D00EE0636 /* libpkixtop.a in Frameworks */,
+				D12AC87627EB687D00EE0636 /* libsmime.a in Frameworks */,
+				D12AC84D27EB687C00EE0636 /* libglib-2.0.a in Frameworks */,
+				D12AC85127EB687C00EE0636 /* libiconv.a in Frameworks */,
+				D12AC85D27EB687C00EE0636 /* libnsspki.a in Frameworks */,
+				D12AC84F27EB687C00EE0636 /* libgobject-2.0.a in Frameworks */,
+				D12AC87427EB687D00EE0636 /* libpoppler.a in Frameworks */,
+				D12AC85427EB687C00EE0636 /* libjpeg.a in Frameworks */,
+				D12AC86F27EB687D00EE0636 /* libplc4.a in Frameworks */,
+				D12AC86927EB687D00EE0636 /* libpkixpki.a in Frameworks */,
+				D12AC84927EB687C00EE0636 /* libfontconfig.a in Frameworks */,
+				D12AC85A27EB687C00EE0636 /* libnssckfw.a in Frameworks */,
+				D12AC85B27EB687C00EE0636 /* libnssdbm.a in Frameworks */,
+				D12AC86327EB687D00EE0636 /* libpkcs12.a in Frameworks */,
+				D12AC85727EB687C00EE0636 /* libnspr4.a in Frameworks */,
+				D12AC84027EB687C00EE0636 /* libcairo.a in Frameworks */,
+				D12AC86B27EB687D00EE0636 /* libpkixstore.a in Frameworks */,
+				D12AC87127EB687D00EE0636 /* libpng16.a in Frameworks */,
+				D12AC85827EB687C00EE0636 /* libnss.a in Frameworks */,
+				D12AC85C27EB687C00EE0636 /* libnssdev.a in Frameworks */,
+				D12AC86427EB687D00EE0636 /* libpkixcertsel.a in Frameworks */,
+				D12AC87027EB687D00EE0636 /* libplds4.a in Frameworks */,
+				D12AC84727EB687C00EE0636 /* libdbm.a in Frameworks */,
+				D12AC84C27EB687C00EE0636 /* libgio-2.0.a in Frameworks */,
+				D12AC87827EB687D00EE0636 /* libtiff.a in Frameworks */,
+				D12AC85527EB687C00EE0636 /* libjsoncpp.a in Frameworks */,
+				D12AC85027EB687C00EE0636 /* libgthread-2.0.a in Frameworks */,
+				D12AC87727EB687D00EE0636 /* libsoftokn.a in Frameworks */,
+				D12AC86A27EB687D00EE0636 /* libpkixresults.a in Frameworks */,
+				D12AC84627EB687C00EE0636 /* libcryptohi.a in Frameworks */,
 				D130064F12F02D9700702C0E /* Cocoa.framework in Frameworks */,
-				D12AC80027EB3DFC00EE0636 /* libgobject-2.0.0.dylib in Frameworks */,
-				D12AC80427EB3E0E00EE0636 /* libpoppler.64.dylib in Frameworks */,
-				D12AC7FE27EB3DF300EE0636 /* libgmodule-2.0.0.dylib in Frameworks */,
-				D12AC80227EB3E0500EE0636 /* libpoppler-glib.8.dylib in Frameworks */,
-				D12AC7FB27EB3DEE00EE0636 /* libcairo.2.dylib in Frameworks */,
+				D12AC84427EB687C00EE0636 /* libcrmf.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +356,69 @@
 		D16FBB3C22A4C07E008F0416 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D12AC88227EB694B00EE0636 /* libresolv.tbd */,
+				D12AC88027EB68F000EE0636 /* libpcre.tbd */,
+				D12AC87C27EB68B300EE0636 /* libexpat.tbd */,
+				D12AC87B27EB68A900EE0636 /* libcurl.tbd */,
+				D12AC87A27EB68A000EE0636 /* libbz2.tbd */,
+				D12AC81927EB686C00EE0636 /* libcairo.a */,
+				D12AC80627EB686C00EE0636 /* libcertdb.a */,
+				D12AC82C27EB686D00EE0636 /* libcerthi.a */,
+				D12AC80927EB686C00EE0636 /* libcpputil.a */,
+				D12AC81427EB686C00EE0636 /* libcrmf.a */,
+				D12AC82F27EB686D00EE0636 /* libcroco-0.6.a */,
+				D12AC81127EB686C00EE0636 /* libcryptohi.a */,
+				D12AC82027EB686C00EE0636 /* libdbm.a */,
+				D12AC81327EB686C00EE0636 /* libffi.a */,
+				D12AC82727EB686D00EE0636 /* libfontconfig.a */,
+				D12AC81C27EB686C00EE0636 /* libfreebl.a */,
+				D12AC83A27EB686D00EE0636 /* libfreetype.a */,
+				D12AC83C27EB686D00EE0636 /* libgio-2.0.a */,
+				D12AC81527EB686C00EE0636 /* libglib-2.0.a */,
+				D12AC82227EB686C00EE0636 /* libgmodule-2.0.a */,
+				D12AC82427EB686C00EE0636 /* libgobject-2.0.a */,
+				D12AC81827EB686C00EE0636 /* libgthread-2.0.a */,
+				D12AC81A27EB686C00EE0636 /* libiconv.a */,
+				D12AC80E27EB686C00EE0636 /* libintl.a */,
+				D12AC82B27EB686D00EE0636 /* libjar.a */,
+				D12AC83D27EB686D00EE0636 /* libjpeg.a */,
+				D12AC83827EB686D00EE0636 /* libjsoncpp.a */,
+				D12AC80B27EB686C00EE0636 /* liblcms2.a */,
+				D12AC82627EB686C00EE0636 /* libnspr4.a */,
+				D12AC83127EB686D00EE0636 /* libnss.a */,
+				D12AC81727EB686C00EE0636 /* libnssb.a */,
+				D12AC82927EB686D00EE0636 /* libnssckfw.a */,
+				D12AC81027EB686C00EE0636 /* libnssdbm.a */,
+				D12AC83027EB686D00EE0636 /* libnssdev.a */,
+				D12AC82A27EB686D00EE0636 /* libnsspki.a */,
+				D12AC83427EB686D00EE0636 /* libnssutil.a */,
+				D12AC82127EB686C00EE0636 /* libopenjp2.a */,
+				D12AC83F27EB686D00EE0636 /* libpixman-1.a */,
+				D12AC81E27EB686C00EE0636 /* libpk11wrap.a */,
+				D12AC82E27EB686D00EE0636 /* libpkcs7.a */,
+				D12AC83627EB686D00EE0636 /* libpkcs12.a */,
+				D12AC82327EB686C00EE0636 /* libpkixcertsel.a */,
+				D12AC82527EB686C00EE0636 /* libpkixchecker.a */,
+				D12AC80F27EB686C00EE0636 /* libpkixcrlsel.a */,
+				D12AC80D27EB686C00EE0636 /* libpkixmodule.a */,
+				D12AC83727EB686D00EE0636 /* libpkixparams.a */,
+				D12AC83527EB686D00EE0636 /* libpkixpki.a */,
+				D12AC80827EB686C00EE0636 /* libpkixresults.a */,
+				D12AC81F27EB686C00EE0636 /* libpkixstore.a */,
+				D12AC83927EB686D00EE0636 /* libpkixsystem.a */,
+				D12AC83B27EB686D00EE0636 /* libpkixtop.a */,
+				D12AC80A27EB686C00EE0636 /* libpkixutil.a */,
+				D12AC81B27EB686C00EE0636 /* libplc4.a */,
+				D12AC82D27EB686D00EE0636 /* libplds4.a */,
+				D12AC83327EB686D00EE0636 /* libpng16.a */,
+				D12AC82827EB686D00EE0636 /* libpoppler-cpp.a */,
+				D12AC80727EB686C00EE0636 /* libpoppler-glib.a */,
+				D12AC81D27EB686C00EE0636 /* libpoppler.a */,
+				D12AC80C27EB686C00EE0636 /* libsectool.a */,
+				D12AC83227EB686D00EE0636 /* libsmime.a */,
+				D12AC83E27EB686D00EE0636 /* libsoftokn.a */,
+				D12AC81627EB686C00EE0636 /* libtiff.a */,
+				D12AC81227EB686C00EE0636 /* libz.a */,
 				D18D65EE2618610A00A4C428 /* libcairo.2.dylib */,
 				D18D65F12618610A00A4C428 /* libgmodule-2.0.0.dylib */,
 				D18D65F22618610A00A4C428 /* libgobject-2.0.0.dylib */,
@@ -361,9 +603,9 @@
 				HEADER_SEARCH_PATHS = "include/**";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/test/Plugins/Poppler.bundle/Contents/MacOS\"/**";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/a";
 				LIBRARY_STYLE = Bundle;
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
@@ -409,9 +651,9 @@
 				HEADER_SEARCH_PATHS = "include/**";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/test/Plugins/Poppler.bundle/Contents/MacOS\"/**";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/a";
 				LIBRARY_STYLE = Bundle;
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
@@ -455,9 +697,9 @@
 				HEADER_SEARCH_PATHS = "include/**";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/test/Plugins/Poppler.bundle/Contents/MacOS\"/**";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/a";
 				LIBRARY_STYLE = Bundle;
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.3;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
@@ -514,7 +756,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/test/Plugins/Poppler.bundle/Contents/MacOS\"/**";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/a";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = "$(SRCROOT)/build";
 				SDKROOT = macosx;
@@ -561,7 +803,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/test/Plugins/Poppler.bundle/Contents/MacOS\"/**";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/a";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = "$(SRCROOT)/build";
 				SDKROOT = macosx;
@@ -608,7 +850,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/test/Plugins/Poppler.bundle/Contents/MacOS\"/**";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/a";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				SDKROOT = macosx;
 				SYMROOT = "$(SRCROOT)/test/Plugins";

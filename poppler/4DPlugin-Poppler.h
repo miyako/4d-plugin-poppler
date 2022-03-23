@@ -13,22 +13,49 @@
 
 #include "4DPluginAPI.h"
 
+#include "C_BLOB.h"
+#include "C_LONGINT.h"
+#include "ARRAY_TEXT.h"
+
 #include <assert.h>
 #include <stdlib.h>
 #include <glib.h>
+
+#if VERSIONMAC
 #include <poppler.h>
-#include <poppler-document.h>
-#include <poppler-page.h>
+#endif
+
+#if VERSIONWIN
+#include <config.h>
+#include <poppler-config.h>
+#endif
+
 #include <cairo.h>
 #include <cairo-svg.h>
 #include <stdio.h>
 #include <string.h>
 
-#include "C_BLOB.h"
-#include "C_LONGINT.h"
-#include "ARRAY_TEXT.h"
+#ifdef ENABLE_LIBPNG
+#    include <png.h>
+#endif
+
+#if VERSIONWIN
+static void u16_to_u8(CUTF16String& u16, std::string& u8);
+static void u8_to_u16(std::string& u8, CUTF16String& u16);
+#endif
+
+#include <poppler-document.h>
+#include <poppler-page.h>
 
 typedef PA_long32 method_id_t;
+
+#if defined(_WIN32)
+#define snprintf _snprintf
+#define vsnprintf _vsnprintf
+#define strcasecmp _stricmp
+#define strncasecmp _strnicmp
+extern "C" BOOL poppler_DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved);
+#endif
 
 #if VERSIONMAC
 #import <Cocoa/Cocoa.h>
@@ -47,8 +74,8 @@ typedef enum{
 
 #pragma mark -
 
-void PDF_Convert(PA_PluginParameters params);
-void PDF_Get_page_count(PA_PluginParameters params);
-void PDF_Get_text(PA_PluginParameters params);
+static void PDF_Convert(PA_PluginParameters params);
+static void PDF_Get_page_count(PA_PluginParameters params);
+static void PDF_Get_text(PA_PluginParameters params);
 
 #endif /* PLUGIN_POPPLER_H */

@@ -2,9 +2,6 @@
 	"editors": [
 		{
 			"type": "explorer"
-		},
-		{
-			"type": "toolbox"
 		}
 	]
 }
