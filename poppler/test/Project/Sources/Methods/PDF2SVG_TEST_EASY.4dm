@@ -1,4 +1,4 @@
-//%attributes = {}
+//%attributes = {"invisible":true}
 $path:=Get 4D folder:C485(Current resources folder:K5:16)+"doc.pdf"
 
 DOCUMENT TO BLOB:C525($path;$PDF)

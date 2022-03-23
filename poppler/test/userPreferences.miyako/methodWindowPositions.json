@@ -1,4 +1,4 @@
-﻿{
+{
 	"Sources/DatabaseMethods/onStartup.4dm": {
 		"left": 322,
 		"top": 651,
@@ -161,28 +161,46 @@
 		"width": 1129,
 		"height": 757
 	},
-	"Sources/Methods/PDF2TEXT_TEST.4dm": {
-		"left": 367,
-		"top": 265,
-		"width": 950,
-		"height": 374
-	},
 	"Sources/Methods/PDF2SVG_TEST_EASY.4dm": {
-		"left": 367,
-		"top": 265,
-		"width": 950,
-		"height": 374
-	},
-	"Sources/Methods/PDF2SVG_TEST.4dm": {
-		"left": 367,
-		"top": 317,
-		"width": 950,
-		"height": 324
+		"left": 125,
+		"top": 275,
+		"width": 1006,
+		"height": 841
 	},
 	"Sources/Forms/Form1/ObjectMethods/Button.4dm": {
+		"left": 64,
+		"top": 254,
+		"width": 1006,
+		"height": 841
+	},
+	"Sources/Methods/PDF2SVG_CB.4dm": {
+		"left": 64,
+		"top": 254,
+		"width": 1006,
+		"height": 841
+	},
+	"Trash/Methods/(PDF2SVG_TEST).4dm": {
+		"left": 64,
+		"top": 254,
+		"width": 1006,
+		"height": 841
+	},
+	"Sources/Methods/PDF2SVG_TEST_WITH_CB.4dm": {
 		"left": 367,
-		"top": 317,
-		"width": 950,
-		"height": 324
+		"top": 293,
+		"width": 1032,
+		"height": 486
+	},
+	"Sources/Methods/PDF2TEXT_TEST_WITH_CB.4dm": {
+		"left": 639,
+		"top": 250,
+		"width": 1032,
+		"height": 514
+	},
+	"Sources/Methods/PDF2TEXT_CB.4dm": {
+		"left": 367,
+		"top": 293,
+		"width": 1032,
+		"height": 486
 	}
 }

@@ -1,4 +1,4 @@
-﻿{
+{
 	"Sources/Methods/generate_project_xcode.4dm": {
 		"startSelection": 0,
 		"endSelection": 0,
@@ -197,40 +197,67 @@
 		"bookmarks": [],
 		"stamp": "2019-12-13T04:37:40.619Z"
 	},
-	"Sources/Methods/PDF2TEXT_TEST.4dm": {
-		"startSelection": 0,
-		"endSelection": 0,
-		"firstSelectedLine": 13,
-		"lastSelectedLine": 13,
-		"folding": [],
-		"bookmarks": [],
-		"stamp": "2021-04-03T08:59:47.288Z"
-	},
 	"Sources/Methods/PDF2SVG_TEST_EASY.4dm": {
-		"startSelection": 71,
-		"endSelection": 71,
+		"startSelection": 73,
+		"endSelection": 73,
 		"firstSelectedLine": 10,
 		"lastSelectedLine": 10,
 		"folding": [],
 		"bookmarks": [],
-		"stamp": "2021-04-03T08:59:30.183Z"
-	},
-	"Sources/Methods/PDF2SVG_TEST.4dm": {
-		"startSelection": 13,
-		"endSelection": 13,
-		"firstSelectedLine": 8,
-		"lastSelectedLine": 8,
-		"folding": [],
-		"bookmarks": [],
-		"stamp": "2021-04-03T09:02:54.866Z"
+		"stamp": "2022-03-23T11:59:36.355Z"
 	},
 	"Sources/Forms/Form1/ObjectMethods/Button.4dm": {
-		"startSelection": 0,
-		"endSelection": 4,
-		"firstSelectedLine": 9,
-		"lastSelectedLine": 9,
+		"startSelection": 17,
+		"endSelection": 29,
+		"firstSelectedLine": 13,
+		"lastSelectedLine": 13,
 		"folding": [],
 		"bookmarks": [],
-		"stamp": "2021-04-03T08:55:28.753Z"
+		"stamp": ""
+	},
+	"Sources/Methods/PDF2SVG_CB.4dm": {
+		"startSelection": 99,
+		"endSelection": 99,
+		"firstSelectedLine": 0,
+		"lastSelectedLine": 0,
+		"folding": [],
+		"bookmarks": [],
+		"stamp": "2022-03-23T11:59:43.435Z"
+	},
+	"Trash/Methods/(PDF2SVG_TEST).4dm": {
+		"startSelection": 0,
+		"endSelection": 0,
+		"firstSelectedLine": 20,
+		"lastSelectedLine": 19,
+		"folding": [],
+		"bookmarks": [],
+		"stamp": "2022-02-15T01:23:04.967Z"
+	},
+	"Sources/Methods/PDF2SVG_TEST_WITH_CB.4dm": {
+		"startSelection": 73,
+		"endSelection": 73,
+		"firstSelectedLine": 15,
+		"lastSelectedLine": 15,
+		"folding": [],
+		"bookmarks": [],
+		"stamp": "2022-03-23T12:00:49.376Z"
+	},
+	"Sources/Methods/PDF2TEXT_TEST_WITH_CB.4dm": {
+		"startSelection": 78,
+		"endSelection": 78,
+		"firstSelectedLine": 10,
+		"lastSelectedLine": 10,
+		"folding": [],
+		"bookmarks": [],
+		"stamp": "2022-03-23T12:01:20.790Z"
+	},
+	"Sources/Methods/PDF2TEXT_CB.4dm": {
+		"startSelection": 96,
+		"endSelection": 96,
+		"firstSelectedLine": 0,
+		"lastSelectedLine": 0,
+		"folding": [],
+		"bookmarks": [],
+		"stamp": "2022-03-23T12:00:40.193Z"
 	}
 }

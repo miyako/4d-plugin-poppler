@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Created by 4D Developer on:Sat, 03 Apr 2021 09:02:58 GMT-->
-<ErrorList>
-	<Method name="update_manifest_json">
-		<Error line="1">スレッドセーフとして宣言されているメソッドのコマンド&apos;Get text from pasteboard&apos;を呼び出せません。</Error>
-		<Error line="11">スレッドセーフとして宣言されているメソッドのコマンド&apos;SET TEXT TO PASTEBOARD&apos;を呼び出せません。</Error>
-	</Method>
-</ErrorList>
