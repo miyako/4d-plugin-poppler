@@ -8,7 +8,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fu+gstqZrXQf4F/coxqmzmCKiyI=
+			FsGEu+wuvE2F1C5N7ZRMKSytIrU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -35,7 +35,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qfjxu1AGGUrf/wfe9OHlsfMoNysl1PJZ9R0nhr+BczY=
+			5agt9Z2pBGn1ajxXKGKoh6U2xBzq7ghN/PJ7sDdjUig=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -58,35 +58,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			YTEOTN2lfbo43iFvthU7JV2gXsuX3eRxJEuhqOCedB4=
-			</data>
-		</dict>
-		<key>Windows64/Poppler.exp</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			GGemCbycoA4EPWAV46Uq2cDGTkc512BuxCyGun57ARg=
-			</data>
-		</dict>
-		<key>Windows64/Poppler.iobj</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			j4KmGECarYGkTis9T4XCHNow2USwEcvV+UQQiobLrvM=
-			</data>
-		</dict>
-		<key>Windows64/Poppler.ipdb</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			nAQ7qZR6TUBt2m4A1M3diy6U7OZvogfqkYwb35wogHM=
-			</data>
-		</dict>
-		<key>Windows64/Poppler.lib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			replwtH4k4koiZ3p94ebzPDXJAAQA7ns3qSVNgdLe5A=
+			ddhjCZkDEpJWwinNR+J76IWsPNdN9fxOGwWITVfMwfg=
 			</data>
 		</dict>
 		<key>Windows64/libcairo-2.dll</key>

@@ -20,23 +20,14 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <glib.h>
-
-#if VERSIONMAC
 #include <poppler.h>
-#endif
-
-#if VERSIONWIN
-#include <config.h>
-#include <poppler-config.h>
-#endif
-
 #include <cairo.h>
 #include <cairo-svg.h>
 #include <stdio.h>
 #include <string.h>
 
 #ifdef ENABLE_LIBPNG
-#    include <png.h>
+#include <png.h>
 #endif
 
 #if VERSIONWIN

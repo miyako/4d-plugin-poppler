@@ -223,7 +223,6 @@ static void PDF_Convert(PA_PluginParameters params)
                     cairo_show_page(drawcontext);
                     cairo_destroy(drawcontext);
                     cairo_surface_destroy(surface);
-                    g_object_unref(page);
                     
                     if(ImageData.getBytesLength()){
                        
@@ -318,7 +317,12 @@ static void PDF_Convert(PA_PluginParameters params)
                       
                     }//ImageData.getBytesLength()
 
+#if VERSIONMAC
                     g_clear_object(&page);
+#else
+                    g_object_unref(page);
+#endif
+                    
                     page = NULL;
                     
                 }//page
@@ -330,7 +334,12 @@ static void PDF_Convert(PA_PluginParameters params)
 
             }
     
-            g_clear_object(&pdffile);
+#if VERSIONMAC
+                    g_clear_object(&pdffile);
+#else
+                    g_object_unref(pdffile);
+#endif
+
             pdffile = NULL;
             
         }else{
@@ -377,7 +386,12 @@ static void PDF_Get_page_count(PA_PluginParameters params)
     if(pdffile){
         returnValue.setIntValue(poppler_document_get_n_pages(pdffile));
         
-        g_clear_object(&pdffile);
+#if VERSIONMAC
+                    g_clear_object(&pdffile);
+#else
+                    g_object_unref(pdffile);
+#endif
+        
         pdffile = NULL;
         
     }else{
@@ -489,8 +503,13 @@ static void PDF_Get_text(PA_PluginParameters params)
                     }
                     
                 }
-            
-                g_clear_object(&page);
+    
+#if VERSIONMAC
+                    g_clear_object(&page);
+#else
+                    g_object_unref(page);
+#endif
+                
                 page = NULL;
 
             }//page
@@ -502,7 +521,12 @@ static void PDF_Get_text(PA_PluginParameters params)
             
         }
     
-        g_clear_object(&pdffile);
+#if VERSIONMAC
+                    g_clear_object(&pdffile);
+#else
+                    g_object_unref(pdffile);
+#endif
+        
         pdffile = NULL;
   
     }else{

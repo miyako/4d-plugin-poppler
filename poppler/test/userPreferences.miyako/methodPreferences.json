@@ -198,13 +198,13 @@
 		"stamp": "2019-12-13T04:37:40.619Z"
 	},
 	"Sources/Methods/PDF2SVG_TEST_EASY.4dm": {
-		"startSelection": 4,
-		"endSelection": 4,
-		"firstSelectedLine": 10,
-		"lastSelectedLine": 10,
+		"startSelection": 0,
+		"endSelection": 0,
+		"firstSelectedLine": 0,
+		"lastSelectedLine": 0,
 		"folding": [],
 		"bookmarks": [],
-		"stamp": "2022-03-23T11:59:36.355Z"
+		"stamp": "2022-03-23T11:59:36.000Z"
 	},
 	"Sources/Forms/Form1/ObjectMethods/Button.4dm": {
 		"startSelection": 17,
