@@ -114,7 +114,6 @@ static void PDF_Convert(PA_PluginParameters params)
     C_LONGINT Param4;
     C_TEXT Param5;
     C_TEXT Param6;
-//    C_TEXT Param7;
     C_LONGINT returnValue;
 
     Param1.fromParamAtIndex(pParams, 1);
@@ -122,7 +121,6 @@ static void PDF_Convert(PA_PluginParameters params)
     Param4.fromParamAtIndex(pParams, 4);
     Param5.fromParamAtIndex(pParams, 5);
     Param6.fromParamAtIndex(pParams, 6);
-//    Param7.fromParamAtIndex(pParams, 7);
 
     PA_Variable Param2 = *((PA_Variable*) pParams[1]);
     
@@ -171,8 +169,8 @@ static void PDF_Convert(PA_PluginParameters params)
         bool isCallbackActive = false;
         int number_entry;
          
-        PopplerDocument *pdffile;
-        PopplerPage *page;
+        PopplerDocument *pdffile = NULL;
+        PopplerPage *page = NULL;
         
         char *data = (char *)Param1.getBytesPtr();
         int length = (int)Param1.getBytesLength();
@@ -320,6 +318,9 @@ static void PDF_Convert(PA_PluginParameters params)
                       
                     }//ImageData.getBytesLength()
 
+                    g_clear_object(&page);
+                    page = NULL;
+                    
                 }//page
                 
                 if(abortedByCallbackMethod){
@@ -329,7 +330,8 @@ static void PDF_Convert(PA_PluginParameters params)
 
             }
     
-            g_object_unref(pdffile);
+            g_clear_object(&pdffile);
+            pdffile = NULL;
             
         }else{
             returnValue.setIntValue(PDF2SVG_ERROR_InvalidSourceData);
@@ -356,14 +358,12 @@ static void PDF_Get_page_count(PA_PluginParameters params)
     
     C_BLOB Param1;
     C_TEXT Param2;
-//    C_TEXT Param3;
     C_LONGINT returnValue;
 
     Param1.fromParamAtIndex(pParams, 1);
     Param2.fromParamAtIndex(pParams, 2);
-//    Param3.fromParamAtIndex(pParams, 3);
 
-    PopplerDocument *pdffile;
+    PopplerDocument *pdffile = NULL;
         
     char *data = (char *)Param1.getBytesPtr();
     int length = (int)Param1.getBytesLength();
@@ -376,6 +376,10 @@ static void PDF_Get_page_count(PA_PluginParameters params)
 
     if(pdffile){
         returnValue.setIntValue(poppler_document_get_n_pages(pdffile));
+        
+        g_clear_object(&pdffile);
+        pdffile = NULL;
+        
     }else{
         returnValue.setIntValue(PDF2SVG_ERROR_InvalidSourceData);
     }
@@ -413,8 +417,8 @@ static void PDF_Get_text(PA_PluginParameters params)
     bool isCallbackActive = false;
     int number_entry;
 
-    PopplerDocument *pdffile;
-    PopplerPage *page;
+    PopplerDocument *pdffile = NULL;
+    PopplerPage *page = NULL;
     
     char *data = (char *)Param1.getBytesPtr();
     int length = (int)Param1.getBytesLength();
@@ -486,6 +490,9 @@ static void PDF_Get_text(PA_PluginParameters params)
                     
                 }
             
+                g_clear_object(&page);
+                page = NULL;
+
             }//page
             
             if(abortedByCallbackMethod){
@@ -495,11 +502,12 @@ static void PDF_Get_text(PA_PluginParameters params)
             
         }
     
-        g_object_unref(pdffile);
-    
+        g_clear_object(&pdffile);
+        pdffile = NULL;
+  
     }else{
         returnValue.setIntValue(PDF2SVG_ERROR_InvalidSourceData);
-    }
+    }//pdffile
 
     Param2.toParamAtIndex(pParams, 2);
     returnValue.setReturn(pResult);
