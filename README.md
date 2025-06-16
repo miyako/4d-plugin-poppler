@@ -9,9 +9,10 @@
 * see [Poppler](https://github.com/freedesktop/poppler) for the licensing of **Poppler** (shared library).
 * the licensing of the binary product of this plugin is subject to the licensing of all its dependencies.
 
-
 # 4d-plugin-poppler
 Extract text from PDF, convert PDF to SVG.
+
+see also [4d-plugin-xpdf](https://github.com/miyako/4d-plugin-xpdf)
 
 ### Syntax
 
