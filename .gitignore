@@ -3,3 +3,5 @@ poppler/build/*
 poppler/test/userPreferences.*
 poppler/test/Project/DerivedData/CompiledCode/*
 poppler/test/userPreferences.*
+poppler/test/Project/DerivedData/*
+poppler/test/Data/*
