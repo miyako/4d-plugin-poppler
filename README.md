@@ -6,12 +6,13 @@
 ### Dependencies and Licensing
 
 * the source code of this plugin developed using the [4D Plug-in SDK](https://github.com/4d/4D-Plugin-SDK) is licensed under the MIT license
-* see [Poppler](https://github.com/freedesktop/poppler) for the licensing of **Poppler** (shared library).
+* see [Poppler](https://poppler.freedesktop.org) for the licensing of **Poppler** (shared library).
 * the licensing of the binary product of this plugin is subject to the licensing of all its dependencies.
-
 
 # 4d-plugin-poppler
 Extract text from PDF, convert PDF to SVG.
+
+see also [4d-plugin-xpdf](https://github.com/miyako/4d-plugin-xpdf)
 
 ### Syntax
 
