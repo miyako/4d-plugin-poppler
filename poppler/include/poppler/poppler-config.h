@@ -1,0 +1,88 @@
+//================================================= -*- mode: c++ -*- ====
+//
+// poppler-config.h
+//
+// Copyright 1996-2011, 2022 Glyph & Cog, LLC
+//
+//========================================================================
+
+//========================================================================
+//
+// Modified under the Poppler project - http://poppler.freedesktop.org
+//
+// All changes made under the Poppler project to this file are licensed
+// under GPL version 2 or later
+//
+// Copyright (C) 2014 Bogdan Cristea <cristeab@gmail.com>
+// Copyright (C) 2014 Hib Eris <hib@hiberis.nl>
+// Copyright (C) 2016 Tor Lillqvist <tml@collabora.com>
+// Copyright (C) 2017 Adrian Johnson <ajohnson@redneon.com>
+// Copyright (C) 2018 Adam Reichold <adam.reichold@t-online.de>
+// Copyright (C) 2018 Stefan Brüns <stefan.bruens@rwth-aachen.de>
+// Copyright (C) 2020, 2025, 2026 Albert Astals Cid <aacid@kde.org>
+//
+// To see a description of the changes please see the Changelog file that
+// came with your tarball or type make ChangeLog if you are building from git
+//
+//========================================================================
+
+#ifndef POPPLER_CONFIG_H
+#define POPPLER_CONFIG_H
+
+/* Defines the poppler version. */
+#define POPPLER_VERSION "26.04.0"
+
+/* Support for curl is compiled in. */
+#define POPPLER_HAS_CURL_SUPPORT 1
+
+/* Use libjpeg instead of builtin jpeg decoder. */
+#define ENABLE_LIBJPEG 1
+
+/* Build against libtiff. */
+#define ENABLE_LIBTIFF 1
+
+/* Build against libpng. */
+#define ENABLE_LIBPNG 1
+
+/* Use zlib instead of builtin zlib decoder to uncompress flate streams. */
+#define ENABLE_ZLIB_UNCOMPRESS 0
+
+/* Defines if use cms */
+#define USE_CMS 1
+
+/* Use header-only classes from Boost in the Splash backend */
+#define USE_BOOST_HEADERS 0
+
+//------------------------------------------------------------------------
+// version
+//------------------------------------------------------------------------
+
+// copyright notice
+#define popplerCopyright "Copyright 2005-2026 The Poppler Developers - http://poppler.freedesktop.org"
+#define xpdfCopyright "Copyright 1996-2011, 2022 Glyph & Cog, LLC"
+
+//------------------------------------------------------------------------
+// Win32 stuff
+//------------------------------------------------------------------------
+
+#if defined(_WIN32) && !defined(_MSC_VER)
+#    include <windef.h>
+#else
+#    define CDECL
+#endif
+
+//------------------------------------------------------------------------
+// Compiler
+//------------------------------------------------------------------------
+
+#ifdef __GNUC__
+#    ifdef __MINGW32__
+#        define GCC_PRINTF_FORMAT(fmt_index, va_index) __attribute__((__format__(gnu_printf, fmt_index, va_index)))
+#    else
+#        define GCC_PRINTF_FORMAT(fmt_index, va_index) __attribute__((__format__(printf, fmt_index, va_index)))
+#    endif
+#else
+#    define GCC_PRINTF_FORMAT(fmt_index, va_index)
+#endif
+
+#endif /* POPPLER_CONFIG_H */

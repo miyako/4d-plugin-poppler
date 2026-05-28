@@ -2,10 +2,12 @@
  *
  * Copyright (C) 2006-2007 Red Hat, Inc.
  *
+ * SPDX-License-Identifier: LGPL-2.1-or-later
+ *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2 of the License, or (at your option) any later version.
+ * version 2.1 of the License, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -13,9 +15,7 @@
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General
- * Public License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place, Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Public License along with this library; if not, see <http://www.gnu.org/licenses/>.
  *
  * Author: Alexander Larsson <alexl@redhat.com>
  */
@@ -38,14 +38,6 @@ G_BEGIN_DECLS
 #define G_IS_FILE_IO_STREAM_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), G_TYPE_FILE_IO_STREAM))
 #define G_FILE_IO_STREAM_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), G_TYPE_FILE_IO_STREAM, GFileIOStreamClass))
 
-/**
- * GFileIOStream:
- *
- * A subclass of GIOStream for opened files. This adds
- * a few file-specific operations and seeking and truncating.
- *
- * #GFileIOStream implements GSeekable.
- **/
 typedef struct _GFileIOStreamClass    GFileIOStreamClass;
 typedef struct _GFileIOStreamPrivate  GFileIOStreamPrivate;
 
@@ -96,26 +88,26 @@ struct _GFileIOStreamClass
   void (*_g_reserved5) (void);
 };
 
-GLIB_AVAILABLE_IN_ALL
+GIO_AVAILABLE_IN_ALL
 GType      g_file_io_stream_get_type          (void) G_GNUC_CONST;
 
-GLIB_AVAILABLE_IN_ALL
+GIO_AVAILABLE_IN_ALL
 GFileInfo *g_file_io_stream_query_info        (GFileIOStream    *stream,
 					       const char           *attributes,
 					       GCancellable         *cancellable,
 					       GError              **error);
-GLIB_AVAILABLE_IN_ALL
+GIO_AVAILABLE_IN_ALL
 void       g_file_io_stream_query_info_async  (GFileIOStream    *stream,
 					       const char           *attributes,
 					       int                   io_priority,
 					       GCancellable         *cancellable,
 					       GAsyncReadyCallback   callback,
 					       gpointer              user_data);
-GLIB_AVAILABLE_IN_ALL
+GIO_AVAILABLE_IN_ALL
 GFileInfo *g_file_io_stream_query_info_finish (GFileIOStream    *stream,
 					       GAsyncResult         *result,
 					       GError              **error);
-GLIB_AVAILABLE_IN_ALL
+GIO_AVAILABLE_IN_ALL
 char *     g_file_io_stream_get_etag          (GFileIOStream    *stream);
 
 G_END_DECLS

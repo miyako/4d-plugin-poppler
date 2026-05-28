@@ -1,5 +1,7 @@
 /*
  * Copyright (C) 2010, Pino Toscano <pino@kde.org>
+ * Copyright (C) 2018, Zsombor Hollay-Horvath <hollay.horvath@gmail.com>
+ * Copyright (C) 2024, 2025, Albert Astals Cid <aacid@kde.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,22 +21,26 @@
 #ifndef POPPLER_IMAGE_H
 #define POPPLER_IMAGE_H
 
-#include "poppler-global.h"
-#include "poppler-rectangle.h"
+#include "poppler_cpp_export.h"
 
-namespace poppler
-{
+#include <string>
+#include <vector>
+
+namespace poppler {
 
 class image_private;
 
 class POPPLER_CPP_EXPORT image
 {
 public:
-    enum format_enum {
+    enum format_enum
+    {
         format_invalid,
         format_mono,
         format_rgb24,
-        format_argb32
+        format_argb32,
+        format_gray8,
+        format_bgr24
     };
 
     image();
@@ -51,13 +57,13 @@ public:
     const char *const_data() const;
     int bytes_per_row() const;
 
-    image copy(const rect &r = rect()) const;
+    image copy() const;
 
     bool save(const std::string &file_name, const std::string &out_format, int dpi = -1) const;
 
     static std::vector<std::string> supported_image_formats();
 
-    image& operator=(const image &img);
+    image &operator=(const image &img);
 
 private:
     void detach();
