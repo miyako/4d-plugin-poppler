@@ -2,10 +2,12 @@
  *
  * Copyright 2010, 2013 Red Hat, Inc.
  *
+ * SPDX-License-Identifier: LGPL-2.1-or-later
+ *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2 of the License, or (at your option) any later version.
+ * version 2.1 of the License, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -13,9 +15,7 @@
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General
- * Public License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place, Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Public License along with this library; if not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef __G_SIMPLE_PROXY_RESOLVER_H__
@@ -36,11 +36,6 @@ G_BEGIN_DECLS
 #define G_IS_SIMPLE_PROXY_RESOLVER_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), G_TYPE_SIMPLE_PROXY_RESOLVER))
 #define G_SIMPLE_PROXY_RESOLVER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), G_TYPE_SIMPLE_PROXY_RESOLVER, GSimpleProxyResolverClass))
 
-/**
- * GSimpleProxyResolver:
- *
- * A #GProxyResolver implementation for using a fixed set of proxies.
- **/
 typedef struct _GSimpleProxyResolver GSimpleProxyResolver;
 typedef struct _GSimpleProxyResolverPrivate GSimpleProxyResolverPrivate;
 typedef struct _GSimpleProxyResolverClass GSimpleProxyResolverClass;
@@ -66,22 +61,22 @@ struct _GSimpleProxyResolverClass
   void (*_g_reserved5) (void);
 };
 
-GLIB_AVAILABLE_IN_2_36
+GIO_AVAILABLE_IN_2_36
 GType           g_simple_proxy_resolver_get_type          (void) G_GNUC_CONST;
 
-GLIB_AVAILABLE_IN_2_36
+GIO_AVAILABLE_IN_2_36
 GProxyResolver *g_simple_proxy_resolver_new               (const gchar           *default_proxy,
                                                            gchar                **ignore_hosts);
 
-GLIB_AVAILABLE_IN_2_36
+GIO_AVAILABLE_IN_2_36
 void            g_simple_proxy_resolver_set_default_proxy (GSimpleProxyResolver  *resolver,
                                                            const gchar           *default_proxy);
 
-GLIB_AVAILABLE_IN_2_36
+GIO_AVAILABLE_IN_2_36
 void            g_simple_proxy_resolver_set_ignore_hosts  (GSimpleProxyResolver  *resolver,
                                                            gchar                **ignore_hosts);
 
-GLIB_AVAILABLE_IN_2_36
+GIO_AVAILABLE_IN_2_36
 void            g_simple_proxy_resolver_set_uri_proxy     (GSimpleProxyResolver  *resolver,
                                                            const gchar           *uri_scheme,
                                                            const gchar           *proxy);
