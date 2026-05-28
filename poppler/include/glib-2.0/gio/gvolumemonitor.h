@@ -4,12 +4,10 @@
  *
  * Copyright (C) 2006-2007 Red Hat, Inc.
  *
- * SPDX-License-Identifier: LGPL-2.1-or-later
- *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 2 of the License, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -45,10 +43,15 @@ G_BEGIN_DECLS
  * G_VOLUME_MONITOR_EXTENSION_POINT_NAME:
  *
  * Extension point for volume monitor functionality.
- * See [Extending GIO](overview.html#extending-gio).
+ * See [Extending GIO][extending-gio].
  */
 #define G_VOLUME_MONITOR_EXTENSION_POINT_NAME "gio-volume-monitor"
 
+/**
+ * GVolumeMonitor:
+ *
+ * A Volume Monitor that watches for volume events.
+ **/
 typedef struct _GVolumeMonitorClass GVolumeMonitorClass;
 
 struct _GVolumeMonitor
@@ -125,25 +128,25 @@ struct _GVolumeMonitorClass
   void (*_g_reserved6) (void);
 };
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GType           g_volume_monitor_get_type             (void) G_GNUC_CONST;
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GVolumeMonitor *g_volume_monitor_get                  (void);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GList *         g_volume_monitor_get_connected_drives (GVolumeMonitor *volume_monitor);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GList *         g_volume_monitor_get_volumes          (GVolumeMonitor *volume_monitor);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GList *         g_volume_monitor_get_mounts           (GVolumeMonitor *volume_monitor);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GVolume *       g_volume_monitor_get_volume_for_uuid  (GVolumeMonitor *volume_monitor,
                                                        const char     *uuid);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GMount *        g_volume_monitor_get_mount_for_uuid   (GVolumeMonitor *volume_monitor,
                                                        const char     *uuid);
 
-GIO_DEPRECATED
+GLIB_DEPRECATED
 GVolume *       g_volume_monitor_adopt_orphan_mount   (GMount         *mount);
 
 G_END_DECLS

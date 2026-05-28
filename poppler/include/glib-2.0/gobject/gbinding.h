@@ -2,12 +2,10 @@
  *
  * Copyright (C) 2010  Intel Corp.
  *
- * SPDX-License-Identifier: LGPL-2.1-or-later
- *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 2 of the License, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -38,6 +36,14 @@ G_BEGIN_DECLS
 #define G_BINDING(obj)          (G_TYPE_CHECK_INSTANCE_CAST ((obj), G_TYPE_BINDING, GBinding))
 #define G_IS_BINDING(obj)       (G_TYPE_CHECK_INSTANCE_TYPE ((obj), G_TYPE_BINDING))
 
+/**
+ * GBinding:
+ *
+ * GBinding is an opaque structure whose members
+ * cannot be accessed directly.
+ *
+ * Since: 2.26
+ */
 typedef struct _GBinding        GBinding;
 
 /**
@@ -47,9 +53,8 @@ typedef struct _GBinding        GBinding;
  * @to_value: the #GValue in which to store the transformed value
  * @user_data: data passed to the transform function
  *
- * A function to be called to transform @from_value to @to_value.
- *
- * If this is the @transform_to function of a binding, then @from_value
+ * A function to be called to transform @from_value to @to_value. If
+ * this is the @transform_to function of a binding, then @from_value
  * is the @source_property on the @source object, and @to_value is the
  * @target_property on the @target object. If this is the
  * @transform_from function of a %G_BINDING_BIDIRECTIONAL binding,
@@ -94,37 +99,33 @@ typedef enum { /*< prefix=G_BINDING >*/
   G_BINDING_BIDIRECTIONAL  = 1 << 0,
   G_BINDING_SYNC_CREATE    = 1 << 1,
   G_BINDING_INVERT_BOOLEAN = 1 << 2
-} G_GNUC_FLAG_ENUM GBindingFlags;
+} GBindingFlags;
 
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GType                 g_binding_flags_get_type      (void) G_GNUC_CONST;
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GType                 g_binding_get_type            (void) G_GNUC_CONST;
 
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GBindingFlags         g_binding_get_flags           (GBinding *binding);
-GOBJECT_DEPRECATED_IN_2_68_FOR(g_binding_dup_source)
+GLIB_AVAILABLE_IN_ALL
 GObject *             g_binding_get_source          (GBinding *binding);
-GOBJECT_AVAILABLE_IN_2_68
-GObject *             g_binding_dup_source          (GBinding *binding);
-GOBJECT_DEPRECATED_IN_2_68_FOR(g_binding_dup_target)
+GLIB_AVAILABLE_IN_ALL
 GObject *             g_binding_get_target          (GBinding *binding);
-GOBJECT_AVAILABLE_IN_2_68
-GObject *             g_binding_dup_target          (GBinding *binding);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 const gchar *         g_binding_get_source_property (GBinding *binding);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 const gchar *         g_binding_get_target_property (GBinding *binding);
-GOBJECT_AVAILABLE_IN_2_38
+GLIB_AVAILABLE_IN_2_38
 void                  g_binding_unbind              (GBinding *binding);
 
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GBinding *g_object_bind_property               (gpointer               source,
                                                 const gchar           *source_property,
                                                 gpointer               target,
                                                 const gchar           *target_property,
                                                 GBindingFlags          flags);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GBinding *g_object_bind_property_full          (gpointer               source,
                                                 const gchar           *source_property,
                                                 gpointer               target,
@@ -134,7 +135,7 @@ GBinding *g_object_bind_property_full          (gpointer               source,
                                                 GBindingTransformFunc  transform_from,
                                                 gpointer               user_data,
                                                 GDestroyNotify         notify);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GBinding *g_object_bind_property_with_closures (gpointer               source,
                                                 const gchar           *source_property,
                                                 gpointer               target,

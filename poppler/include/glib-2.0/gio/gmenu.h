@@ -1,12 +1,10 @@
 /*
  * Copyright © 2011 Canonical Ltd.
  *
- * SPDX-License-Identifier: LGPL-2.1-or-later
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * licence, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -41,141 +39,141 @@ G_BEGIN_DECLS
 typedef struct _GMenuItem GMenuItem;
 typedef struct _GMenu     GMenu;
 
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 GType       g_menu_get_type                         (void) G_GNUC_CONST;
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 GMenu *     g_menu_new                              (void);
 
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_freeze                           (GMenu       *menu);
 
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_insert_item                      (GMenu       *menu,
                                                      gint         position,
                                                      GMenuItem   *item);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_prepend_item                     (GMenu       *menu,
                                                      GMenuItem   *item);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_append_item                      (GMenu       *menu,
                                                      GMenuItem   *item);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_remove                           (GMenu       *menu,
                                                      gint         position);
 
-GIO_AVAILABLE_IN_2_38
+GLIB_AVAILABLE_IN_2_38
 void        g_menu_remove_all                       (GMenu       *menu);
 
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_insert                           (GMenu       *menu,
                                                      gint         position,
                                                      const gchar *label,
                                                      const gchar *detailed_action);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_prepend                          (GMenu       *menu,
                                                      const gchar *label,
                                                      const gchar *detailed_action);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_append                           (GMenu       *menu,
                                                      const gchar *label,
                                                      const gchar *detailed_action);
 
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_insert_section                   (GMenu       *menu,
                                                      gint         position,
                                                      const gchar *label,
                                                      GMenuModel  *section);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_prepend_section                  (GMenu       *menu,
                                                      const gchar *label,
                                                      GMenuModel  *section);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_append_section                   (GMenu       *menu,
                                                      const gchar *label,
                                                      GMenuModel  *section);
 
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_insert_submenu                   (GMenu       *menu,
                                                      gint        position,
                                                      const gchar *label,
                                                      GMenuModel  *submenu);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_prepend_submenu                  (GMenu       *menu,
                                                      const gchar *label,
                                                      GMenuModel  *submenu);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_append_submenu                   (GMenu       *menu,
                                                      const gchar *label,
                                                      GMenuModel  *submenu);
 
 
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 GType       g_menu_item_get_type                    (void) G_GNUC_CONST;
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 GMenuItem * g_menu_item_new                         (const gchar *label,
                                                      const gchar *detailed_action);
 
-GIO_AVAILABLE_IN_2_34
+GLIB_AVAILABLE_IN_2_34
 GMenuItem * g_menu_item_new_from_model              (GMenuModel  *model,
                                                      gint         item_index);
 
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 GMenuItem * g_menu_item_new_submenu                 (const gchar *label,
                                                      GMenuModel  *submenu);
 
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 GMenuItem * g_menu_item_new_section                 (const gchar *label,
                                                      GMenuModel  *section);
 
-GIO_AVAILABLE_IN_2_34
+GLIB_AVAILABLE_IN_2_34
 GVariant *  g_menu_item_get_attribute_value         (GMenuItem   *menu_item,
                                                      const gchar *attribute,
                                                      const GVariantType *expected_type);
-GIO_AVAILABLE_IN_2_34
+GLIB_AVAILABLE_IN_2_34
 gboolean    g_menu_item_get_attribute               (GMenuItem   *menu_item,
                                                      const gchar *attribute,
                                                      const gchar *format_string,
                                                      ...);
-GIO_AVAILABLE_IN_2_34
+GLIB_AVAILABLE_IN_2_34
 GMenuModel *g_menu_item_get_link                    (GMenuItem   *menu_item,
                                                      const gchar *link);
 
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_item_set_attribute_value         (GMenuItem   *menu_item,
                                                      const gchar *attribute,
                                                      GVariant    *value);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_item_set_attribute               (GMenuItem   *menu_item,
                                                      const gchar *attribute,
                                                      const gchar *format_string,
                                                      ...);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_item_set_link                    (GMenuItem   *menu_item,
                                                      const gchar *link,
                                                      GMenuModel  *model);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_item_set_label                   (GMenuItem   *menu_item,
                                                      const gchar *label);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_item_set_submenu                 (GMenuItem   *menu_item,
                                                      GMenuModel  *submenu);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_item_set_section                 (GMenuItem   *menu_item,
                                                      GMenuModel  *section);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_item_set_action_and_target_value (GMenuItem   *menu_item,
                                                      const gchar *action,
                                                      GVariant    *target_value);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_item_set_action_and_target       (GMenuItem   *menu_item,
                                                      const gchar *action,
                                                      const gchar *format_string,
                                                      ...);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 void        g_menu_item_set_detailed_action         (GMenuItem   *menu_item,
                                                      const gchar *detailed_action);
 
-GIO_AVAILABLE_IN_2_38
+GLIB_AVAILABLE_IN_2_38
 void        g_menu_item_set_icon                    (GMenuItem   *menu_item,
                                                      GIcon       *icon);
 

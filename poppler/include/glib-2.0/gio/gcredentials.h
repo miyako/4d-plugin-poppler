@@ -2,12 +2,10 @@
  *
  * Copyright (C) 2008-2010 Red Hat, Inc.
  *
- * SPDX-License-Identifier: LGPL-2.1-or-later
- *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 2 of the License, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -46,37 +44,37 @@ G_BEGIN_DECLS
 
 typedef struct _GCredentialsClass   GCredentialsClass;
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GType            g_credentials_get_type           (void) G_GNUC_CONST;
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GCredentials    *g_credentials_new                (void);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gchar           *g_credentials_to_string          (GCredentials    *credentials);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gpointer         g_credentials_get_native         (GCredentials    *credentials,
                                                    GCredentialsType native_type);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void             g_credentials_set_native         (GCredentials    *credentials,
                                                    GCredentialsType native_type,
                                                    gpointer         native);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gboolean         g_credentials_is_same_user       (GCredentials    *credentials,
                                                    GCredentials    *other_credentials,
                                                    GError         **error);
 
 #ifdef G_OS_UNIX
-GIO_AVAILABLE_IN_2_36
+GLIB_AVAILABLE_IN_2_36
 pid_t            g_credentials_get_unix_pid       (GCredentials    *credentials,
                                                    GError         **error);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 uid_t            g_credentials_get_unix_user      (GCredentials    *credentials,
                                                    GError         **error);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gboolean         g_credentials_set_unix_user      (GCredentials    *credentials,
                                                    uid_t           uid,
                                                    GError         **error);
@@ -84,4 +82,4 @@ gboolean         g_credentials_set_unix_user      (GCredentials    *credentials,
 
 G_END_DECLS
 
-#endif /* __G_CREDENTIALS_H__ */
+#endif /* __G_DBUS_PROXY_H__ */

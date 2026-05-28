@@ -23,7 +23,8 @@
 
 #include <vector>
 
-namespace poppler {
+namespace poppler
+{
 
 class toc_private;
 class toc_item;
@@ -34,7 +35,7 @@ class POPPLER_CPP_EXPORT toc : public poppler::noncopyable
 public:
     ~toc();
 
-    toc_item *root() const;
+    toc_item* root() const;
 
 private:
     toc();
@@ -44,10 +45,11 @@ private:
     friend class toc_private;
 };
 
+
 class POPPLER_CPP_EXPORT toc_item : public poppler::noncopyable
 {
 public:
-    using iterator = std::vector<toc_item *>::const_iterator;
+    typedef std::vector<toc_item *>::const_iterator iterator;
 
     ~toc_item();
 

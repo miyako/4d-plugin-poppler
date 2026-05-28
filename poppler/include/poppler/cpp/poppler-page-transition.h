@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2009, Pino Toscano <pino@kde.org>
- * Copyright (C) 2021, 2022, 2025, Albert Astals Cid <aacid@kde.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,11 +19,12 @@
 #ifndef POPPLER_PAGE_TRANSITION_H
 #define POPPLER_PAGE_TRANSITION_H
 
-#include "poppler_cpp_export.h"
+#include "poppler-global.h"
 
 class Object;
 
-namespace poppler {
+namespace poppler
+{
 
 class page;
 class page_transition_private;
@@ -32,8 +32,7 @@ class page_transition_private;
 class POPPLER_CPP_EXPORT page_transition
 {
 public:
-    enum type_enum
-    {
+    enum type_enum {
         replace = 0,
         split,
         blinds,
@@ -48,14 +47,12 @@ public:
         fade
     };
 
-    enum alignment_enum
-    {
+    enum alignment_enum {
         horizontal = 0,
         vertical
     };
 
-    enum direction_enum
-    {
+    enum direction_enum {
         inward = 0,
         outward
     };
@@ -64,18 +61,17 @@ public:
     ~page_transition();
 
     type_enum type() const;
-    [[deprecated]] int duration() const;
-    double durationReal() const;
+    int duration() const;
     alignment_enum alignment() const;
     direction_enum direction() const;
     int angle() const;
     double scale() const;
     bool is_rectangular() const;
 
-    page_transition &operator=(const page_transition &pt);
+    page_transition& operator=(const page_transition &pt);
 
 private:
-    explicit page_transition(Object *params);
+    page_transition(Object *params);
 
     page_transition_private *d;
     friend class page;

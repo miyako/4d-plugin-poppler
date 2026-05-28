@@ -2,12 +2,10 @@
  *
  * Copyright 2011 Red Hat, Inc.
  *
- * SPDX-License-Identifier: LGPL-2.1-or-later
- *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 2 of the License, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -53,34 +51,35 @@ struct _GInetAddressMaskClass
 
 };
 
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 GType g_inet_address_mask_get_type (void) G_GNUC_CONST;
 
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 GInetAddressMask *g_inet_address_mask_new             (GInetAddress      *addr,
 						       guint              length,
 						       GError           **error);
 
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 GInetAddressMask *g_inet_address_mask_new_from_string (const gchar       *mask_string,
 						       GError           **error);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 gchar            *g_inet_address_mask_to_string       (GInetAddressMask  *mask);
 
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 GSocketFamily     g_inet_address_mask_get_family      (GInetAddressMask  *mask);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 GInetAddress     *g_inet_address_mask_get_address     (GInetAddressMask  *mask);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 guint             g_inet_address_mask_get_length      (GInetAddressMask  *mask);
 
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 gboolean          g_inet_address_mask_matches         (GInetAddressMask  *mask,
 						       GInetAddress      *address);
-GIO_AVAILABLE_IN_2_32
+GLIB_AVAILABLE_IN_2_32
 gboolean          g_inet_address_mask_equal           (GInetAddressMask  *mask,
 						       GInetAddressMask  *mask2);
 
 G_END_DECLS
 
 #endif /* __G_INET_ADDRESS_MASK_H__ */
+

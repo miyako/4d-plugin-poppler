@@ -2,12 +2,10 @@
  *
  * Copyright (C) 2006-2007 Red Hat, Inc.
  *
- * SPDX-License-Identifier: LGPL-2.1-or-later
- *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 2 of the License, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -57,25 +55,25 @@ struct _GFileAttributeInfo
 struct _GFileAttributeInfoList
 {
   GFileAttributeInfo *infos;
-  int                 n_infos;  /* will never be negative; it’s a historical accident that this isn’t a size_t */
+  int                 n_infos;
 };
 
 #define G_TYPE_FILE_ATTRIBUTE_INFO_LIST (g_file_attribute_info_list_get_type ())
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GType g_file_attribute_info_list_get_type (void);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GFileAttributeInfoList *  g_file_attribute_info_list_new    (void);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GFileAttributeInfoList *  g_file_attribute_info_list_ref    (GFileAttributeInfoList *list);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                      g_file_attribute_info_list_unref  (GFileAttributeInfoList *list);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GFileAttributeInfoList *  g_file_attribute_info_list_dup    (GFileAttributeInfoList *list);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 const GFileAttributeInfo *g_file_attribute_info_list_lookup (GFileAttributeInfoList *list,
 							     const char             *name);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                      g_file_attribute_info_list_add    (GFileAttributeInfoList *list,
 							     const char             *name,
 							     GFileAttributeType      type,

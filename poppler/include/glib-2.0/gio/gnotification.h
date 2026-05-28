@@ -1,12 +1,10 @@
 /*
  * Copyright © 2013 Lars Uebernickel
  *
- * SPDX-License-Identifier: LGPL-2.1-or-later
- *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 2 of the License, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -35,65 +33,61 @@ G_BEGIN_DECLS
 #define G_NOTIFICATION(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), G_TYPE_NOTIFICATION, GNotification))
 #define G_IS_NOTIFICATION(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), G_TYPE_NOTIFICATION))
 
-GIO_AVAILABLE_IN_2_40
+GLIB_AVAILABLE_IN_2_40
 GType                   g_notification_get_type                         (void) G_GNUC_CONST;
 
-GIO_AVAILABLE_IN_2_40
+GLIB_AVAILABLE_IN_2_40
 GNotification *         g_notification_new                              (const gchar *title);
 
-GIO_AVAILABLE_IN_2_40
+GLIB_AVAILABLE_IN_2_40
 void                    g_notification_set_title                        (GNotification *notification,
                                                                          const gchar   *title);
 
-GIO_AVAILABLE_IN_2_40
+GLIB_AVAILABLE_IN_2_40
 void                    g_notification_set_body                         (GNotification *notification,
                                                                          const gchar   *body);
 
-GIO_AVAILABLE_IN_2_40
+GLIB_AVAILABLE_IN_2_40
 void                    g_notification_set_icon                         (GNotification *notification,
                                                                          GIcon         *icon);
 
-GIO_DEPRECATED_IN_2_42_FOR(g_notification_set_priority)
+GLIB_DEPRECATED_IN_2_42_FOR(g_notification_set_priority)
 void                    g_notification_set_urgent                       (GNotification *notification,
                                                                          gboolean       urgent);
 
-GIO_AVAILABLE_IN_2_42
+GLIB_AVAILABLE_IN_2_42
 void                    g_notification_set_priority                     (GNotification         *notification,
                                                                          GNotificationPriority  priority);
 
-GIO_AVAILABLE_IN_2_70
-void                    g_notification_set_category                     (GNotification *notification,
-                                                                         const gchar   *category);
-
-GIO_AVAILABLE_IN_2_40
+GLIB_AVAILABLE_IN_2_40
 void                    g_notification_add_button                       (GNotification *notification,
                                                                          const gchar   *label,
                                                                          const gchar   *detailed_action);
 
-GIO_AVAILABLE_IN_2_40
+GLIB_AVAILABLE_IN_2_40
 void                    g_notification_add_button_with_target           (GNotification *notification,
                                                                          const gchar   *label,
                                                                          const gchar   *action,
                                                                          const gchar   *target_format,
                                                                          ...);
 
-GIO_AVAILABLE_IN_2_40
+GLIB_AVAILABLE_IN_2_40
 void                    g_notification_add_button_with_target_value     (GNotification *notification,
                                                                          const gchar   *label,
                                                                          const gchar   *action,
                                                                          GVariant      *target);
 
-GIO_AVAILABLE_IN_2_40
+GLIB_AVAILABLE_IN_2_40
 void                    g_notification_set_default_action               (GNotification *notification,
                                                                          const gchar   *detailed_action);
 
-GIO_AVAILABLE_IN_2_40
+GLIB_AVAILABLE_IN_2_40
 void                    g_notification_set_default_action_and_target    (GNotification *notification,
                                                                          const gchar   *action,
                                                                          const gchar   *target_format,
                                                                          ...);
 
-GIO_AVAILABLE_IN_2_40
+GLIB_AVAILABLE_IN_2_40
 void                 g_notification_set_default_action_and_target_value (GNotification *notification,
                                                                          const gchar   *action,
                                                                          GVariant      *target);

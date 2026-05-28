@@ -2,12 +2,10 @@
  *
  * Copyright (C) 2010 Collabora, Ltd.
  *
- * SPDX-License-Identifier: LGPL-2.1-or-later
- *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 2 of the License, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -145,10 +143,10 @@ struct _GTlsDatabaseClass
   gpointer padding[16];
 };
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GType                g_tls_database_get_type                              (void) G_GNUC_CONST;
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GTlsCertificateFlags g_tls_database_verify_chain                          (GTlsDatabase            *self,
                                                                            GTlsCertificate         *chain,
                                                                            const gchar             *purpose,
@@ -158,7 +156,7 @@ GTlsCertificateFlags g_tls_database_verify_chain                          (GTlsD
                                                                            GCancellable            *cancellable,
                                                                            GError                 **error);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                 g_tls_database_verify_chain_async                    (GTlsDatabase            *self,
                                                                            GTlsCertificate         *chain,
                                                                            const gchar             *purpose,
@@ -169,16 +167,16 @@ void                 g_tls_database_verify_chain_async                    (GTlsD
                                                                            GAsyncReadyCallback      callback,
                                                                            gpointer                 user_data);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GTlsCertificateFlags g_tls_database_verify_chain_finish                   (GTlsDatabase            *self,
                                                                            GAsyncResult            *result,
                                                                            GError                 **error);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gchar*               g_tls_database_create_certificate_handle             (GTlsDatabase            *self,
                                                                            GTlsCertificate         *certificate);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GTlsCertificate*     g_tls_database_lookup_certificate_for_handle         (GTlsDatabase            *self,
                                                                            const gchar             *handle,
                                                                            GTlsInteraction         *interaction,
@@ -186,7 +184,7 @@ GTlsCertificate*     g_tls_database_lookup_certificate_for_handle         (GTlsD
                                                                            GCancellable            *cancellable,
                                                                            GError                 **error);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                 g_tls_database_lookup_certificate_for_handle_async   (GTlsDatabase            *self,
                                                                            const gchar             *handle,
                                                                            GTlsInteraction         *interaction,
@@ -195,12 +193,12 @@ void                 g_tls_database_lookup_certificate_for_handle_async   (GTlsD
                                                                            GAsyncReadyCallback      callback,
                                                                            gpointer                 user_data);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GTlsCertificate*     g_tls_database_lookup_certificate_for_handle_finish  (GTlsDatabase            *self,
                                                                            GAsyncResult            *result,
                                                                            GError                 **error);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GTlsCertificate*     g_tls_database_lookup_certificate_issuer             (GTlsDatabase            *self,
                                                                            GTlsCertificate         *certificate,
                                                                            GTlsInteraction         *interaction,
@@ -208,7 +206,7 @@ GTlsCertificate*     g_tls_database_lookup_certificate_issuer             (GTlsD
                                                                            GCancellable            *cancellable,
                                                                            GError                 **error);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                 g_tls_database_lookup_certificate_issuer_async       (GTlsDatabase            *self,
                                                                            GTlsCertificate         *certificate,
                                                                            GTlsInteraction         *interaction,
@@ -217,12 +215,12 @@ void                 g_tls_database_lookup_certificate_issuer_async       (GTlsD
                                                                            GAsyncReadyCallback      callback,
                                                                            gpointer                 user_data);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GTlsCertificate*     g_tls_database_lookup_certificate_issuer_finish      (GTlsDatabase            *self,
                                                                            GAsyncResult            *result,
                                                                            GError                 **error);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GList*               g_tls_database_lookup_certificates_issued_by         (GTlsDatabase            *self,
                                                                            GByteArray              *issuer_raw_dn,
                                                                            GTlsInteraction         *interaction,
@@ -230,7 +228,7 @@ GList*               g_tls_database_lookup_certificates_issued_by         (GTlsD
                                                                            GCancellable            *cancellable,
                                                                            GError                 **error);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                 g_tls_database_lookup_certificates_issued_by_async    (GTlsDatabase            *self,
                                                                             GByteArray              *issuer_raw_dn,
                                                                             GTlsInteraction         *interaction,
@@ -239,7 +237,7 @@ void                 g_tls_database_lookup_certificates_issued_by_async    (GTls
                                                                             GAsyncReadyCallback      callback,
                                                                             gpointer                 user_data);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GList*               g_tls_database_lookup_certificates_issued_by_finish   (GTlsDatabase            *self,
                                                                             GAsyncResult            *result,
                                                                             GError                 **error);

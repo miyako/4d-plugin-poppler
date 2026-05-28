@@ -3,12 +3,10 @@
  * Copyright © 2008, 2009 Codethink Limited
  * Copyright © 2009 Red Hat, Inc.
  *
- * SPDX-License-Identifier: LGPL-2.1-or-later
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation; either version 2 of the licence or (at
+ * your option) any later version.
  *
  * See the included COPYING file for more information.
  *
@@ -40,6 +38,11 @@ G_BEGIN_DECLS
 typedef struct _GIOStreamPrivate                            GIOStreamPrivate;
 typedef struct _GIOStreamClass                              GIOStreamClass;
 
+/**
+ * GIOStream:
+ *
+ * Base class for read-write streams.
+ **/
 struct _GIOStream
 {
   GObject parent_instance;
@@ -80,15 +83,15 @@ struct _GIOStreamClass
   void (*_g_reserved10) (void);
 };
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GType          g_io_stream_get_type          (void)  G_GNUC_CONST;
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GInputStream * g_io_stream_get_input_stream  (GIOStream            *stream);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GOutputStream *g_io_stream_get_output_stream (GIOStream            *stream);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void           g_io_stream_splice_async      (GIOStream            *stream1,
 					      GIOStream            *stream2,
 					      GIOStreamSpliceFlags  flags,
@@ -97,34 +100,34 @@ void           g_io_stream_splice_async      (GIOStream            *stream1,
 					      GAsyncReadyCallback   callback,
 					      gpointer              user_data);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gboolean       g_io_stream_splice_finish     (GAsyncResult         *result,
                                               GError              **error);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gboolean       g_io_stream_close             (GIOStream            *stream,
 					      GCancellable         *cancellable,
 					      GError              **error);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void           g_io_stream_close_async       (GIOStream            *stream,
 					      int                   io_priority,
 					      GCancellable         *cancellable,
 					      GAsyncReadyCallback   callback,
 					      gpointer              user_data);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gboolean       g_io_stream_close_finish      (GIOStream            *stream,
 					      GAsyncResult         *result,
 					      GError              **error);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gboolean       g_io_stream_is_closed         (GIOStream            *stream);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gboolean       g_io_stream_has_pending       (GIOStream            *stream);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gboolean       g_io_stream_set_pending       (GIOStream            *stream,
 					      GError              **error);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void           g_io_stream_clear_pending     (GIOStream            *stream);
 
 G_END_DECLS

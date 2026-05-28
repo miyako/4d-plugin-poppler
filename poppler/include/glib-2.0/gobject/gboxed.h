@@ -1,12 +1,10 @@
 /* GObject - GLib Type, Object, Parameter and Signal Library
  * Copyright (C) 2000-2001 Red Hat, Inc.
  *
- * SPDX-License-Identifier: LGPL-2.1-or-later
- *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 2 of the License, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -48,18 +46,18 @@ G_BEGIN_DECLS
 /* --- typedefs --- */
 /**
  * GBoxedCopyFunc:
- * @boxed: (not nullable): The boxed structure to be copied.
+ * @boxed: The boxed structure to be copied.
  *
  * This function is provided by the user and should produce a copy
  * of the passed in boxed structure.
  *
- * Returns: (not nullable): The newly created copy of the boxed structure.
+ * Returns: The newly created copy of the boxed structure.
  */
 typedef gpointer (*GBoxedCopyFunc) (gpointer boxed);
 
 /**
  * GBoxedFreeFunc:
- * @boxed: (not nullable): The boxed structure to be freed.
+ * @boxed: The boxed structure to be freed.
  *
  * This function is provided by the user and should free the boxed
  * structure passed.
@@ -68,32 +66,32 @@ typedef void (*GBoxedFreeFunc) (gpointer boxed);
 
 
 /* --- prototypes --- */
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gpointer g_boxed_copy                     (GType boxed_type,
                                            gconstpointer  src_boxed);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void     g_boxed_free                     (GType          boxed_type,
                                            gpointer       boxed);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void     g_value_set_boxed                (GValue        *value,
                                            gconstpointer  v_boxed);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void     g_value_set_static_boxed         (GValue        *value,
                                            gconstpointer  v_boxed);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void     g_value_take_boxed               (GValue        *value,
                                            gconstpointer  v_boxed);
-GOBJECT_DEPRECATED_FOR(g_value_take_boxed)
+GLIB_DEPRECATED_FOR(g_value_take_boxed)
 void     g_value_set_boxed_take_ownership (GValue        *value,
                                            gconstpointer  v_boxed);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gpointer g_value_get_boxed                (const GValue  *value);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gpointer g_value_dup_boxed                (const GValue  *value);
 
 
 /* --- convenience --- */
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GType    g_boxed_type_register_static     (const gchar   *name,
                                            GBoxedCopyFunc boxed_copy,
                                            GBoxedFreeFunc boxed_free);
@@ -114,9 +112,9 @@ GType    g_boxed_type_register_static     (const gchar   *name,
  */
 #define G_TYPE_VALUE (g_value_get_type ())
 
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GType   g_closure_get_type         (void) G_GNUC_CONST;
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GType   g_value_get_type           (void) G_GNUC_CONST;
 
 G_END_DECLS

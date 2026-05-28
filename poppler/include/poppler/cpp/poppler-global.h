@@ -1,12 +1,6 @@
 /*
  * Copyright (C) 2009-2010, Pino Toscano <pino@kde.org>
  * Copyright (C) 2010, Patrick Spendrin <ps_ml@gmx.de>
- * Copyright (C) 2014, Hans-Peter Deifel <hpdeifel@gmx.de>
- * Copyright (C) 2018, Adam Reichold <adam.reichold@t-online.de>
- * Copyright (C) 2021, 2022, Albert Astals Cid <aacid@kde.org>
- * Copyright (C) 2022, Tobias C. Berner <tcberner@gmail.com>
- * Copyright (C) 2022, Oliver Sander <oliver.sander@tu-dresden.de>
- * Copyright (C) 2024, hugegameartgd@gmail.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,78 +20,66 @@
 #ifndef POPPLER_GLOBAL_H
 #define POPPLER_GLOBAL_H
 
-#include "poppler_cpp_export.h"
+#if defined(_WIN32)
+#  define LIB_EXPORT __declspec(dllexport)
+#  define LIB_IMPORT __declspec(dllimport)
+#else
+#  define LIB_EXPORT
+#  define LIB_IMPORT
+#endif
 
-#include <ctime>
+#if defined(poppler_cpp_EXPORTS)
+#  define POPPLER_CPP_EXPORT LIB_EXPORT
+#else
+#  define POPPLER_CPP_EXPORT LIB_IMPORT
+#endif
+
 #include <iosfwd>
 #include <string>
 #include <vector>
 
-namespace poppler {
+namespace poppler
+{
 
 /// \cond DOXYGEN_SKIP_THIS
-namespace detail {
+namespace detail
+{
 
 class POPPLER_CPP_EXPORT noncopyable
 {
-public:
-    noncopyable(const noncopyable &) = delete;
-    const noncopyable &operator=(const noncopyable &) = delete;
-
 protected:
     noncopyable();
-    ~noncopyable() = default;
-    noncopyable &operator=(noncopyable &&other) noexcept;
+    ~noncopyable();
+private:
+    noncopyable(const noncopyable &);
+    const noncopyable& operator=(const noncopyable &);
 };
 
 }
 
-using noncopyable = detail::noncopyable;
+typedef detail::noncopyable noncopyable;
 /// \endcond
 
-enum rotation_enum
-{
-    rotate_0,
-    rotate_90,
-    rotate_180,
-    rotate_270
-};
+enum rotation_enum { rotate_0, rotate_90, rotate_180, rotate_270 };
 
-enum page_box_enum
-{
-    media_box,
-    crop_box,
-    bleed_box,
-    trim_box,
-    art_box
-};
+enum page_box_enum { media_box, crop_box, bleed_box, trim_box, art_box };
 
-enum permission_enum
-{
-    perm_print,
-    perm_change,
-    perm_copy,
-    perm_add_notes,
-    perm_fill_forms,
-    perm_accessibility,
-    perm_assemble,
-    perm_print_high_resolution
-};
+enum permission_enum { perm_print, perm_change, perm_copy, perm_add_notes,
+                       perm_fill_forms, perm_accessibility, perm_assemble,
+                       perm_print_high_resolution };
 
-enum case_sensitivity_enum
-{
-    case_sensitive,
-    case_insensitive
-};
+enum case_sensitivity_enum { case_sensitive, case_insensitive };
 
-using byte_array = std::vector<char>;
+typedef std::vector<char> byte_array;
+
+typedef unsigned int /* time_t */ time_type;
 
 // to disable warning only for this occurrence
 #ifdef _MSC_VER
-#    pragma warning(push)
-#    pragma warning(disable : 4251) /* class 'A' needs to have dll interface for to be used by clients of class 'B'. */
+#pragma warning(push)
+#pragma warning(disable: 4251) /* class 'A' needs to have dll interface for to be used by clients of class 'B'. */
 #endif
-class POPPLER_CPP_EXPORT ustring : public std::basic_string<char16_t>
+class POPPLER_CPP_EXPORT ustring : public std::basic_string<unsigned short>
 {
 public:
     ustring();
@@ -112,23 +94,17 @@ public:
 
 private:
     // forbid implicit std::string conversions
-    explicit ustring(const std::string &);
-    explicit operator std::string() const;
-    ustring &operator=(const std::string &);
+    ustring(const std::string &);
+    operator std::string() const;
+    ustring& operator=(const std::string &);
 };
 #ifdef _MSC_VER
-#    pragma warning(pop)
+#pragma warning(pop)
 #endif
 
-POPPLER_CPP_EXPORT time_t convert_date_t(const std::string &date);
+POPPLER_CPP_EXPORT time_type convert_date(const std::string &date);
 
-POPPLER_CPP_EXPORT std::ostream &operator<<(std::ostream &stream, const byte_array &array);
-
-POPPLER_CPP_EXPORT bool set_data_dir(const std::string &new_data_dir);
-
-using debug_func = void (*)(const std::string &, void *);
-
-POPPLER_CPP_EXPORT void set_debug_error_function(debug_func debug_function, void *closure);
+POPPLER_CPP_EXPORT std::ostream& operator<<(std::ostream& stream, const byte_array &array);
 
 }
 
