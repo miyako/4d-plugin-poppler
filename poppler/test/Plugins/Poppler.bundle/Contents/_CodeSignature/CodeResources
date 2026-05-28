@@ -8,7 +8,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FsGEu+wuvE2F1C5N7ZRMKSytIrU=
+			mz1CwgpqNBqvkP6C6MAz/fR7XYo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -35,7 +35,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5agt9Z2pBGn1ajxXKGKoh6U2xBzq7ghN/PJ7sDdjUig=
+			DY9XTdIr/tN+NZwahVJXww44QvBYD0+bnvpR2QEjAdw=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -58,161 +58,287 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ddhjCZkDEpJWwinNR+J76IWsPNdN9fxOGwWITVfMwfg=
+			LT/XKnq6HmzjC0DRUAtvEdACDxKb4WG/ZyasG/kVlpM=
 			</data>
 		</dict>
-		<key>Windows64/libcairo-2.dll</key>
+		<key>Windows64/Poppler.exp</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Xx0BC8whNtXCizQLDg3rGpcbvX6FBvSsE8O8ualR16I=
+			i2djxZuOowNxB1rZrheNEZRf82Y6Z7+MFqaKWe+POPs=
 			</data>
 		</dict>
-		<key>Windows64/libffi-6.dll</key>
+		<key>Windows64/Poppler.lib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			lNZhDbbFPbRTNfUO3qDuN39ZPzYuEbK/6WDv562lE5I=
+			FDo53QOoErl4OEBqlCepSvBCH2iFsokvv7eYYkG5zcA=
 			</data>
 		</dict>
-		<key>Windows64/libfontconfig-1.dll</key>
+		<key>Windows64/boost_container-vc145-mt-x64-1_91.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			oSRH7c5U+Dovat6WFNe0SJBdfAUVQg6xaiMqb6OJLds=
+			Uw/NvJRQf/BBKyWrgCabEGiduF8PXe1UzyISWOGQXus=
 			</data>
 		</dict>
-		<key>Windows64/libfreetype-6.dll</key>
+		<key>Windows64/brotlicommon.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			NKKS46n+ZW1O80qrYD75UNSc4jBLAP0eHekE8t2qSj0=
+			IOtYdPVj0dIESDIulDMH9ltYHAZ4pIqwkPSjLX2zO0U=
 			</data>
 		</dict>
-		<key>Windows64/libgcc_s_sjlj-1.dll</key>
+		<key>Windows64/brotlidec.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			rXGpRpRsrSgFp2EJizCo7z6+ldR/MOZGG5WUt3Ng9Ao=
+			P6+TgYWcvc3wPSYQAT9KYgQZwESOK+1NEuV1dJ4GGj4=
 			</data>
 		</dict>
-		<key>Windows64/libgio-2.0-0.dll</key>
+		<key>Windows64/brotlienc.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			UbNd8kCW00u9hvp8F9ZDX3u5r/ItsfkwStJzy9rjFoE=
+			NLMJqIq+hP4KNRtUKFt10rZGciVjCHFkRYhOeiGWA6U=
 			</data>
 		</dict>
-		<key>Windows64/libglib-2.0-0.dll</key>
+		<key>Windows64/bz2.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Sebk5wTx8NJ+CznLpyURFnWALoplLJ6/IWe5HPcWHsA=
+			2xewvGy8gr1Ez29h+u/A1dAo0Agxhk48hV2rNGolXRU=
 			</data>
 		</dict>
-		<key>Windows64/libgmodule-2.0-0.dll</key>
+		<key>Windows64/cairo-2.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			HygRdvinOiHUHiALdcgfCe34ihbSHzh9rMzNY4pzn/o=
+			LgSphWVjW9n84OQYav5xGpHMeVkcO4F5hqtZang7QFA=
 			</data>
 		</dict>
-		<key>Windows64/libgobject-2.0-0.dll</key>
+		<key>Windows64/cairo-script-interpreter-2.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			j6n/XTcO7mfsff3i5L7HzL2DmN0v4NR/bgObKE7JP9U=
+			ZbycKppETG1FV8EwMWCZuzrU+XSFmk9a4YUTqPPl+yM=
 			</data>
 		</dict>
-		<key>Windows64/libharfbuzz-0.dll</key>
+		<key>Windows64/charset-1.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			c+G4Tac2VWyVr5/3h7Ugt5bNbJm8A/McBZZhNOJxZY0=
+			mIP8kqL6FsUiZJLnvSqZdDujKrMR8hM9R/DnZFwhszY=
 			</data>
 		</dict>
-		<key>Windows64/libiconv-2.dll</key>
+		<key>Windows64/ffi-8.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Gx4Tbkmn+Skpw8Cn4ob5jz8LKei1UVYoTyZH41gPqkc=
+			5aLhDFbh5tDuIrRXhdr1vepk0awSqLKtBXnIwcZfEGQ=
 			</data>
 		</dict>
-		<key>Windows64/libintl-8.dll</key>
+		<key>Windows64/fontconfig-1.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			+j5r/JCC5RVprPZG7QKSe2LrILSvLuRKpF74taK2Ifw=
+			UcPLqewsGpYbOs70dKhq0KRMPYPyifRj9Ub4C4ifLvM=
 			</data>
 		</dict>
-		<key>Windows64/libjpeg-9.dll</key>
+		<key>Windows64/freetype.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Xc62h8xtt6cjj32tts3KCCLKKIZBhRgnGlKNNIZZOEk=
+			9/nb8f1cU1sEh7PjHp0K/LknSM8k4h2zcPOLdAbtqMg=
 			</data>
 		</dict>
-		<key>Windows64/libpixman-1-0.dll</key>
+		<key>Windows64/gio-2.0-0.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			jwGiLP3lDuDKzf8cA6eL6UlF91AAdHJ6544pDqFK69Y=
+			CUNNOXYoU92zm9RjdPloeULZXGBob6CpMSwV++Qx99g=
 			</data>
 		</dict>
-		<key>Windows64/libpng16-16.dll</key>
+		<key>Windows64/girepository-2.0-0.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			+4eRLszg0292AWR8e+o6Pd/fZafaXz4KYYAeDzWf0R8=
+			4sGTtIp63vNeSp0gL0cZwIDAXHg1Enst0l4wHOweGWo=
 			</data>
 		</dict>
-		<key>Windows64/libpoppler-48.dll</key>
+		<key>Windows64/glib-2.0-0.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			GXawmAGAKH7fUeucwnRugK+VsfKo/xDeglOO9Zvk948=
+			MoVPbtxCJ97i41xDZ47irRdiMqqJtg+YyJpHARMQqKo=
 			</data>
 		</dict>
-		<key>Windows64/libpoppler-glib-8.dll</key>
+		<key>Windows64/gmodule-2.0-0.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ylxu1LsBMTWEa6KYWf2IHUfSdqcbtthhW9TcPZoBd/Q=
+			FV0515XxCmlyVj7awetgtgPHQF2f5Sgv0kKN4qEGDw8=
 			</data>
 		</dict>
-		<key>Windows64/libstdc++-6.dll</key>
+		<key>Windows64/gobject-2.0-0.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Kctbn1GIV6KqFEZBgg29kuQsiNs5V7oyDphX6xG3t+A=
+			MrvDj+7IXW7PAZivt5RLaxT3IkmIy2e9wcsCkUO7Jlk=
 			</data>
 		</dict>
-		<key>Windows64/libtiff-5.dll</key>
+		<key>Windows64/gthread-2.0-0.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			C52JDS1HN9iRgTERU0EkMeUwcbYibmeZW4xq7x46J/Y=
+			9b7KIIiCAUkfi3Zudo3SNk2FvpN7WIwDTnBMEMCj+lw=
 			</data>
 		</dict>
-		<key>Windows64/libwinpthread-1.dll</key>
+		<key>Windows64/iconv-2.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			GxTFgHIVmelQqqzMFXy7xFP36kj5/XyNEiYjJKFTNic=
+			rpA61JKCvDLvOmM24GeR5H8flBFTBDBo60qilf22oCo=
 			</data>
 		</dict>
-		<key>Windows64/libxml2-2.dll</key>
+		<key>Windows64/intl-8.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ucSelSa9G6h8zO80bzwoBOLOZKME3RVmFFAaHJeHxCQ=
+			rkOlxTYEzmN6mIqnBi4orN3pkZv/R/ydoS9p5Qlr5WE=
 			</data>
 		</dict>
-		<key>Windows64/zlib1.dll</key>
+		<key>Windows64/jpeg62.dll</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6hugoNV4fHKzH16vs8XZArxygdLfW3gIsAFjAxxkb0M=
+			9tpfqewxJcPicyP7DXhw35U1TTWk3Z6LC9KaR1S9yqE=
+			</data>
+		</dict>
+		<key>Windows64/libexpat.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Os3mUYjz3YhG+CttztKR9konSPPVBueLrmWr130APxI=
+			</data>
+		</dict>
+		<key>Windows64/liblzma.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ij+KZwi7Y5KzSdr8ctcwQ80XK3nD6glMfQKecxKJye8=
+			</data>
+		</dict>
+		<key>Windows64/libpng16.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			wjQ6KZjlwt5j5ngvBtG6Dg/Uaf4nJKDLc9859NuPV/0=
+			</data>
+		</dict>
+		<key>Windows64/openjp2.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			rrFGen4CLVBYYUbXw6bQQUtOMXLXekK3i5gR4NEQQQ8=
+			</data>
+		</dict>
+		<key>Windows64/pcre2-16.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			RuGUh+8DMeD/G8d3eQpER1wa4QpfcIhkHXjQ8cIVnfE=
+			</data>
+		</dict>
+		<key>Windows64/pcre2-32.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			xQft8XKFB+wDhpEce4qhkTvez9hlLLE7F4nJnaXJE6o=
+			</data>
+		</dict>
+		<key>Windows64/pcre2-8.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			lgZANftcKcTluf014ltaHHN+jXsGqNZfh7O9sfiHiE8=
+			</data>
+		</dict>
+		<key>Windows64/pcre2-posix.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			fZsrLIzkEcxI0DmrTUrbdmwyPAivn/fbPtUlysPuueY=
+			</data>
+		</dict>
+		<key>Windows64/pixman-1-0.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			PmgaXdJOr7edY4yzfA/tSipPsHPs5qswHON3S5W2DWw=
+			</data>
+		</dict>
+		<key>Windows64/poppler-cpp.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			tDQWPSo2ACnob9OVyI2hGqB7xKEeh7xV18xAKUrlDeE=
+			</data>
+		</dict>
+		<key>Windows64/poppler-glib.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			2b1sAbD8EzC9VdrxJrthZIDHb+f9Pi+V2nKSob1P010=
+			</data>
+		</dict>
+		<key>Windows64/poppler.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			alcNLgq7JNEzxW7VOczW9noIJNADq1SpFek7ZUSvSLE=
+			</data>
+		</dict>
+		<key>Windows64/pthreadVC3.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Xbnmtk4CiR0lW+urykRzVpk7ghf6UsnkypPFTFi8lsA=
+			</data>
+		</dict>
+		<key>Windows64/pthreadVCE3.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			G6mCQ64PTmdkpeh78Tdc4eS4JYOuhvLi6lHiAnzSbhA=
+			</data>
+		</dict>
+		<key>Windows64/pthreadVSE3.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			OKxnf5madzKLQs8TRH5Wf2NL9jfGOZfajd8qOe6iU7Q=
+			</data>
+		</dict>
+		<key>Windows64/tiff.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			amPPREl+Nf555nhEhKuePDZKrSiXJUY9KxxHcdhqa+A=
+			</data>
+		</dict>
+		<key>Windows64/turbojpeg.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			nmgRd2JDqyuRemN1i204Vc6/SS1OXEZabEKTtmPfIFo=
+			</data>
+		</dict>
+		<key>Windows64/z.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			s2n+L6VPjbaDCbMKErQxfhlQXLaX0gqBhKcJSKpgfjA=
 			</data>
 		</dict>
 	</dict>
