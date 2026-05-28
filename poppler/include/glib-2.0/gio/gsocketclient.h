@@ -3,12 +3,10 @@
  * Copyright © 2008, 2009 Codethink Limited
  * Copyright © 2009 Red Hat, Inc
  *
- * SPDX-License-Identifier: LGPL-2.1-or-later
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation; either version 2 of the licence or (at
+ * your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -70,127 +68,127 @@ struct _GSocketClient
   GSocketClientPrivate *priv;
 };
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GType                   g_socket_client_get_type                        (void) G_GNUC_CONST;
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GSocketClient          *g_socket_client_new                             (void);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GSocketFamily           g_socket_client_get_family                      (GSocketClient        *client);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                    g_socket_client_set_family                      (GSocketClient        *client,
 									 GSocketFamily         family);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GSocketType             g_socket_client_get_socket_type                 (GSocketClient        *client);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                    g_socket_client_set_socket_type                 (GSocketClient        *client,
 									 GSocketType           type);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GSocketProtocol         g_socket_client_get_protocol                    (GSocketClient        *client);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                    g_socket_client_set_protocol                    (GSocketClient        *client,
 									 GSocketProtocol       protocol);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GSocketAddress         *g_socket_client_get_local_address               (GSocketClient        *client);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                    g_socket_client_set_local_address               (GSocketClient        *client,
 									 GSocketAddress       *address);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 guint                   g_socket_client_get_timeout                     (GSocketClient        *client);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                    g_socket_client_set_timeout                     (GSocketClient        *client,
 									 guint                 timeout);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gboolean                g_socket_client_get_enable_proxy                (GSocketClient        *client);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                    g_socket_client_set_enable_proxy                (GSocketClient        *client,
     									 gboolean	      enable);
 
-GIO_AVAILABLE_IN_2_28
+GLIB_AVAILABLE_IN_2_28
 gboolean                g_socket_client_get_tls                         (GSocketClient        *client);
-GIO_AVAILABLE_IN_2_28
+GLIB_AVAILABLE_IN_2_28
 void                    g_socket_client_set_tls                         (GSocketClient        *client,
 									 gboolean              tls);
-GIO_DEPRECATED_IN_2_72
+GLIB_AVAILABLE_IN_2_28
 GTlsCertificateFlags    g_socket_client_get_tls_validation_flags        (GSocketClient        *client);
-GIO_DEPRECATED_IN_2_72
+GLIB_AVAILABLE_IN_2_28
 void                    g_socket_client_set_tls_validation_flags        (GSocketClient        *client,
 									 GTlsCertificateFlags  flags);
-GIO_AVAILABLE_IN_2_36
+GLIB_AVAILABLE_IN_2_36
 GProxyResolver         *g_socket_client_get_proxy_resolver              (GSocketClient        *client);
-GIO_AVAILABLE_IN_2_36
+GLIB_AVAILABLE_IN_2_36
 void                    g_socket_client_set_proxy_resolver              (GSocketClient        *client,
                                                                          GProxyResolver       *proxy_resolver);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GSocketConnection *     g_socket_client_connect                         (GSocketClient        *client,
                                                                          GSocketConnectable   *connectable,
                                                                          GCancellable         *cancellable,
                                                                          GError              **error);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GSocketConnection *     g_socket_client_connect_to_host                 (GSocketClient        *client,
 									 const gchar          *host_and_port,
 									 guint16               default_port,
                                                                          GCancellable         *cancellable,
                                                                          GError              **error);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GSocketConnection *     g_socket_client_connect_to_service              (GSocketClient        *client,
 									 const gchar          *domain,
 									 const gchar          *service,
                                                                          GCancellable         *cancellable,
                                                                          GError              **error);
-GIO_AVAILABLE_IN_2_26
+GLIB_AVAILABLE_IN_2_26
 GSocketConnection *     g_socket_client_connect_to_uri                  (GSocketClient        *client,
 									 const gchar          *uri,
 									 guint16               default_port,
                                                                          GCancellable         *cancellable,
                                                                          GError              **error);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                    g_socket_client_connect_async                   (GSocketClient        *client,
                                                                          GSocketConnectable   *connectable,
                                                                          GCancellable         *cancellable,
                                                                          GAsyncReadyCallback   callback,
                                                                          gpointer              user_data);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GSocketConnection *     g_socket_client_connect_finish                  (GSocketClient        *client,
                                                                          GAsyncResult         *result,
                                                                          GError              **error);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                    g_socket_client_connect_to_host_async           (GSocketClient        *client,
 									 const gchar          *host_and_port,
 									 guint16               default_port,
                                                                          GCancellable         *cancellable,
                                                                          GAsyncReadyCallback   callback,
                                                                          gpointer              user_data);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GSocketConnection *     g_socket_client_connect_to_host_finish          (GSocketClient        *client,
                                                                          GAsyncResult         *result,
                                                                          GError              **error);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                    g_socket_client_connect_to_service_async        (GSocketClient        *client,
 									 const gchar          *domain,
 									 const gchar          *service,
                                                                          GCancellable         *cancellable,
                                                                          GAsyncReadyCallback   callback,
                                                                          gpointer              user_data);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GSocketConnection *     g_socket_client_connect_to_service_finish       (GSocketClient        *client,
                                                                          GAsyncResult         *result,
                                                                          GError              **error);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                    g_socket_client_connect_to_uri_async            (GSocketClient        *client,
 									 const gchar          *uri,
 									 guint16               default_port,
                                                                          GCancellable         *cancellable,
                                                                          GAsyncReadyCallback   callback,
                                                                          gpointer              user_data);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GSocketConnection *     g_socket_client_connect_to_uri_finish           (GSocketClient        *client,
                                                                          GAsyncResult         *result,
                                                                          GError              **error);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void			g_socket_client_add_application_proxy		(GSocketClient        *client,
 									 const gchar          *protocol);
 

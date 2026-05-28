@@ -2,12 +2,10 @@
  *
  * Copyright (C) 2008-2010 Red Hat, Inc.
  *
- * SPDX-License-Identifier: LGPL-2.1-or-later
- *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 2 of the License, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -37,6 +35,14 @@ G_BEGIN_DECLS
 typedef struct _GDBusObjectSkeletonClass   GDBusObjectSkeletonClass;
 typedef struct _GDBusObjectSkeletonPrivate GDBusObjectSkeletonPrivate;
 
+/**
+ * GDBusObjectSkeleton:
+ *
+ * The #GDBusObjectSkeleton structure contains private data and should only be
+ * accessed using the provided API.
+ *
+ * Since: 2.30
+ */
 struct _GDBusObjectSkeleton
 {
   /*< private >*/
@@ -66,22 +72,22 @@ struct _GDBusObjectSkeletonClass
   gpointer padding[8];
 };
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GType                g_dbus_object_skeleton_get_type                  (void) G_GNUC_CONST;
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GDBusObjectSkeleton *g_dbus_object_skeleton_new                       (const gchar            *object_path);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                 g_dbus_object_skeleton_flush                     (GDBusObjectSkeleton    *object);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                 g_dbus_object_skeleton_add_interface             (GDBusObjectSkeleton    *object,
                                                                        GDBusInterfaceSkeleton *interface_);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                 g_dbus_object_skeleton_remove_interface          (GDBusObjectSkeleton    *object,
                                                                        GDBusInterfaceSkeleton *interface_);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                 g_dbus_object_skeleton_remove_interface_by_name  (GDBusObjectSkeleton    *object,
                                                                        const gchar            *interface_name);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void                 g_dbus_object_skeleton_set_object_path           (GDBusObjectSkeleton    *object,
                                                                        const gchar            *object_path);
 

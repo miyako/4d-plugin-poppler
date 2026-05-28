@@ -1,12 +1,10 @@
 /*
  * Copyright © 2010 Codethink Limited
  *
- * SPDX-License-Identifier: LGPL-2.1-or-later
- *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 2 of the licence, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -81,44 +79,44 @@ struct _GPermissionClass {
   gpointer reserved[16];
 };
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GType           g_permission_get_type           (void);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gboolean        g_permission_acquire            (GPermission          *permission,
                                                  GCancellable         *cancellable,
                                                  GError              **error);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void            g_permission_acquire_async      (GPermission          *permission,
                                                  GCancellable         *cancellable,
                                                  GAsyncReadyCallback   callback,
                                                  gpointer              user_data);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gboolean        g_permission_acquire_finish     (GPermission          *permission,
                                                  GAsyncResult         *result,
                                                  GError              **error);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gboolean        g_permission_release            (GPermission          *permission,
                                                  GCancellable         *cancellable,
                                                  GError              **error);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void            g_permission_release_async      (GPermission          *permission,
                                                  GCancellable         *cancellable,
                                                  GAsyncReadyCallback   callback,
                                                  gpointer              user_data);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gboolean        g_permission_release_finish     (GPermission          *permission,
                                                  GAsyncResult         *result,
                                                  GError              **error);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gboolean        g_permission_get_allowed        (GPermission   *permission);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gboolean        g_permission_get_can_acquire    (GPermission   *permission);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gboolean        g_permission_get_can_release    (GPermission   *permission);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void            g_permission_impl_update        (GPermission  *permission,
                                                  gboolean      allowed,
                                                  gboolean      can_acquire,

@@ -2,12 +2,10 @@
  *
  * Copyright (C) 2006-2007 Red Hat, Inc.
  *
- * SPDX-License-Identifier: LGPL-2.1-or-later
- *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 2 of the License, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -34,11 +32,11 @@ G_BEGIN_DECLS
 
 typedef struct _GIOModuleScope GIOModuleScope;
 
-GIO_AVAILABLE_IN_2_30
+GLIB_AVAILABLE_IN_2_30
 GIOModuleScope *   g_io_module_scope_new     (GIOModuleScopeFlags  flags);
-GIO_AVAILABLE_IN_2_30
+GLIB_AVAILABLE_IN_2_30
 void               g_io_module_scope_free    (GIOModuleScope      *scope);
-GIO_AVAILABLE_IN_2_30
+GLIB_AVAILABLE_IN_2_30
 void               g_io_module_scope_block   (GIOModuleScope      *scope,
                                               const gchar         *basename);
 
@@ -49,63 +47,64 @@ void               g_io_module_scope_block   (GIOModuleScope      *scope,
 #define G_IO_IS_MODULE_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), G_IO_TYPE_MODULE))
 #define G_IO_MODULE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), G_IO_TYPE_MODULE, GIOModuleClass))
 
+/**
+ * GIOModule:
+ *
+ * Opaque module base class for extending GIO.
+ **/
 typedef struct _GIOModuleClass GIOModuleClass;
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GType              g_io_module_get_type                       (void) G_GNUC_CONST;
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GIOModule         *g_io_module_new                            (const gchar       *filename);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void               g_io_modules_scan_all_in_directory         (const char        *dirname);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GList             *g_io_modules_load_all_in_directory         (const gchar       *dirname);
 
-GIO_AVAILABLE_IN_2_30
+GLIB_AVAILABLE_IN_2_30
 void               g_io_modules_scan_all_in_directory_with_scope   (const gchar       *dirname,
                                                                     GIOModuleScope    *scope);
-GIO_AVAILABLE_IN_2_30
+GLIB_AVAILABLE_IN_2_30
 GList             *g_io_modules_load_all_in_directory_with_scope   (const gchar       *dirname,
                                                                     GIOModuleScope    *scope);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GIOExtensionPoint *g_io_extension_point_register              (const char        *name);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GIOExtensionPoint *g_io_extension_point_lookup                (const char        *name);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void               g_io_extension_point_set_required_type     (GIOExtensionPoint *extension_point,
 							       GType              type);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GType              g_io_extension_point_get_required_type     (GIOExtensionPoint *extension_point);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GList             *g_io_extension_point_get_extensions        (GIOExtensionPoint *extension_point);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GIOExtension *     g_io_extension_point_get_extension_by_name (GIOExtensionPoint *extension_point,
 							       const char        *name);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GIOExtension *     g_io_extension_point_implement             (const char        *extension_point_name,
 							       GType              type,
 							       const char        *extension_name,
 							       gint               priority);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GType              g_io_extension_get_type                    (GIOExtension      *extension);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 const char *       g_io_extension_get_name                    (GIOExtension      *extension);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gint               g_io_extension_get_priority                (GIOExtension      *extension);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GTypeClass*        g_io_extension_ref_class                   (GIOExtension      *extension);
 
 
-/* API for the modules to implement.
- * Note that those functions are not implemented by libgio, they are declared
- * here to be implemented in modules, that's why it uses G_MODULE_EXPORT
- * instead of GIO_AVAILABLE_IN_ALL.
- */
+/* API for the modules to implement */
 
 /**
- * g_io_module_load: (skip)
+ * g_io_module_load:
  * @module: a #GIOModule.
  *
  * Required API for GIO modules to implement.
@@ -113,36 +112,20 @@ GTypeClass*        g_io_extension_ref_class                   (GIOExtension     
  * This function is run after the module has been loaded into GIO,
  * to initialize the module. Typically, this function will call
  * g_io_extension_point_implement().
- *
- * Since 2.56, this function should be named `g_io_<modulename>_load`, where
- * `modulename` is the plugin’s filename with the `lib` or `libgio` prefix and
- * everything after the first dot removed, and with `-` replaced with `_`
- * throughout. For example, `libgiognutls-helper.so` becomes `gnutls_helper`.
- * Using the new symbol names avoids name clashes when building modules
- * statically. The old symbol names continue to be supported, but cannot be used
- * for static builds.
  **/
-G_MODULE_EXPORT
+GLIB_AVAILABLE_IN_ALL
 void   g_io_module_load   (GIOModule *module);
 
 /**
- * g_io_module_unload: (skip)
+ * g_io_module_unload:
  * @module: a #GIOModule.
  *
  * Required API for GIO modules to implement.
  *
  * This function is run when the module is being unloaded from GIO,
  * to finalize the module.
- *
- * Since 2.56, this function should be named `g_io_<modulename>_unload`, where
- * `modulename` is the plugin’s filename with the `lib` or `libgio` prefix and
- * everything after the first dot removed, and with `-` replaced with `_`
- * throughout. For example, `libgiognutls-helper.so` becomes `gnutls_helper`.
- * Using the new symbol names avoids name clashes when building modules
- * statically. The old symbol names continue to be supported, but cannot be used
- * for static builds.
  **/
-G_MODULE_EXPORT
+GLIB_AVAILABLE_IN_ALL
 void   g_io_module_unload (GIOModule *module);
 
 /**
@@ -172,21 +155,13 @@ void   g_io_module_unload (GIOModule *module);
  * run gio-querymodules in order to build the cache files required for
  * lazy loading.
  *
- * Since 2.56, this function should be named `g_io_<modulename>_query`, where
- * `modulename` is the plugin’s filename with the `lib` or `libgio` prefix and
- * everything after the first dot removed, and with `-` replaced with `_`
- * throughout. For example, `libgiognutls-helper.so` becomes `gnutls_helper`.
- * Using the new symbol names avoids name clashes when building modules
- * statically. The old symbol names continue to be supported, but cannot be used
- * for static builds.
- *
  * Returns: (transfer full): A %NULL-terminated array of strings,
  *     listing the supported extension points of the module. The array
  *     must be suitable for freeing with g_strfreev().
  *
  * Since: 2.24
  **/
-G_MODULE_EXPORT
+GLIB_AVAILABLE_IN_ALL
 char **g_io_module_query (void);
 
 G_END_DECLS

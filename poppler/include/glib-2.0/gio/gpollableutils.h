@@ -2,12 +2,10 @@
  *
  * Copyright (C) 2012 Red Hat, Inc.
  *
- * SPDX-License-Identifier: LGPL-2.1-or-later
- *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 2 of the License, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -29,15 +27,15 @@
 
 G_BEGIN_DECLS
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GSource *g_pollable_source_new       (GObject        *pollable_stream);
 
-GIO_AVAILABLE_IN_2_34
+GLIB_AVAILABLE_IN_2_34
 GSource *g_pollable_source_new_full  (gpointer        pollable_stream,
 				      GSource        *child_source,
 				      GCancellable   *cancellable);
 
-GIO_AVAILABLE_IN_2_34
+GLIB_AVAILABLE_IN_2_34
 gssize   g_pollable_stream_read      (GInputStream   *stream,
 				      void           *buffer,
 				      gsize           count,
@@ -45,14 +43,14 @@ gssize   g_pollable_stream_read      (GInputStream   *stream,
 				      GCancellable   *cancellable,
 				      GError        **error);
 
-GIO_AVAILABLE_IN_2_34
+GLIB_AVAILABLE_IN_2_34
 gssize   g_pollable_stream_write     (GOutputStream  *stream,
 				      const void     *buffer,
 				      gsize           count,
 				      gboolean        blocking,
 				      GCancellable   *cancellable,
 				      GError        **error);
-GIO_AVAILABLE_IN_2_34
+GLIB_AVAILABLE_IN_2_34
 gboolean g_pollable_stream_write_all (GOutputStream  *stream,
 				      const void     *buffer,
 				      gsize           count,

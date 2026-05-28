@@ -8,7 +8,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			umhBj/zzkTTUQm11wQEmawTUsjs=
+			FsGEu+wuvE2F1C5N7ZRMKSytIrU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -35,7 +35,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xwFSirRim7r4Y2KOBfND9wGC8epCEsZrQlashRwnDPQ=
+			5agt9Z2pBGn1ajxXKGKoh6U2xBzq7ghN/PJ7sDdjUig=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -58,21 +58,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			fefwqC/dVbgbkZh3gZonhUdZPSfyvuS9QpMZbNAGLcc=
-			</data>
-		</dict>
-		<key>Windows64/Poppler.exp</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			JOtWRlluGq9tbhplb5kYZWZM7Hc3AejeVWCGJ+9MVZY=
-			</data>
-		</dict>
-		<key>Windows64/Poppler.lib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			RvDV0D7c/GBrsbNhhZ+5rdvM8By4laNdKF4EeCCZOUk=
+			ddhjCZkDEpJWwinNR+J76IWsPNdN9fxOGwWITVfMwfg=
 			</data>
 		</dict>
 		<key>Windows64/libcairo-2.dll</key>

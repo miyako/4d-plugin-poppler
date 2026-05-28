@@ -1,33 +1,18 @@
-/* GObject - GLib Type, Object, Parameter and Signal Library
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General
- * Public License along with this library; if not, see <http://www.gnu.org/licenses/>.
- */
-
+/* Note: This file is no longer generated.  See the comment in gmarshal.list */
 #ifndef __G_MARSHAL_H__
 #define __G_MARSHAL_H__
 
 G_BEGIN_DECLS
 
-/* VOID:VOID */
-GOBJECT_AVAILABLE_IN_ALL
+/* VOID:VOID (./gmarshal.list:6) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__VOID (GClosure     *closure,
                                     GValue       *return_value,
                                     guint         n_param_values,
                                     const GValue *param_values,
                                     gpointer      invocation_hint,
                                     gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__VOIDv (GClosure *closure,
                                      GValue   *return_value,
                                      gpointer  instance,
@@ -36,15 +21,15 @@ void g_cclosure_marshal_VOID__VOIDv (GClosure *closure,
                                      int       n_params,
                                      GType    *param_types);
 
-/* VOID:BOOLEAN */
-GOBJECT_AVAILABLE_IN_ALL
+/* VOID:BOOLEAN (./gmarshal.list:7) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__BOOLEAN (GClosure     *closure,
                                        GValue       *return_value,
                                        guint         n_param_values,
                                        const GValue *param_values,
                                        gpointer      invocation_hint,
                                        gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__BOOLEANv (GClosure *closure,
                                         GValue   *return_value,
                                         gpointer  instance,
@@ -53,15 +38,15 @@ void g_cclosure_marshal_VOID__BOOLEANv (GClosure *closure,
                                         int       n_params,
                                         GType    *param_types);
 
-/* VOID:CHAR */
-GOBJECT_AVAILABLE_IN_ALL
+/* VOID:CHAR (./gmarshal.list:8) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__CHAR (GClosure     *closure,
                                     GValue       *return_value,
                                     guint         n_param_values,
                                     const GValue *param_values,
                                     gpointer      invocation_hint,
                                     gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__CHARv (GClosure *closure,
                                      GValue   *return_value,
                                      gpointer  instance,
@@ -70,15 +55,15 @@ void g_cclosure_marshal_VOID__CHARv (GClosure *closure,
                                      int       n_params,
                                      GType    *param_types);
 
-/* VOID:UCHAR */
-GOBJECT_AVAILABLE_IN_ALL
+/* VOID:UCHAR (./gmarshal.list:9) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__UCHAR (GClosure     *closure,
                                      GValue       *return_value,
                                      guint         n_param_values,
                                      const GValue *param_values,
                                      gpointer      invocation_hint,
                                      gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__UCHARv (GClosure *closure,
                                       GValue   *return_value,
                                       gpointer  instance,
@@ -87,15 +72,15 @@ void g_cclosure_marshal_VOID__UCHARv (GClosure *closure,
                                       int       n_params,
                                       GType    *param_types);
 
-/* VOID:INT */
-GOBJECT_AVAILABLE_IN_ALL
+/* VOID:INT (./gmarshal.list:10) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__INT (GClosure     *closure,
                                    GValue       *return_value,
                                    guint         n_param_values,
                                    const GValue *param_values,
                                    gpointer      invocation_hint,
                                    gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__INTv (GClosure *closure,
                                     GValue   *return_value,
                                     gpointer  instance,
@@ -104,15 +89,15 @@ void g_cclosure_marshal_VOID__INTv (GClosure *closure,
                                     int       n_params,
                                     GType    *param_types);
 
-/* VOID:UINT */
-GOBJECT_AVAILABLE_IN_ALL
+/* VOID:UINT (./gmarshal.list:11) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__UINT (GClosure     *closure,
                                     GValue       *return_value,
                                     guint         n_param_values,
                                     const GValue *param_values,
                                     gpointer      invocation_hint,
                                     gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__UINTv (GClosure *closure,
                                      GValue   *return_value,
                                      gpointer  instance,
@@ -121,15 +106,15 @@ void g_cclosure_marshal_VOID__UINTv (GClosure *closure,
                                      int       n_params,
                                      GType    *param_types);
 
-/* VOID:LONG */
-GOBJECT_AVAILABLE_IN_ALL
+/* VOID:LONG (./gmarshal.list:12) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__LONG (GClosure     *closure,
                                     GValue       *return_value,
                                     guint         n_param_values,
                                     const GValue *param_values,
                                     gpointer      invocation_hint,
                                     gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__LONGv (GClosure *closure,
                                      GValue   *return_value,
                                      gpointer  instance,
@@ -138,15 +123,15 @@ void g_cclosure_marshal_VOID__LONGv (GClosure *closure,
                                      int       n_params,
                                      GType    *param_types);
 
-/* VOID:ULONG */
-GOBJECT_AVAILABLE_IN_ALL
+/* VOID:ULONG (./gmarshal.list:13) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__ULONG (GClosure     *closure,
                                      GValue       *return_value,
                                      guint         n_param_values,
                                      const GValue *param_values,
                                      gpointer      invocation_hint,
                                      gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__ULONGv (GClosure *closure,
                                       GValue   *return_value,
                                       gpointer  instance,
@@ -155,15 +140,15 @@ void g_cclosure_marshal_VOID__ULONGv (GClosure *closure,
                                       int       n_params,
                                       GType    *param_types);
 
-/* VOID:ENUM */
-GOBJECT_AVAILABLE_IN_ALL
+/* VOID:ENUM (./gmarshal.list:14) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__ENUM (GClosure     *closure,
                                     GValue       *return_value,
                                     guint         n_param_values,
                                     const GValue *param_values,
                                     gpointer      invocation_hint,
                                     gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__ENUMv (GClosure *closure,
                                      GValue   *return_value,
                                      gpointer  instance,
@@ -172,15 +157,15 @@ void g_cclosure_marshal_VOID__ENUMv (GClosure *closure,
                                      int       n_params,
                                      GType    *param_types);
 
-/* VOID:FLAGS */
-GOBJECT_AVAILABLE_IN_ALL
+/* VOID:FLAGS (./gmarshal.list:15) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__FLAGS (GClosure     *closure,
                                      GValue       *return_value,
                                      guint         n_param_values,
                                      const GValue *param_values,
                                      gpointer      invocation_hint,
                                      gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__FLAGSv (GClosure *closure,
                                       GValue   *return_value,
                                       gpointer  instance,
@@ -189,15 +174,15 @@ void g_cclosure_marshal_VOID__FLAGSv (GClosure *closure,
                                       int       n_params,
                                       GType    *param_types);
 
-/* VOID:FLOAT */
-GOBJECT_AVAILABLE_IN_ALL
+/* VOID:FLOAT (./gmarshal.list:16) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__FLOAT (GClosure     *closure,
                                      GValue       *return_value,
                                      guint         n_param_values,
                                      const GValue *param_values,
                                      gpointer      invocation_hint,
                                      gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__FLOATv (GClosure *closure,
                                       GValue   *return_value,
                                       gpointer  instance,
@@ -206,15 +191,15 @@ void g_cclosure_marshal_VOID__FLOATv (GClosure *closure,
                                       int       n_params,
                                       GType    *param_types);
 
-/* VOID:DOUBLE */
-GOBJECT_AVAILABLE_IN_ALL
+/* VOID:DOUBLE (./gmarshal.list:17) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__DOUBLE (GClosure     *closure,
                                       GValue       *return_value,
                                       guint         n_param_values,
                                       const GValue *param_values,
                                       gpointer      invocation_hint,
                                       gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__DOUBLEv (GClosure *closure,
                                        GValue   *return_value,
                                        gpointer  instance,
@@ -223,15 +208,15 @@ void g_cclosure_marshal_VOID__DOUBLEv (GClosure *closure,
                                        int       n_params,
                                        GType    *param_types);
 
-/* VOID:STRING */
-GOBJECT_AVAILABLE_IN_ALL
+/* VOID:STRING (./gmarshal.list:18) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__STRING (GClosure     *closure,
                                       GValue       *return_value,
                                       guint         n_param_values,
                                       const GValue *param_values,
                                       gpointer      invocation_hint,
                                       gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__STRINGv (GClosure *closure,
                                        GValue   *return_value,
                                        gpointer  instance,
@@ -240,15 +225,15 @@ void g_cclosure_marshal_VOID__STRINGv (GClosure *closure,
                                        int       n_params,
                                        GType    *param_types);
 
-/* VOID:PARAM */
-GOBJECT_AVAILABLE_IN_ALL
+/* VOID:PARAM (./gmarshal.list:19) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__PARAM (GClosure     *closure,
                                      GValue       *return_value,
                                      guint         n_param_values,
                                      const GValue *param_values,
                                      gpointer      invocation_hint,
                                      gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__PARAMv (GClosure *closure,
                                       GValue   *return_value,
                                       gpointer  instance,
@@ -257,15 +242,15 @@ void g_cclosure_marshal_VOID__PARAMv (GClosure *closure,
                                       int       n_params,
                                       GType    *param_types);
 
-/* VOID:BOXED */
-GOBJECT_AVAILABLE_IN_ALL
+/* VOID:BOXED (./gmarshal.list:20) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__BOXED (GClosure     *closure,
                                      GValue       *return_value,
                                      guint         n_param_values,
                                      const GValue *param_values,
                                      gpointer      invocation_hint,
                                      gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__BOXEDv (GClosure *closure,
                                       GValue   *return_value,
                                       gpointer  instance,
@@ -274,15 +259,15 @@ void g_cclosure_marshal_VOID__BOXEDv (GClosure *closure,
                                       int       n_params,
                                       GType    *param_types);
 
-/* VOID:POINTER */
-GOBJECT_AVAILABLE_IN_ALL
+/* VOID:POINTER (./gmarshal.list:21) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__POINTER (GClosure     *closure,
                                        GValue       *return_value,
                                        guint         n_param_values,
                                        const GValue *param_values,
                                        gpointer      invocation_hint,
                                        gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__POINTERv (GClosure *closure,
                                         GValue   *return_value,
                                         gpointer  instance,
@@ -291,15 +276,15 @@ void g_cclosure_marshal_VOID__POINTERv (GClosure *closure,
                                         int       n_params,
                                         GType    *param_types);
 
-/* VOID:OBJECT */
-GOBJECT_AVAILABLE_IN_ALL
+/* VOID:OBJECT (./gmarshal.list:22) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__OBJECT (GClosure     *closure,
                                       GValue       *return_value,
                                       guint         n_param_values,
                                       const GValue *param_values,
                                       gpointer      invocation_hint,
                                       gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__OBJECTv (GClosure *closure,
                                        GValue   *return_value,
                                        gpointer  instance,
@@ -308,15 +293,15 @@ void g_cclosure_marshal_VOID__OBJECTv (GClosure *closure,
                                        int       n_params,
                                        GType    *param_types);
 
-/* VOID:VARIANT */
-GOBJECT_AVAILABLE_IN_ALL
+/* VOID:VARIANT (./gmarshal.list:23) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__VARIANT (GClosure     *closure,
                                        GValue       *return_value,
                                        guint         n_param_values,
                                        const GValue *param_values,
                                        gpointer      invocation_hint,
                                        gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__VARIANTv (GClosure *closure,
                                         GValue   *return_value,
                                         gpointer  instance,
@@ -325,15 +310,15 @@ void g_cclosure_marshal_VOID__VARIANTv (GClosure *closure,
                                         int       n_params,
                                         GType    *param_types);
 
-/* VOID:UINT,POINTER */
-GOBJECT_AVAILABLE_IN_ALL
+/* VOID:UINT,POINTER (./gmarshal.list:26) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__UINT_POINTER (GClosure     *closure,
                                             GValue       *return_value,
                                             guint         n_param_values,
                                             const GValue *param_values,
                                             gpointer      invocation_hint,
                                             gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_VOID__UINT_POINTERv (GClosure *closure,
                                              GValue   *return_value,
                                              gpointer  instance,
@@ -342,15 +327,15 @@ void g_cclosure_marshal_VOID__UINT_POINTERv (GClosure *closure,
                                              int       n_params,
                                              GType    *param_types);
 
-/* BOOL:FLAGS */
-GOBJECT_AVAILABLE_IN_ALL
+/* BOOL:FLAGS (./gmarshal.list:27) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_BOOLEAN__FLAGS (GClosure     *closure,
                                         GValue       *return_value,
                                         guint         n_param_values,
                                         const GValue *param_values,
                                         gpointer      invocation_hint,
                                         gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_BOOLEAN__FLAGSv (GClosure *closure,
                                          GValue   *return_value,
                                          gpointer  instance,
@@ -358,34 +343,17 @@ void g_cclosure_marshal_BOOLEAN__FLAGSv (GClosure *closure,
                                          gpointer  marshal_data,
                                          int       n_params,
                                          GType    *param_types);
-
-/**
- * g_cclosure_marshal_BOOL__FLAGS:
- * @closure: A #GClosure.
- * @return_value: A #GValue to store the return value. May be %NULL
- *   if the callback of closure doesn't return a value.
- * @n_param_values: The length of the @param_values array.
- * @param_values: An array of #GValues holding the arguments
- *   on which to invoke the callback of closure.
- * @invocation_hint: The invocation hint given as the last argument to
- *   g_closure_invoke().
- * @marshal_data: Additional data specified when registering the
- *   marshaller, see g_closure_set_marshal() and
- *   g_closure_set_meta_marshal()
- *
- * An old alias for g_cclosure_marshal_BOOLEAN__FLAGS().
- */
 #define g_cclosure_marshal_BOOL__FLAGS	g_cclosure_marshal_BOOLEAN__FLAGS
 
-/* STRING:OBJECT,POINTER */
-GOBJECT_AVAILABLE_IN_ALL
+/* STRING:OBJECT,POINTER (./gmarshal.list:28) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_STRING__OBJECT_POINTER (GClosure     *closure,
                                                 GValue       *return_value,
                                                 guint         n_param_values,
                                                 const GValue *param_values,
                                                 gpointer      invocation_hint,
                                                 gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_STRING__OBJECT_POINTERv (GClosure *closure,
                                                  GValue   *return_value,
                                                  gpointer  instance,
@@ -394,15 +362,15 @@ void g_cclosure_marshal_STRING__OBJECT_POINTERv (GClosure *closure,
                                                  int       n_params,
                                                  GType    *param_types);
 
-/* BOOL:BOXED,BOXED */
-GOBJECT_AVAILABLE_IN_ALL
+/* BOOL:BOXED,BOXED (./gmarshal.list:29) */
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_BOOLEAN__BOXED_BOXED (GClosure     *closure,
                                               GValue       *return_value,
                                               guint         n_param_values,
                                               const GValue *param_values,
                                               gpointer      invocation_hint,
                                               gpointer      marshal_data);
-GOBJECT_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void g_cclosure_marshal_BOOLEAN__BOXED_BOXEDv (GClosure *closure,
                                                GValue   *return_value,
                                                gpointer  instance,
@@ -410,23 +378,6 @@ void g_cclosure_marshal_BOOLEAN__BOXED_BOXEDv (GClosure *closure,
                                                gpointer  marshal_data,
                                                int       n_params,
                                                GType    *param_types);
-
-/**
- * g_cclosure_marshal_BOOL__BOXED_BOXED:
- * @closure: A #GClosure.
- * @return_value: A #GValue to store the return value. May be %NULL
- *   if the callback of closure doesn't return a value.
- * @n_param_values: The length of the @param_values array.
- * @param_values: An array of #GValues holding the arguments
- *   on which to invoke the callback of closure.
- * @invocation_hint: The invocation hint given as the last argument to
- *   g_closure_invoke().
- * @marshal_data: Additional data specified when registering the
- *   marshaller, see g_closure_set_marshal() and
- *   g_closure_set_meta_marshal()
- *
- * An old alias for g_cclosure_marshal_BOOLEAN__BOXED_BOXED().
- */
 #define g_cclosure_marshal_BOOL__BOXED_BOXED	g_cclosure_marshal_BOOLEAN__BOXED_BOXED
 
 G_END_DECLS

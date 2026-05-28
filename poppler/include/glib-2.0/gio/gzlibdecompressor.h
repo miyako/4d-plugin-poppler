@@ -2,12 +2,10 @@
  *
  * Copyright (C) 2009 Red Hat, Inc.
  *
- * SPDX-License-Identifier: LGPL-2.1-or-later
- *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 2 of the License, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -46,13 +44,13 @@ struct _GZlibDecompressorClass
   GObjectClass parent_class;
 };
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GType              g_zlib_decompressor_get_type (void) G_GNUC_CONST;
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GZlibDecompressor *g_zlib_decompressor_new (GZlibCompressorFormat format);
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GFileInfo         *g_zlib_decompressor_get_file_info (GZlibDecompressor *decompressor);
 
 G_END_DECLS

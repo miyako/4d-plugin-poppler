@@ -1,12 +1,10 @@
 /* GLIB - Library of useful routines for C programming
  * Copyright (C) 1995-1997  Peter Mattis, Spencer Kimball and Josh MacDonald
  *
- * SPDX-License-Identifier: LGPL-2.1-or-later
- *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 2 of the License, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -46,7 +44,7 @@ typedef enum
   G_TRAVERSE_MASK       = 0x03,
   G_TRAVERSE_LEAFS      = G_TRAVERSE_LEAVES,
   G_TRAVERSE_NON_LEAFS  = G_TRAVERSE_NON_LEAVES
-} G_GNUC_FLAG_ENUM GTraverseFlags;
+} GTraverseFlags;
 
 /* Tree traverse orders */
 typedef enum
@@ -61,6 +59,21 @@ typedef gboolean	(*GNodeTraverseFunc)	(GNode	       *node,
 						 gpointer	data);
 typedef void		(*GNodeForeachFunc)	(GNode	       *node,
 						 gpointer	data);
+
+/**
+ * GCopyFunc:
+ * @src: A pointer to the data which should be copied
+ * @data: Additional data
+ *
+ * A function of this signature is used to copy the node data 
+ * when doing a deep-copy of a tree.
+ *
+ * Returns: A pointer to the copy
+ *
+ * Since: 2.4
+ */
+typedef gpointer	(*GCopyFunc)            (gconstpointer  src,
+                                                 gpointer       data);
 
 /* N-way tree implementation
  */

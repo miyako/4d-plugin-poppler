@@ -1,7 +1,5 @@
 /*
  * Copyright (C) 2009, Pino Toscano <pino@kde.org>
- * Copyright (C) 2020, Suzuki Toshiya <mpsuzuki@hiroshima-u.ac.jp>
- * Copyright (C) 2021, Albert Astals Cid <aacid@kde.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,7 +23,8 @@
 
 #include <vector>
 
-namespace poppler {
+namespace poppler
+{
 
 class document;
 class document_private;
@@ -36,8 +35,7 @@ class font_iterator_private;
 class POPPLER_CPP_EXPORT font_info
 {
 public:
-    enum type_enum
-    {
+    enum type_enum {
         unknown,
         type1,
         type1c,
@@ -62,15 +60,15 @@ public:
     bool is_subset() const;
     type_enum type() const;
 
-    font_info &operator=(const font_info &fi);
+    font_info& operator=(const font_info &fi);
 
 private:
-    explicit font_info(font_info_private &dd);
+    font_info(font_info_private &dd);
 
     font_info_private *d;
     friend class font_iterator;
-    friend class page;
 };
+
 
 class POPPLER_CPP_EXPORT font_iterator : public poppler::noncopyable
 {
@@ -82,12 +80,10 @@ public:
     int current_page() const;
 
 private:
-    font_iterator(int start_page, document_private *dd);
+    font_iterator(int, document_private *dd);
 
     font_iterator_private *d;
     friend class document;
-    friend class page;
-    friend class page_private;
 };
 
 }

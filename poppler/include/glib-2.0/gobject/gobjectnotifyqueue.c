@@ -1,12 +1,10 @@
 /* GObject - GLib Type, Object, Parameter and Signal Library
  * Copyright (C) 1998-1999, 2000-2001 Tim Janik and Red Hat, Inc.
  *
- * SPDX-License-Identifier: LGPL-2.1-or-later
- *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 2 of the License, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -46,7 +44,7 @@ struct _GObjectNotifyContext
 {
   GQuark                       quark_notify_queue;
   GObjectNotifyQueueDispatcher dispatcher;
-  void                        *_nqueue_trash; /* unused */
+  GTrashStack                 *_nqueue_trash; /* unused */
 };
 struct _GObjectNotifyQueue
 {
@@ -113,8 +111,8 @@ g_object_notify_queue_thaw (GObject            *object,
   /* Just make sure we never get into some nasty race condition */
   if (G_UNLIKELY(nqueue->freeze_count == 0)) {
     G_UNLOCK(notify_lock);
-    g_critical ("%s: property-changed notification for %s(%p) is not frozen",
-	        G_STRFUNC, G_OBJECT_TYPE_NAME (object), object);
+    g_warning ("%s: property-changed notification for %s(%p) is not frozen",
+	       G_STRFUNC, G_OBJECT_TYPE_NAME (object), object);
     return;
   }
 
@@ -140,7 +138,7 @@ g_object_notify_queue_thaw (GObject            *object,
 }
 
 static inline void
-g_object_notify_queue_clear (GObject            *object G_GNUC_UNUSED,
+g_object_notify_queue_clear (GObject            *object,
 			     GObjectNotifyQueue *nqueue)
 {
   g_return_if_fail (nqueue->freeze_count > 0);
@@ -155,7 +153,7 @@ g_object_notify_queue_clear (GObject            *object G_GNUC_UNUSED,
 }
 
 static inline void
-g_object_notify_queue_add (GObject            *object G_GNUC_UNUSED,
+g_object_notify_queue_add (GObject            *object,
 			   GObjectNotifyQueue *nqueue,
 			   GParamSpec	      *pspec)
 {

@@ -2,12 +2,10 @@
  *
  * Copyright © 2008, 2009 Codethink Limited
  *
- * SPDX-License-Identifier: LGPL-2.1-or-later
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation; either version 2 of the licence or (at
+ * your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -57,13 +55,13 @@ struct _GTcpConnection
   GTcpConnectionPrivate *priv;
 };
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 GType    g_tcp_connection_get_type                (void) G_GNUC_CONST;
 
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 void     g_tcp_connection_set_graceful_disconnect (GTcpConnection *connection,
 						   gboolean        graceful_disconnect);
-GIO_AVAILABLE_IN_ALL
+GLIB_AVAILABLE_IN_ALL
 gboolean g_tcp_connection_get_graceful_disconnect (GTcpConnection *connection);
 
 G_END_DECLS
