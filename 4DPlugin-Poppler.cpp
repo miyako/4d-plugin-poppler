@@ -30,8 +30,9 @@ void OnStartup(){
     wchar_t    fDrive[_MAX_DRIVE], fDir[_MAX_DIR], fName[_MAX_FNAME], fExt[_MAX_EXT];
     
     HMODULE hplugin = GetModuleHandleW(L"Poppler.4DX");
-    GetModuleFileNameW(hplugin, thisPath, _MAX_PATH);
-    _wsplitpath_s(thisPath, fDrive, fDir, fName, fExt);
+    if(hplugin){
+        GetModuleFileNameW(hplugin, thisPath, _MAX_PATH);
+        _wsplitpath_s(thisPath, fDrive, fDir, fName, fExt);
     
     std::wstring path = fDrive;
     path += fDir;//path to plugin parent folder
@@ -50,6 +51,7 @@ void OnStartup(){
     
     SetEnvironmentVariable(L"FONTCONFIG_FILE", FONTCONFIG_FILE.c_str());
     SetEnvironmentVariable(L"FONTCONFIG_PATH", FONTCONFIG_PATH.c_str());
+    }//hplugin
 #endif
 
 #if !GLIB_CHECK_VERSION(2,35,0)
@@ -109,12 +111,15 @@ static void PDF_Convert(PA_PluginParameters params)
     sLONG_PTR *pResult = (sLONG_PTR *)params->fResult;
     PackagePtr pParams = (PackagePtr)params->fParameters;
     
+    C_LONGINT returnValue;
+
+  try{
+
     C_BLOB Param1;
     C_LONGINT Param3;
     C_LONGINT Param4;
     C_TEXT Param5;
     C_TEXT Param6;
-    C_LONGINT returnValue;
 
     Param1.fromParamAtIndex(pParams, 1);
     Param3.fromParamAtIndex(pParams, 3);
@@ -167,7 +172,7 @@ static void PDF_Convert(PA_PluginParameters params)
         method_id_t methodId = PA_GetMethodID((PA_Unichar *)Param6.getUTF16StringPtr());
         bool abortedByCallbackMethod = false;
         bool isCallbackActive = false;
-        int number_entry;
+        int number_entry = 0;
          
         PopplerDocument *pdffile = NULL;
         PopplerPage *page = NULL;
@@ -203,7 +208,7 @@ static void PDF_Convert(PA_PluginParameters params)
             
             int currentpageInd = 0;
             
-            for(int pageInd = startPage; pageInd < pageCount; ++pageInd) {
+            for(int pageInd = startPage; pageInd <= finalPage; ++pageInd) {
                                 
                 currentpageInd++;
                 
@@ -263,19 +268,24 @@ static void PDF_Convert(PA_PluginParameters params)
                                 svg.setUTF8String((const uint8_t *)ImageData.getBytesPtr(), ImageData.getBytesLength());
                                 PA_Unistring u = PA_CreateUnistring((PA_Unichar *)svg.getUTF16StringPtr());
                                 PA_SetStringInArray(Param2, pageInd + 1, &u);
+                                PA_DisposeUnistring(&u);
                                 
                                 //callback
                                 if(isCallbackActive){
-                                    PA_Variable    params[3];
+                                    PA_Variable    params[4];
                                     params[0] = PA_CreateVariable(eVK_Longint);
                                     params[1] = PA_CreateVariable(eVK_Longint);
                                     params[2] = PA_CreateVariable(eVK_Longint);
+                                    params[3] = PA_CreateVariable(eVK_Unistring);
+                                    PA_Unistring callbackString = PA_CreateUnistring((PA_Unichar *)svg.getUTF16StringPtr());
 
                                     PA_SetLongintVariable(&params[0], currentpageInd);
                                     PA_SetLongintVariable(&params[1], number_entry);
                                     PA_SetLongintVariable(&params[2], pageInd + 1);
+                                    PA_SetStringVariable(&params[3], &callbackString);
                                     
                                     PA_Variable result = PA_ExecuteMethodByID(methodId, params, 4);
+                                    PA_DisposeUnistring(&callbackString);
                                     if(PA_GetVariableKind(result) == eVK_Boolean){
                                         abortedByCallbackMethod = PA_GetBooleanVariable(result);
                                     }
@@ -357,6 +367,15 @@ static void PDF_Convert(PA_PluginParameters params)
         returnValue.setIntValue(PDF2SVG_ERROR_InvalidReturnType);
     }
 
+  }catch(...){
+    // an exception here would otherwise be swallowed by PluginMain's outer
+    // catch(...) with no PA_Return* ever called - since this command
+    // declares a return type (":L" in manifest.json), that would leave
+    // the 4D host hanging rather than just failing. Report an error and
+    // still return, instead.
+    returnValue.setIntValue(PDF2SVG_ERROR_InvalidSourceData);
+  }
+
     returnValue.setReturn(pResult);
 }
 
@@ -365,9 +384,12 @@ static void PDF_Get_page_count(PA_PluginParameters params)
     sLONG_PTR *pResult = (sLONG_PTR *)params->fResult;
     PackagePtr pParams = (PackagePtr)params->fParameters;
     
+    C_LONGINT returnValue;
+
+  try{
+
     C_BLOB Param1;
     C_TEXT Param2;
-    C_LONGINT returnValue;
 
     Param1.fromParamAtIndex(pParams, 1);
     Param2.fromParamAtIndex(pParams, 2);
@@ -398,6 +420,12 @@ static void PDF_Get_page_count(PA_PluginParameters params)
         returnValue.setIntValue(PDF2SVG_ERROR_InvalidSourceData);
     }
 
+  }catch(...){
+    // see PDF_Convert - same freeze-risk reasoning, this command also
+    // declares a return type (":L") so it must still return on error.
+    returnValue.setIntValue(PDF2SVG_ERROR_InvalidSourceData);
+  }
+
     returnValue.setReturn(pResult);
 }
 
@@ -406,6 +434,10 @@ static void PDF_Get_text(PA_PluginParameters params)
     sLONG_PTR *pResult = (sLONG_PTR *)params->fResult;
     PackagePtr pParams = (PackagePtr)params->fParameters;
 
+    C_LONGINT returnValue;
+
+  try{
+
     C_BLOB Param1;
     ARRAY_TEXT Param2;
     C_LONGINT Param3;
@@ -413,7 +445,6 @@ static void PDF_Get_text(PA_PluginParameters params)
     C_TEXT Param5;
     C_TEXT Param6;
     C_TEXT Param7;
-    C_LONGINT returnValue;
 
     Param1.fromParamAtIndex(pParams, 1);
     Param3.fromParamAtIndex(pParams, 3);
@@ -429,7 +460,7 @@ static void PDF_Get_text(PA_PluginParameters params)
     method_id_t methodId = PA_GetMethodID((PA_Unichar *)Param6.getUTF16StringPtr());
     bool abortedByCallbackMethod = false;
     bool isCallbackActive = false;
-    int number_entry;
+    int number_entry = 0;
 
     PopplerDocument *pdffile = NULL;
     PopplerPage *page = NULL;
@@ -465,7 +496,7 @@ static void PDF_Get_text(PA_PluginParameters params)
         
         int currentpageInd = 0;
             
-        for(int pageInd = startPage; pageInd < pageCount; ++pageInd) {
+        for(int pageInd = startPage; pageInd <= finalPage; ++pageInd) {
                             
             currentpageInd++;
             
@@ -534,5 +565,12 @@ static void PDF_Get_text(PA_PluginParameters params)
     }//pdffile
 
     Param2.toParamAtIndex(pParams, 2);
+
+  }catch(...){
+    // see PDF_Convert - same freeze-risk reasoning, this command also
+    // declares a return type (":L") so it must still return on error.
+    returnValue.setIntValue(PDF2SVG_ERROR_InvalidSourceData);
+  }
+
     returnValue.setReturn(pResult);
 }
