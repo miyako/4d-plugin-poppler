@@ -1,6 +1,9 @@
 name: Build patched Brotli
 
 on:
+  push:
+    paths:
+      - '.github/workflows/build-brotli.yml'
   workflow_dispatch:
 
 permissions:
