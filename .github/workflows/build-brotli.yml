@@ -39,10 +39,6 @@ jobs:
           New-Item -ItemType Directory -Force vendor | Out-Null
           Copy-Item brotli-out/bin/brotli*.dll vendor/
           Get-ChildItem vendor | Format-Table Name, Length
-          foreach ($d in 'brotlicommon','brotlidec','brotlienc') {
-            dumpbin /headers "vendor/$d.dll" | Select-String 'machine'
-            dumpbin /exports "vendor/$d.dll" | Select-String 'Brotli'
-          }
 
       - uses: actions/upload-artifact@v4
         with:
