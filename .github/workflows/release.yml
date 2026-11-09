@@ -8,8 +8,15 @@
 # Canonical layout enforced:
 #   test/Plugins/<Product>.bundle/Contents/MacOS/<Product>
 #   test/Plugins/<Product>.bundle/Contents/Windows64/<Product>.4DX
-#   test/Plugins/<Product>.bundle/Contents/Windows64/*.dll  (runtime deps,
-#     verified by .github/scripts/verify-windows-deps.ps1)
+#
+# Windows linkage (POPPLER_LINKAGE below):
+#   static  - poppler/glib/cairo built from vcpkg.json with the
+#             x64-windows-static-release triplet (vcpkg binary cache is kept
+#             in actions/cache) and linked into a self-contained .4DX.
+#   dynamic - legacy: links lib/windows64 import libs and ships the committed
+#             DLLs + app-local VC++ runtime next to the .4DX.
+# Either way .github/scripts/verify-windows-deps.ps1 fails the build if any
+# non-system DLL the .4DX needs (recursively) is missing.
 name: Build & Release
 
 on:
@@ -29,6 +36,7 @@ env:
   # ---- only this needs editing per-project ----
   PRODUCT_NAME: Poppler
   MACOS_DEPLOYMENT_TARGET: '11.0'
+  POPPLER_LINKAGE: static
   # static base for this project (intentional)
   BASE_DIR: test
   # ---------------------------------------------
@@ -63,7 +71,46 @@ jobs:
       - name: setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
+      - name: read vcpkg baseline
+        if: env.POPPLER_LINKAGE == 'static'
+        id: vcpkg
+        shell: pwsh
+        run: |
+          $baseline = (Get-Content vcpkg.json -Raw | ConvertFrom-Json).'builtin-baseline'
+          "baseline=$baseline" >> $env:GITHUB_OUTPUT
+          "VCPKG_ROOT=$env:RUNNER_TEMP\vcpkg" >> $env:GITHUB_ENV
+          "VCPKG_DEFAULT_BINARY_CACHE=$env:RUNNER_TEMP\vcpkg-bincache" >> $env:GITHUB_ENV
+          New-Item -ItemType Directory -Force -Path "$env:RUNNER_TEMP\vcpkg-bincache" | Out-Null
+
+      - name: restore vcpkg binary cache
+        if: env.POPPLER_LINKAGE == 'static'
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.VCPKG_DEFAULT_BINARY_CACHE }}
+          key: vcpkg-x64-windows-static-release-${{ steps.vcpkg.outputs.baseline }}-${{ hashFiles('vcpkg.json', 'vcpkg-triplets/**') }}
+          restore-keys: |
+            vcpkg-x64-windows-static-release-${{ steps.vcpkg.outputs.baseline }}-
+            vcpkg-x64-windows-static-release-
+
+      - name: build static dependencies (vcpkg)
+        if: env.POPPLER_LINKAGE == 'static'
+        shell: pwsh
+        run: |
+          # Pin vcpkg to the manifest baseline (the runner's preinstalled
+          # vcpkg may be older; brotli must be >= 1.2.1 for the CVE fix).
+          git clone --filter=blob:none https://github.com/microsoft/vcpkg "$env:VCPKG_ROOT"
+          git -C "$env:VCPKG_ROOT" checkout "${{ steps.vcpkg.outputs.baseline }}"
+          & "$env:VCPKG_ROOT\bootstrap-vcpkg.bat" -disableMetrics
+          & "$env:VCPKG_ROOT\vcpkg.exe" install `
+            --triplet x64-windows-static-release `
+            --host-triplet x64-windows-static-release `
+            --overlay-triplets=vcpkg-triplets `
+            --x-install-root=vcpkg_installed
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          & "$env:VCPKG_ROOT\vcpkg.exe" list --x-install-root=vcpkg_installed | Select-String 'brotli|poppler|cairo|glib'
+
       - name: stash committed runtime DLLs
+        if: env.POPPLER_LINKAGE == 'dynamic'
         shell: pwsh
         run: |
           # The bundle's Windows64 folder holds the prebuilt poppler/glib/cairo
@@ -88,7 +135,7 @@ jobs:
       - name: build x64
         shell: cmd
         run: |
-          msbuild "%PRODUCT_NAME%.sln" /p:Configuration=Release /p:Platform=x64 /p:PlatformToolset=v143 /p:WindowsTargetPlatformVersion=10.0 /m
+          msbuild "%PRODUCT_NAME%.sln" /p:Configuration=Release /p:Platform=x64 /p:PlatformToolset=v143 /p:WindowsTargetPlatformVersion=10.0 /p:PopplerLinkage=%POPPLER_LINKAGE% /m
 
       - name: normalize windows output to canonical case
         shell: pwsh
@@ -121,7 +168,7 @@ jobs:
           }
           Get-ChildItem $canonicalDir
 
-      - name: bundle runtime DLLs
+      - name: collect windows binaries
         shell: pwsh
         run: |
           $product = "${{ env.PRODUCT_NAME }}"
@@ -129,18 +176,20 @@ jobs:
           $canonicalDir = "$base/Plugins/$product.bundle/Contents/Windows64"
           New-Item -ItemType Directory -Force -Path winbin | Out-Null
           Copy-Item "$canonicalDir/$product.4DX" winbin/
-          Copy-Item windlls/*.dll winbin/
 
-          # App-local VC++ runtime (redistributable per Microsoft's license):
-          # the prebuilt DLLs are /MD and 4D does not guarantee these exist.
-          $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
-          $vs = & $vswhere -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath
-          $crt = Get-ChildItem "$vs\VC\Redist\MSVC\*\x64\Microsoft.VC14*.CRT" -Directory |
-            Sort-Object FullName -Descending | Select-Object -First 1
-          if (-not $crt) { Write-Error 'VC++ redist CRT folder not found'; exit 1 }
-          Write-Host "VC++ CRT: $($crt.FullName)"
-          foreach ($n in 'vcruntime140.dll', 'vcruntime140_1.dll', 'msvcp140.dll') {
-            Copy-Item (Join-Path $crt.FullName $n) winbin/
+          if ($env:POPPLER_LINKAGE -eq 'dynamic') {
+            Copy-Item windlls/*.dll winbin/
+            # App-local VC++ runtime (redistributable per Microsoft's license):
+            # the prebuilt DLLs are /MD and 4D does not guarantee these exist.
+            $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
+            $vs = & $vswhere -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath
+            $crt = Get-ChildItem "$vs\VC\Redist\MSVC\*\x64\Microsoft.VC14*.CRT" -Directory |
+              Sort-Object FullName -Descending | Select-Object -First 1
+            if (-not $crt) { Write-Error 'VC++ redist CRT folder not found'; exit 1 }
+            Write-Host "VC++ CRT: $($crt.FullName)"
+            foreach ($n in 'vcruntime140.dll', 'vcruntime140_1.dll', 'msvcp140.dll') {
+              Copy-Item (Join-Path $crt.FullName $n) winbin/
+            }
           }
           Get-ChildItem winbin | Format-Table Name, Length
 
@@ -269,14 +318,9 @@ jobs:
             exit 1
           fi
 
-          # 4DX plus every runtime DLL it needs (verified on the windows job).
-          cp winbuild/"${PRODUCT}.4DX" winbuild/*.dll "$BUNDLE/Contents/Windows64/"
-          COUNT=$(find "$BUNDLE/Contents/Windows64" -maxdepth 1 -iname '*.dll' | wc -l)
-          echo "Bundled $COUNT DLL(s)"
-          if [ "$COUNT" -lt 1 ]; then
-            echo "::error::No runtime DLLs merged into Contents/Windows64"
-            exit 1
-          fi
+          # 4DX plus any runtime DLLs it needs (none for the static build;
+          # completeness was verified on the windows job).
+          cp winbuild/* "$BUNDLE/Contents/Windows64/"
 
           echo "BUNDLE_PATH=$BUNDLE" >> "$GITHUB_ENV"
           ls -R "$BUNDLE/Contents"

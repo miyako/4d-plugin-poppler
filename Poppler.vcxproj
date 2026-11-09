@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -91,7 +91,12 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Label="UserMacros">
+    <!-- Release|x64 links poppler/glib/cairo statically from vcpkg (see vcpkg.json).
+         Pass /p:PopplerLinkage=dynamic to use the legacy import libs in lib\windows64. -->
+    <PopplerLinkage Condition="'$(PopplerLinkage)'==''">static</PopplerLinkage>
+    <VcpkgStaticRoot Condition="'$(VcpkgStaticRoot)'==''">$(ProjectDir)vcpkg_installed\x64-windows-static-release\</VcpkgStaticRoot>
+  </PropertyGroup>
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)test\plugins\$(ProjectName).bundle\contents\windows\</OutDir>
@@ -194,7 +199,6 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(ProjectDir);support;include-windows\cairo;include-windows\poppler\glib;include-windows\glib-2.0;include-windows;4D Plugin API\Classes;4D Plugin API;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NONDLL;BGDWIN32;WIN64;WIN32;NOMINMAX;_WINDOWS;NDEBUG;_USRDLL;MY4DPLUGIN_EXPORTS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>
@@ -212,8 +216,25 @@
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64' and '$(PopplerLinkage)'=='dynamic'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir);support;include-windows\cairo;include-windows\poppler\glib;include-windows\glib-2.0;include-windows;4D Plugin API\Classes;4D Plugin API;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
       <AdditionalDependencies>libcairo-2.lib;libgobject-2.0-0.lib;libpoppler-glib-8.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)lib\windows64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64' and '$(PopplerLinkage)'=='static'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir);support;$(VcpkgStaticRoot)include\poppler\glib;$(VcpkgStaticRoot)include\poppler;$(VcpkgStaticRoot)include\cairo;$(VcpkgStaticRoot)include\glib-2.0;$(VcpkgStaticRoot)lib\glib-2.0\include;$(VcpkgStaticRoot)include\libpng16;$(VcpkgStaticRoot)include;4D Plugin API\Classes;4D Plugin API;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PCRE2_STATIC;OPJ_STATIC;LZMA_API_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>poppler-glib.lib;poppler.lib;gio-2.0.lib;gobject-2.0.lib;gmodule-2.0.lib;glib-2.0.lib;ffi.lib;intl.lib;iconv.lib;pcre2-8.lib;openjp2.lib;tiff.lib;jpeg.lib;lzma.lib;cairo.lib;freetype.lib;bz2.lib;brotlidec.lib;brotlicommon.lib;pixman-1.lib;pthreadVC3.lib;libpng16.lib;zs.lib;shlwapi.lib;dnsapi.lib;iphlpapi.lib;ws2_32.lib;winmm.lib;msimg32.lib;dwrite.lib;d2d1.lib;windowscodecs.lib;usp10.lib;crypt32.lib;bcrypt.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(VcpkgStaticRoot)lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
