@@ -1,5 +1,8 @@
 param(
-  [Parameter(Mandatory)] [string] $VcpkgRoot
+  [Parameter(Mandatory)] [string] $VcpkgRoot,
+  # Used only when every bootstrap attempt fails (e.g. GitHub release CDN
+  # outages). The vcpkg tool is independent of the pinned ports tree.
+  [string] $FallbackExecutable
 )
 $ErrorActionPreference = 'Stop'
 # Native failures must reach the explicit exit-code checks, even if the caller
@@ -19,6 +22,11 @@ for ($attempt = 1; $attempt -le $maxAttempts; $attempt++) {
 
   $failure = "Bootstrap exit code: $bootstrapExitCode; vcpkg.exe present: $(Test-Path $executable -PathType Leaf)"
   if ($attempt -eq $maxAttempts) {
+    if ($FallbackExecutable -and (Test-Path $FallbackExecutable -PathType Leaf)) {
+      Write-Warning "$failure. Falling back to $FallbackExecutable."
+      Copy-Item -LiteralPath $FallbackExecutable -Destination $executable -Force
+      return
+    }
     throw "vcpkg bootstrap failed after $maxAttempts attempts. $failure"
   }
 

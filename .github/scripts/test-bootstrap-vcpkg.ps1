@@ -51,8 +51,13 @@ exit 0
     @{ Name = 'success on final attempt'; Failures = 3; Missing = 0; Attempts = 4; Delays = '10,20,40'; Error = $null },
     @{ Name = 'retry exhaustion'; Failures = 4; Missing = 0; Attempts = 4; Delays = '10,20,40'; Error = 'Bootstrap exit code: 23' },
     @{ Name = 'failed bootstrap with stale executable'; Failures = 4; Missing = 0; Stale = $true; Attempts = 4; Delays = '10,20,40'; Error = 'Bootstrap exit code: 23' },
-    @{ Name = 'success without executable'; Failures = 0; Missing = 1; Attempts = 4; Delays = '10,20,40'; Error = 'vcpkg.exe present: False' }
+    @{ Name = 'success without executable'; Failures = 0; Missing = 1; Attempts = 4; Delays = '10,20,40'; Error = 'vcpkg.exe present: False' },
+    @{ Name = 'retry exhaustion uses fallback'; Failures = 4; Missing = 0; Fallback = 'present'; Attempts = 4; Delays = '10,20,40'; Error = $null },
+    @{ Name = 'retry exhaustion with missing fallback'; Failures = 4; Missing = 0; Fallback = 'missing'; Attempts = 4; Delays = '10,20,40'; Error = 'Bootstrap exit code: 23' },
+    @{ Name = 'success ignores fallback'; Failures = 1; Missing = 0; Fallback = 'present'; Attempts = 2; Delays = '10'; Error = $null }
   )
+  $fallbackExe = Join-Path $fixture 'fallback-vcpkg.exe'
+  Set-Content $fallbackExe 'fallback fixture'
   foreach ($case in $cases) {
     foreach ($name in 'attempts.txt', 'vcpkg.exe') {
       $path = Join-Path $fixture $name
@@ -64,14 +69,21 @@ exit 0
     $delays = [System.Collections.Generic.List[int]]::new()
     $caught = $null
     $installReached = $false
+    $bootstrapArgs = @{ VcpkgRoot = $fixture }
+    if ($case.Fallback -eq 'present') { $bootstrapArgs.FallbackExecutable = $fallbackExe }
+    if ($case.Fallback -eq 'missing') { $bootstrapArgs.FallbackExecutable = Join-Path $fixture 'no-such-vcpkg.exe' }
     try {
-      & $bootstrapScript -VcpkgRoot $fixture
+      & $bootstrapScript @bootstrapArgs
       $installReached = $true
     } catch {
       $caught = $_.Exception.Message
     }
     Assert ((Get-Content (Join-Path $fixture 'attempts.txt')) -eq $case.Attempts) "$($case.Name): wrong attempt count; error '$caught'"
     Assert (($delays -join ',') -eq $case.Delays) "$($case.Name): wrong backoff"
+    if ($installReached) {
+      $expectedContent = if ($case.Failures -ge 4) { 'fallback fixture' } else { 'fixture' }
+      Assert ((Get-Content (Join-Path $fixture 'vcpkg.exe')) -eq $expectedContent) "$($case.Name): wrong vcpkg.exe"
+    }
     if ($case.Error) {
       Assert ($caught -like "*$($case.Error)*") "$($case.Name): expected final error, got '$caught'"
       Assert ($caught -like '*failed after 4 attempts*') "$($case.Name): expected retry exhaustion"

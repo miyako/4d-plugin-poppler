@@ -102,7 +102,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw "vcpkg clone failed with exit code $LASTEXITCODE" }
           git -C "$env:VCPKG_ROOT" checkout "${{ steps.vcpkg.outputs.baseline }}"
           if ($LASTEXITCODE -ne 0) { throw "vcpkg baseline checkout failed with exit code $LASTEXITCODE" }
-          & ./.github/scripts/bootstrap-vcpkg.ps1 -VcpkgRoot $env:VCPKG_ROOT
+          & ./.github/scripts/bootstrap-vcpkg.ps1 -VcpkgRoot $env:VCPKG_ROOT `
+            -FallbackExecutable "$env:VCPKG_INSTALLATION_ROOT\vcpkg.exe"
           & "$env:VCPKG_ROOT\vcpkg.exe" install `
             --triplet x64-windows-static-release `
             --host-triplet x64-windows-static-release `
