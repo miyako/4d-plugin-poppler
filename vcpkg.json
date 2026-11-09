@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "poppler-4d-plugin",
+  "version-string": "0",
+  "builtin-baseline": "ec48c11eae9448c8c6e7739d93e06fa2433aa95f",
+  "dependencies": [
+    {
+      "name": "poppler",
+      "default-features": false,
+      "features": [ "cairo", "glib", "zlib" ]
+    },
+    {
+      "name": "cairo",
+      "default-features": false,
+      "features": [ "freetype" ]
+    },
+    "glib",
+    "libpng"
+  ],
+  "overrides": [
+    { "name": "brotli", "version": "1.2.1" }
+  ]
+}

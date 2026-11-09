@@ -8,6 +8,18 @@
 * the source code of this plugin developed using the [4D Plug-in SDK](https://github.com/4d/4D-Plugin-SDK) is licensed under the MIT license
 * see [Poppler](https://poppler.freedesktop.org) for the licensing of **Poppler** (shared library).
 * the licensing of the binary product of this plugin is subject to the licensing of all its dependencies.
+* on Windows, Poppler (GPL-2.0-or-later) and its dependencies — GLib, Cairo, pixman, FreeType, libiconv, gettext-libintl (LGPL/MPL), libpng, zlib, brotli, etc. — are **statically linked** into `Poppler.4DX`. The distributed binary is therefore a combined work under the GPL; statically linking the LGPL components also means recipients must be able to relink them (corresponding source is available via [`vcpkg.json`](vcpkg.json), which pins every dependency version).
+
+#### Building on Windows
+
+`Poppler.vcxproj` links the static libraries produced by vcpkg (`x64-windows-static-release`, static CRT):
+
+```
+vcpkg install --triplet x64-windows-static-release --host-triplet x64-windows-static-release --overlay-triplets=vcpkg-triplets --x-install-root=vcpkg_installed
+msbuild Poppler.sln /p:Configuration=Release /p:Platform=x64
+```
+
+Pass `/p:PopplerLinkage=dynamic` to link the legacy import libraries in `lib/windows64` instead; the DLLs in `test/Plugins/Poppler.bundle/Contents/Windows64` (plus the VC++ runtime) must then ship next to `Poppler.4DX`.
 
 # 4d-plugin-poppler
 

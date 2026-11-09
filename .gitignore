@@ -7,3 +7,4 @@ poppler/test/Project/DerivedData/*
 poppler/test/Data/*
 .vs
 build/*
+vcpkg_installed/
