@@ -92,7 +92,7 @@ jobs:
             vcpkg-x64-windows-static-release-${{ steps.vcpkg.outputs.baseline }}-
             vcpkg-x64-windows-static-release-
 
-      - name: build static dependencies (vcpkg)
+      - name: bootstrap pinned vcpkg
         if: env.POPPLER_LINKAGE == 'static'
         shell: pwsh
         run: |
@@ -103,7 +103,42 @@ jobs:
           git -C "$env:VCPKG_ROOT" checkout "${{ steps.vcpkg.outputs.baseline }}"
           if ($LASTEXITCODE -ne 0) { throw "vcpkg baseline checkout failed with exit code $LASTEXITCODE" }
           & ./.github/scripts/bootstrap-vcpkg.ps1 -VcpkgRoot $env:VCPKG_ROOT
+
+      # Temporary probe: failures must not prevent vcpkg's own debug download.
+      - name: diagnose FreeType TLS download
+        if: env.POPPLER_LINKAGE == 'static'
+        continue-on-error: true
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $PSNativeCommandUseErrorActionPreference = $false
+          & curl.exe --version
+          if ($LASTEXITCODE -ne 0) { throw "curl version check failed with exit code $LASTEXITCODE" }
+
+          # Exact URL and SHA-512 from FreeType 2.15.0 at the pinned baseline.
+          $url = 'https://gitlab.freedesktop.org//freetype/freetype/-/archive/VER-2-15-0/freetype-VER-2-15-0.tar.gz'
+          $expectedHash = 'ee8e234a8cf13b89698480e4805516ace966d94ffa8054825ba3bc3f28069fba51a7939b7ec3e99ec6cbb18519be5b74840f16faefcf58eff24911f777866905'
+          $archive = Join-Path $env:RUNNER_TEMP "freetype-tls-probe-$([guid]::NewGuid()).tar.gz"
+          try {
+            & curl.exe --verbose --fail --location --connect-timeout 20 --max-time 120 --output $archive $url
+            if ($LASTEXITCODE -ne 0) { throw "FreeType TLS probe failed with curl exit code $LASTEXITCODE" }
+            $actualHash = (Get-FileHash -LiteralPath $archive -Algorithm SHA512).Hash
+            if ($actualHash -ne $expectedHash) {
+              throw "FreeType archive SHA-512 mismatch: expected $expectedHash; got $actualHash"
+            }
+            Write-Host "FreeType TLS probe succeeded; SHA-512 verified: $actualHash"
+          } finally {
+            if (Test-Path -LiteralPath $archive) {
+              Remove-Item -LiteralPath $archive -Force
+            }
+          }
+
+      - name: build static dependencies (vcpkg)
+        if: env.POPPLER_LINKAGE == 'static'
+        shell: pwsh
+        run: |
           & "$env:VCPKG_ROOT\vcpkg.exe" install `
+            --debug `
             --triplet x64-windows-static-release `
             --host-triplet x64-windows-static-release `
             --overlay-triplets=vcpkg-triplets `
