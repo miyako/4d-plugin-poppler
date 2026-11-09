@@ -21,6 +21,8 @@ msbuild Poppler.sln /p:Configuration=Release /p:Platform=x64
 
 Pass `/p:PopplerLinkage=dynamic` to link the legacy import libraries in `lib/windows64` instead; the DLLs in `test/Plugins/Poppler.bundle/Contents/Windows64` (plus the VC++ runtime) must then ship next to `Poppler.4DX`.
 
+The release workflow uses the project's v145 toolset, matching vcpkg's compiler on the Windows runner; do not override it with an older toolset when linking these static libraries. It bootstraps the manifest-pinned vcpkg with up to four attempts (10, 20, and 40 seconds between attempts) to tolerate transient download failures. A failed bootstrap or missing `vcpkg.exe` stops the job before dependency installation. The baseline, triplet, and binary-cache keys are unchanged.
+
 # 4d-plugin-poppler
 
 The Poppler plugin wraps the [Poppler](https://poppler.freedesktop.org/) PDF-rendering library (via Cairo for SVG output) to give 4D three commands: rendering PDF pages to `Picture` or SVG-as-`Text`, extracting a PDF's plain text, and getting a PDF's page count. Source PDFs are passed in as a `Blob` (e.g. from `DOCUMENT TO BLOB`), never as a file path — the plugin never touches the filesystem itself.
