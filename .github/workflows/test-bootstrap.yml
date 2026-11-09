@@ -1,0 +1,28 @@
+name: Test vcpkg bootstrap
+
+on:
+  pull_request:
+    paths:
+      - '.github/scripts/bootstrap-vcpkg.ps1'
+      - '.github/scripts/test-bootstrap-vcpkg.ps1'
+      - '.github/workflows/test-bootstrap.yml'
+      - '.github/workflows/release.yml'
+  push:
+    branches: [main]
+    paths:
+      - '.github/scripts/bootstrap-vcpkg.ps1'
+      - '.github/scripts/test-bootstrap-vcpkg.ps1'
+      - '.github/workflows/test-bootstrap.yml'
+      - '.github/workflows/release.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  bootstrap:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: test bootstrap retries and fail-fast behavior
+        shell: pwsh
+        run: ./.github/scripts/test-bootstrap-vcpkg.ps1
