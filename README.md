@@ -137,6 +137,16 @@ $error:=PDF Convert($PDF;$svgPages)
  // version (e.g. TEXT TO DOCUMENT); exact syntax not verified here.
 ```
 
+The plugin transfers ownership of each SVG string to the output array. Earlier
+builds freed that string immediately after assignment, leaving a dangling array
+element that could crash 4D on Windows when read or cleared. The callback receives
+a separately allocated string; disposing that copy does not invalidate the array.
+
+To exercise this regression in the 4D test project on Windows or macOS, run
+`PDF2SVG_TEXT_TEST`. It uses `Resources/doc.pdf`, checks SVG output with and
+without a callback, churns text allocations before reading the array, and repeats
+conversion with both array reuse and explicit clearing.
+
 Bailing out early from a callback once a target page is found:
 
 ```4d

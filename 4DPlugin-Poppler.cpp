@@ -267,8 +267,8 @@ static void PDF_Convert(PA_PluginParameters params)
                                 C_TEXT svg;
                                 svg.setUTF8String((const uint8_t *)ImageData.getBytesPtr(), ImageData.getBytesLength());
                                 PA_Unistring u = PA_CreateUnistring((PA_Unichar *)svg.getUTF16StringPtr());
+                                // PA_SetStringInArray transfers ownership; the array disposes u.
                                 PA_SetStringInArray(Param2, pageInd + 1, &u);
-                                PA_DisposeUnistring(&u);
                                 
                                 //callback
                                 if(isCallbackActive){
