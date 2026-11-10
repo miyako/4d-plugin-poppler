@@ -3,6 +3,8 @@
 [![license](https://img.shields.io/github/license/miyako/4d-plugin-poppler)](LICENSE)
 ![downloads](https://img.shields.io/github/downloads/miyako/4d-plugin-poppler/total)
 
+**English** | [日本語](README.ja.md)
+
 ### Dependencies and Licensing
 
 * the source code of this plugin developed using the [4D Plug-in SDK](https://github.com/4d/4D-Plugin-SDK) is licensed under the MIT license
