@@ -4,7 +4,7 @@
     "commands": [
         {
             "theme": "SVG",
-            "syntax": "PDF Convert(&O;&Y;&L;&L;&T;&T;&T):L",
+            "syntax": "PDF Convert(&O;&Y;&L;&L;&T;&T;&O):L",
             "threadSafe": true
         },
         {

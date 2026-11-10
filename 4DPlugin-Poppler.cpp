@@ -70,6 +70,266 @@ __cairo_write_func (void *closure, const unsigned char *data, unsigned int lengt
     return CAIRO_STATUS_SUCCESS;
 }
 
+#pragma mark - options
+
+static bool ob_get_property(PA_ObjectRef obj, const char *key, PA_Variable *value) {
+    
+    bool found = false;
+    
+    if(obj){
+        C_TEXT k;
+        k.setUTF8String((const uint8_t *)key, (uint32_t)strlen(key));
+        PA_Unistring u = PA_CreateUnistring((PA_Unichar *)k.getUTF16StringPtr());
+        if(PA_HasObjectProperty(obj, &u)){
+            *value = PA_GetObjectProperty(obj, &u);
+            found = true;
+        }
+        PA_DisposeUnistring(&u);
+    }
+    
+    return found;
+}
+
+static bool ob_get_number(PA_ObjectRef obj, const char *key, double *number) {
+    
+    bool found = false;
+    PA_Variable v;
+    
+    if(ob_get_property(obj, key, &v)){
+        switch(PA_GetVariableKind(v)){
+            case eVK_Real:
+                *number = PA_GetRealVariable(v);
+                found = true;
+                break;
+            case eVK_Longint:
+                *number = PA_GetLongintVariable(v);
+                found = true;
+                break;
+            default:
+                break;
+        }
+        PA_ClearVariable(&v);
+    }
+    
+    return found;
+}
+
+static bool ob_get_boolean(PA_ObjectRef obj, const char *key, bool *boolean) {
+    
+    bool found = false;
+    PA_Variable v;
+    
+    if(ob_get_property(obj, key, &v)){
+        if(PA_GetVariableKind(v) == eVK_Boolean){
+            *boolean = PA_GetBooleanVariable(v);
+            found = true;
+        }
+        PA_ClearVariable(&v);
+    }
+    
+    return found;
+}
+
+static bool ob_get_string(PA_ObjectRef obj, const char *key, CUTF8String *string) {
+    
+    bool found = false;
+    PA_Variable v;
+    
+    if(ob_get_property(obj, key, &v)){
+        if(PA_GetVariableKind(v) == eVK_Unistring){
+            PA_Unistring u = PA_GetStringVariable(v);
+            C_TEXT t;
+            t.setUTF16String(&u);
+            t.copyUTF8String(string);
+            found = true;
+        }
+        PA_ClearVariable(&v);
+    }
+    
+    return found;
+}
+
+// returns false if an option has an invalid value
+static bool get_convert_options(PA_ObjectRef obj, PDF_Convert_Options *options) {
+    
+    options->format = PDF_Format_SVG;
+    options->dpi = 72.0;
+    options->width = 0.0;
+    options->height = 0.0;
+    options->transparent = false;
+    options->antialias = true;
+    options->printing = true;
+    
+    if(!obj) return true;
+    
+    CUTF8String format;
+    if(ob_get_string(obj, "format", &format)){
+        std::string f((const char *)format.c_str());
+        for(size_t i = 0; i < f.size(); ++i) f[i] = (char)tolower((unsigned char)f[i]);
+        if((f == "svg") || (f == "")){
+            options->format = PDF_Format_SVG;
+        }else if(f == "png"){
+            options->format = PDF_Format_PNG;
+        }else{
+            return false;
+        }
+    }
+    
+    double number;
+    if(ob_get_number(obj, "dpi", &number)){
+        if(!(number > 0.0)) return false;
+        options->dpi = number;
+    }
+    if(ob_get_number(obj, "width", &number)){
+        if(number < 0.0) return false;
+        options->width = number;
+    }
+    if(ob_get_number(obj, "height", &number)){
+        if(number < 0.0) return false;
+        options->height = number;
+    }
+    
+    ob_get_boolean(obj, "transparent", &options->transparent);
+    ob_get_boolean(obj, "antialias", &options->antialias);
+    ob_get_boolean(obj, "printing", &options->printing);
+    
+    return true;
+}
+
+#pragma mark - rendering
+
+// cairo image surfaces are limited to 32767 pixels per side
+#define MAX_IMAGE_DIMENSION 32767
+
+static uint32_t png_crc32(const uint8_t *data, size_t length, uint32_t crc = 0xFFFFFFFFu) {
+    
+    for(size_t i = 0; i < length; ++i){
+        crc ^= data[i];
+        for(int k = 0; k < 8; ++k){
+            crc = (crc >> 1) ^ (0xEDB88320u & (0u - (crc & 1u)));
+        }
+    }
+    
+    return crc;
+}
+
+static void put_uint32_be(uint8_t *p, uint32_t v) {
+    p[0] = (uint8_t)(v >> 24);
+    p[1] = (uint8_t)(v >> 16);
+    p[2] = (uint8_t)(v >> 8);
+    p[3] = (uint8_t)(v);
+}
+
+// insert a pHYs chunk right after IHDR so that the PNG carries its resolution
+static void png_set_resolution(C_BLOB &png, double dpi) {
+    
+    const size_t ihdrEnd = 8 + 4 + 4 + 13 + 4;
+    uint32_t len = png.getBytesLength();
+    const uint8_t *p = png.getBytesPtr();
+    
+    if((len <= ihdrEnd) || (memcmp(p + 12, "IHDR", 4) != 0)) return;
+    
+    uint32_t ppm = (uint32_t)floor((dpi / 0.0254) + 0.5);
+    
+    uint8_t chunk[4 + 4 + 9 + 4];
+    put_uint32_be(chunk, 9);
+    memcpy(chunk + 4, "pHYs", 4);
+    put_uint32_be(chunk + 8, ppm);
+    put_uint32_be(chunk + 12, ppm);
+    chunk[16] = 1;//unit: metre
+    put_uint32_be(chunk + 17, png_crc32(chunk + 4, 4 + 9) ^ 0xFFFFFFFFu);
+    
+    std::vector<uint8_t> buf;
+    buf.reserve(len + sizeof(chunk));
+    buf.insert(buf.end(), p, p + ihdrEnd);
+    buf.insert(buf.end(), chunk, chunk + sizeof(chunk));
+    buf.insert(buf.end(), p + ihdrEnd, p + len);
+    
+    png.setBytes(buf.data(), (uint32_t)buf.size());
+}
+
+static void render_page(PopplerPage *page, const PDF_Convert_Options &options, C_BLOB &out) {
+    
+    double width, height;
+    poppler_page_get_size(page, &width, &height);
+    
+    if(!(width > 0.0) || !(height > 0.0)) return;
+    
+    double scale = options.dpi / 72.0;
+    
+    if((options.width > 0.0) && (options.height > 0.0)){
+        scale = fmin(options.width / width, options.height / height);
+    }else if(options.width > 0.0){
+        scale = options.width / width;
+    }else if(options.height > 0.0){
+        scale = options.height / height;
+    }
+    
+    cairo_surface_t *surface = NULL;
+    double scaleX = scale, scaleY = scale;
+    
+    if(options.format == PDF_Format_PNG){
+        double maxSide = fmax(width, height) * scale;
+        if(maxSide > MAX_IMAGE_DIMENSION){
+            scale = scale * (MAX_IMAGE_DIMENSION / maxSide);
+        }
+        int pixelsWide = (int)floor((width  * scale) + 0.5);
+        int pixelsHigh = (int)floor((height * scale) + 0.5);
+        pixelsWide = (pixelsWide < 1) ? 1 : ((pixelsWide > MAX_IMAGE_DIMENSION) ? MAX_IMAGE_DIMENSION : pixelsWide);
+        pixelsHigh = (pixelsHigh < 1) ? 1 : ((pixelsHigh > MAX_IMAGE_DIMENSION) ? MAX_IMAGE_DIMENSION : pixelsHigh);
+        // fill the whole pixel grid, even after rounding
+        scaleX = pixelsWide / width;
+        scaleY = pixelsHigh / height;
+        surface = cairo_image_surface_create(CAIRO_FORMAT_ARGB32, pixelsWide, pixelsHigh);
+    }else{
+        surface = cairo_svg_surface_create_for_stream(__cairo_write_func, &out, width * scale, height * scale);
+        cairo_svg_surface_restrict_to_version(surface, CAIRO_SVG_VERSION_1_1);
+    }
+    
+    if(cairo_surface_status(surface) != CAIRO_STATUS_SUCCESS){
+        cairo_surface_destroy(surface);
+        return;
+    }
+    
+    cairo_t *drawcontext = cairo_create(surface);
+    
+    if((options.format == PDF_Format_PNG) && (!options.transparent)){
+        cairo_set_source_rgb(drawcontext, 1.0, 1.0, 1.0);
+        cairo_paint(drawcontext);
+    }
+    
+    if(!options.antialias){
+        cairo_set_antialias(drawcontext, CAIRO_ANTIALIAS_NONE);
+        cairo_font_options_t *fontOptions = cairo_font_options_create();
+        cairo_font_options_set_antialias(fontOptions, CAIRO_ANTIALIAS_NONE);
+        cairo_set_font_options(drawcontext, fontOptions);
+        cairo_font_options_destroy(fontOptions);
+    }
+    
+    cairo_scale(drawcontext, scaleX, scaleY);
+    
+    if(options.printing){
+        poppler_page_render_for_printing(page, drawcontext);
+    }else{
+        poppler_page_render(page, drawcontext);
+    }
+    
+    cairo_show_page(drawcontext);
+    cairo_destroy(drawcontext);
+    
+    if(options.format == PDF_Format_PNG){
+        cairo_surface_flush(surface);
+        C_BLOB png;
+        if((cairo_surface_write_to_png_stream(surface, __cairo_write_func, &png) == CAIRO_STATUS_SUCCESS)
+           && png.getBytesLength()){
+            png_set_resolution(png, 72.0 * scaleX);
+            out.setBytes(png.getBytesPtr(), png.getBytesLength());
+        }
+    }
+    
+    cairo_surface_destroy(surface);
+}
+
 #pragma mark -
 
 void PluginMain(PA_long32 selector, PA_PluginParameters params) {
@@ -127,6 +387,14 @@ static void PDF_Convert(PA_PluginParameters params)
     Param5.fromParamAtIndex(pParams, 5);
     Param6.fromParamAtIndex(pParams, 6);
 
+    PDF_Convert_Options options;
+    if(!get_convert_options(PA_GetObjectParameter(params, 7), &options)){
+        // leave the array untouched
+        returnValue.setIntValue(PDF2SVG_ERROR_InvalidOption);
+        returnValue.setReturn(pResult);
+        return;
+    }
+
     PA_Variable Param2 = *((PA_Variable*) pParams[1]);
     
     switch (Param2.fType)
@@ -152,8 +420,11 @@ static void PDF_Convert(PA_PluginParameters params)
             returnType = PDF2SVG_ReturnPicture;
             break;
         case eVK_ArrayUnicode:
-            PA_ResizeArray(&Param2, 0);
-            returnType = PDF2SVG_ReturnText;
+            // a text array can only hold SVG markup
+            if(options.format == PDF_Format_SVG){
+                PA_ResizeArray(&Param2, 0);
+                returnType = PDF2SVG_ReturnText;
+            }
             break;
 #ifdef eVK_ArrayBlob
         case eVK_ArrayBlob:
@@ -219,15 +490,7 @@ static void PDF_Convert(PA_PluginParameters params)
                 if(page){
                 
                     C_BLOB ImageData;
-                    double width, height;
-                    poppler_page_get_size (page, &width, &height);
-                    cairo_surface_t *surface = cairo_svg_surface_create_for_stream(__cairo_write_func, &ImageData, width, height);
-                                        cairo_svg_surface_restrict_to_version(surface, CAIRO_SVG_VERSION_1_1);
-                                        cairo_t *drawcontext = cairo_create(surface);
-                    poppler_page_render_for_printing(page, drawcontext);
-                    cairo_show_page(drawcontext);
-                    cairo_destroy(drawcontext);
-                    cairo_surface_destroy(surface);
+                    render_page(page, options, ImageData);
                     
                     if(ImageData.getBytesLength()){
                        
