@@ -29,7 +29,7 @@ The Poppler plugin wraps the [Poppler](https://poppler.freedesktop.org/) PDF-ren
 
 | Command | Returns | Purpose |
 |---|---|---|
-| [`PDF Convert`](#pdf-convert) | `Longint` | Renders a PDF's pages to an array of `Picture` (PNG-backed) or an array of `Text` (SVG markup), page by page, with an optional per-page callback |
+| [`PDF Convert`](#pdf-convert) | `Longint` | Renders a PDF's pages to an array of `Picture` (SVG-backed) or an array of `Text` (SVG markup), page by page, with an optional per-page callback |
 | [`PDF Get page count`](#pdf-get-page-count) | `Longint` | Returns the number of pages in a PDF |
 | [`PDF Get text`](#pdf-get-text) | `Longint` | Extracts each page's plain text into an array of `Text`, with an optional per-page callback |
 
@@ -72,11 +72,13 @@ $error:=PDF Convert($pdf; $pages; $startPage; $endPage; $password; $callback) ->
 
 `pages`'s declared type at the time you call `PDF Convert` decides the output format:
 - **Undeclared/`Null`** variable → the plugin declares it as `Array Picture` for you (equivalent to `ARRAY PICTURE`).
-- **Already `Array Picture`** → each element becomes a `Picture` whose bytes are a PNG rendering of that page (rendered via Cairo/Poppler's print-quality path, i.e. suitable for on-screen or print use, not necessarily identical pixel-for-pixel to what a PDF viewer shows on screen).
+- **Already `Array Picture`** → each element becomes a `Picture` whose bytes are an **SVG** rendering of that page — the same SVG markup the `Array Text` variant returns, not a PNG or other bitmap (rendered via Cairo/Poppler's print-quality path, i.e. suitable for on-screen or print use, not necessarily identical to what a PDF viewer shows on screen). Use `CONVERT PICTURE` or `WRITE PICTURE FILE` with a `".png"` codec if you need a bitmap.
 - **Already `Array Text`** → each element becomes the page rendered as **SVG markup** (a full `<svg>...</svg>` document per page), not plain text — despite the array being of type `Text`, the content is SVG source. This is how the plugin returns per-page SVGs; see [`PDF2SVG_TEST_WITH_CB.4dm`](#example) for how it's written to `.svg` files afterward.
 - **Any other type** (including `Array Blob`, unless the build you have was compiled with Blob-array support) → the command does nothing and returns `-2` immediately, without resizing or touching your array.
 
 The array is always resized to the PDF's total page count, indexed 1-based by absolute page number (element `pageInd` holds page `pageInd`, regardless of `startPage`) — pages outside your `startPage`/`endPage` range are left at whatever default the array element type has (an empty `Picture`, an empty string), not removed from the array.
+
+**Output size.** Each page's SVG is sized to the PDF page itself, in PDF points (1/72 inch) — e.g. A4 is 595 × 842 and US Letter is 612 × 792 — so 4D displays it at the equivalent of 72 DPI. There is no size, scale or DPI parameter. Because the output is vector, you can enlarge it without loss in 4D (e.g. `TRANSFORM PICTURE($page; Scale; 2; 2)`) before converting to a bitmap.
 
 If `callback` names a valid project method, it's called once per rendered page, **after** that page's array element is set, with the signature:
 
