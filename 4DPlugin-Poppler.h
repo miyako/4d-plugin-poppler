@@ -25,6 +25,9 @@
 #include <cairo-svg.h>
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
+#include <ctype.h>
+#include <string>
 
 #ifdef ENABLE_LIBPNG
 #include <png.h>
@@ -62,6 +65,22 @@ typedef enum{
 #define PDF2SVG_ERROR_InvalidSourceData (-1)
 #define PDF2SVG_ERROR_InvalidReturnType (-2)
 #define PDF2SVG_ERROR_AbortedByUser (-3)
+#define PDF2SVG_ERROR_InvalidOption (-4)
+
+typedef enum{
+ PDF_Format_SVG = 0,
+ PDF_Format_PNG = 1
+}PDF_Format;
+
+typedef struct{
+ PDF_Format format;
+ double dpi;
+ double width;
+ double height;
+ bool transparent;
+ bool antialias;
+ bool printing;
+}PDF_Convert_Options;
 
 #pragma mark -
 
